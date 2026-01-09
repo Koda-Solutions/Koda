@@ -1,7 +1,6 @@
 'use client';
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Zap, CreditCard, Truck, Lock } from 'lucide-react';
 
 const features = [
@@ -16,9 +15,11 @@ export default function Solution() {
     <section className="py-24 relative">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto bg-card border border-white/10 rounded-[40px] p-8 lg:p-16 relative overflow-hidden">
+          {/* Top Border Gradient */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Text Content */}
             <div>
               <h2 className="text-4xl font-black mb-6 leading-tight">
                 إحنا بنبني{' '}
@@ -45,16 +46,18 @@ export default function Solution() {
               </div>
             </div>
 
-            <div className="relative aspect-video rounded-2xl bg-background border border-white/5 flex items-center justify-center overflow-hidden">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent" />
-              <div className="text-6xl font-black text-white/5 select-none">
-                KODA
-              </div>
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                className="absolute w-48 h-48 border-2 border-dashed border-primary/20 rounded-full"
+            {/* Image Section */}
+            <div className="relative aspect-video rounded-2xl bg-background border border-white/5 overflow-hidden shadow-2xl">
+              <Image
+                src="/Solution-shopping-app.png"
+                alt="Koda E-commerce Solution"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+                priority
               />
+
+              {/* Optional: Subtle Overlay for better blending */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
