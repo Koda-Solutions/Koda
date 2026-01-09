@@ -2,17 +2,16 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ShoppingCart } from 'lucide-react';
 
 export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
-      {/* Background Accents */}
+      {/* Background Accents - إضاءات الخلفية */}
       <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
       <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]" />
 
       <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
-        {/* Text Content */}
+        {/* Text Content - جزء الكلام */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -39,39 +38,26 @@ export default function Hero() {
           </motion.button>
         </motion.div>
 
-        {/* Image Placeholder */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8 }}
           className="relative aspect-square flex items-center justify-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent rounded-full animate-pulse" />
-          <div className="relative z-10 w-full h-full bg-card border border-white/10 rounded-3xl flex items-center justify-center overflow-hidden group">
-            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20" />
-            <motion.div
-              animate={{ y: [0, -20, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <ShoppingCart
-                size={200}
-                className="text-primary/50 group-hover:text-primary transition-colors duration-500"
-              />
-            </motion.div>
-            <div className="absolute bottom-8 left-8 right-8 p-6 bg-background/80 backdrop-blur-md rounded-2xl border border-white/10">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-background font-bold">
-                  3D
-                </div>
-                <div>
-                  <div className="font-bold">نظام ذكي متكامل</div>
-                  <div className="text-sm text-text/60">
-                    تجربة مستخدم تفاعلية
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent rounded-full blur-3xl opacity-50" />
+
+          <motion.div
+            animate={{ y: [0, -25, 0] }} // حركة طيران ناعمة
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            className="relative z-10 w-full h-full flex items-center justify-center"
+          >
+            {/* الصورة نفسها */}
+            <img
+              src="/Hero-Photo.png"
+              alt="Koda Mobile Store Application"
+              className="w-[90%] h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+            />
+          </motion.div>
         </motion.div>
       </div>
     </section>
