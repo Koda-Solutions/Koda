@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Koda Solutions | من دكان لإمبراطورية',
     description:
-      'حول تجارتك لبراند كبير مع Koda. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن.',
+      'حول تجارتك لبراند كبير مع كودا. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن.',
     url: 'https://koda-solutions.com',
     siteName: 'Koda Solutions',
     images: [
