@@ -36,7 +36,7 @@ export default function Integrations() {
             x: ['0%', '-50%'],
           }}
           transition={{
-            duration: 50,
+            duration: 80,
             ease: 'linear',
             repeat: Infinity,
           }}
