@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Koda Solutions - From a Shop... To an Empire 🚀
 
-## Getting Started
+**Koda Solutions** is a high-performance, high-conversion landing page designed for a software agency specializing in building e-commerce systems for local merchants.
 
-First, run the development server:
+## 🌟 Project Overview
+
+This project targets merchants who want to transition from traditional selling (manual orders, social media messages) to a fully automated "Sales Machine." The design follows an **Industrial, Grunge, and High-Tech** aesthetic with a dark theme and glowing orange accents.
+
+## 🛠️ Tech Stack
+
+- **Framework:** [Next.js 14/16 (App Router)](https://nextjs.org/)
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/) (Mobile-first approach)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Typography:** [Cairo (Google Font)](https://fonts.google.com/specimen/Cairo) for Arabic support.
+
+## ✨ Features
+
+- **RTL Support:** Fully optimized for Arabic language and right-to-left layout.
+- **Responsive Design:** Seamless experience across mobile, tablet, and desktop.
+- **Custom Design System:**
+  - **Background:** `#161618` (Carbon Dark)
+  - **Primary Accent:** `#FF8C42` (Empire Orange)
+  - **Secondary Accent:** `#FFD166`
+- **Interactive Components:**
+  - Glassmorphism Navbar.
+  - Animated Hero section with glow effects.
+  - Pain points grid with hover interactions.
+  - Professional Solution showcase.
+  - High-conversion CTA section.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18.x or later
+- npm or yarn
+
+### Installation
+
+1. Clone the repository.
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+### Development
+
+Run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Production
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build the project for production:
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+Start the production server:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+© 2026 Koda Solutions. All rights reserved.
