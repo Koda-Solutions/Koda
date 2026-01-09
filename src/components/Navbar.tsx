@@ -22,7 +22,7 @@ export default function Navbar() {
               '_blank'
             );
           }}
-          className="bg-primary text-background text-sm lg:text-base font-bold px-5 py-2 rounded-full glow-orange transition-all hover:bg-secondary"
+          className="bg-primary text-background text-sm lg:text-base font-bold px-5 py-2 rounded-full glow-orange transition-all hover:bg-secondary cursor-pointer"
         >
           تواصل معنا
         </motion.button>

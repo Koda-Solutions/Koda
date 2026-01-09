@@ -72,7 +72,7 @@ export default function LeadQuizModal({ isOpen, onClose }: LeadQuizModalProps) {
           initial={{ opacity: 0, scale: 0.9, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="relative w-full max-w-lg bg-card border border-white/10 rounded-[32px] p-8 shadow-2xl overflow-hidden"
+          className="relative w-full max-w-md bg-card border border-white/10 rounded-[32px] p-6 shadow-2xl overflow-hidden"
         >
           {/* Progress Bar */}
           <div className="absolute top-0 left-0 right-0 h-1 bg-white/5">
@@ -85,30 +85,28 @@ export default function LeadQuizModal({ isOpen, onClose }: LeadQuizModalProps) {
 
           <button
             onClick={onClose}
-            className="absolute top-6 left-6 text-text/40 hover:text-text transition-colors"
+            className="absolute top-5 left-5 text-text/40 hover:text-text transition-colors cursor-pointer"
           >
-            <X size={24} />
+            <X size={20} />
           </button>
 
-          <div className="mt-8">
-            <div className="text-sm text-primary font-bold mb-2">
+          <div className="mt-6">
+            <div className="text-xs text-primary font-bold mb-1">
               سؤال {step + 1} من {questions.length}
             </div>
-            <h3 className="text-2xl font-black mb-8">
-              {questions[step].title}
-            </h3>
+            <h3 className="text-xl font-black mb-6">{questions[step].title}</h3>
 
-            <div className="space-y-4">
+            <div className="space-y-3">
               {questions[step].options.map((option, index) => (
                 <motion.button
                   key={index}
                   whileHover={{
-                    scale: 1.02,
-                    borderColor: 'rgba(255, 140, 66, 0.5)',
+                    scale: 1.01,
+                    borderColor: 'rgba(255, 140, 66, 0.4)',
                   }}
-                  whileTap={{ scale: 0.98 }}
+                  whileTap={{ scale: 0.99 }}
                   onClick={() => handleOptionSelect(option)}
-                  className={`w-full p-5 rounded-2xl border text-right font-bold transition-all ${
+                  className={`w-full p-4 rounded-xl border text-right text-sm font-bold transition-all cursor-pointer ${
                     answers[step] === option
                       ? 'border-primary bg-primary/10 text-primary'
                       : 'border-white/5 bg-background/50 hover:bg-background'
@@ -119,35 +117,35 @@ export default function LeadQuizModal({ isOpen, onClose }: LeadQuizModalProps) {
               ))}
             </div>
 
-            <div className="flex items-center justify-between mt-12">
+            <div className="flex items-center justify-between mt-8">
               <button
                 disabled={step === 0}
                 onClick={() => setStep(step - 1)}
-                className="flex items-center gap-2 text-text/40 hover:text-text disabled:opacity-0 transition-all font-bold"
+                className="flex items-center gap-2 text-text/40 hover:text-text disabled:opacity-0 transition-all text-sm font-bold cursor-pointer"
               >
-                <ChevronRight size={20} />
+                <ChevronRight size={18} />
                 السابق
               </button>
 
               {step === questions.length - 1 ? (
                 <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
                   onClick={handleFinish}
                   disabled={!answers[step]}
-                  className="bg-primary text-background px-8 py-4 rounded-xl font-black flex items-center gap-2 glow-orange disabled:opacity-50"
+                  className="bg-primary text-background px-6 py-3 rounded-xl text-sm font-black flex items-center gap-2 glow-orange disabled:opacity-50 cursor-pointer"
                 >
-                  <MessageCircle size={20} />
+                  <MessageCircle size={18} />
                   شوف الحل المناسب ليك واتساب
                 </motion.button>
               ) : (
                 <button
                   disabled={!answers[step]}
                   onClick={() => setStep(step + 1)}
-                  className="flex items-center gap-2 text-primary hover:text-secondary disabled:opacity-30 transition-all font-bold"
+                  className="flex items-center gap-2 text-primary hover:text-secondary disabled:opacity-30 transition-all text-sm font-bold cursor-pointer"
                 >
                   التالي
-                  <ChevronLeft size={20} />
+                  <ChevronLeft size={18} />
                 </button>
               )}
             </div>

@@ -4,17 +4,17 @@ import Image from 'next/image';
 import { Zap, CreditCard, Truck, Lock } from 'lucide-react';
 
 const features = [
-  { icon: <Zap size={18} />, text: 'سرعة صاروخية' },
-  { icon: <CreditCard size={18} />, text: 'دفع إلكتروني' },
-  { icon: <Truck size={18} />, text: 'ربط شحن' },
-  { icon: <Lock size={18} />, text: 'تأمين كامل' },
+  { icon: <Zap size={18} />, text: 'سريع طيارة' },
+  { icon: <CreditCard size={18} />, text: 'كاش أو فيزا' },
+  { icon: <Truck size={18} />, text: 'بيسمع مع الشحن' },
+  { icon: <Lock size={18} />, text: 'محدش يعرف يقلدك' },
 ];
 
 export default function Solution() {
   return (
     <section className="py-16 lg:py-20 relative">
       <div className="container mx-auto px-6">
-        <div className="max-w-5xl mx-auto bg-card border border-white/10 rounded-[32px] p-8 lg:p-12 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-card border border-white/10 rounded-[32px] p-6 lg:p-10 relative overflow-hidden">
           {/* Top Border Gradient */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
 
@@ -22,13 +22,13 @@ export default function Solution() {
             {/* Text Content */}
             <div>
               <h2 className="font-black mb-5 leading-tight">
-                إحنا بنبني{' '}
-                <span className="text-primary italic">Architects</span> <br />
-                مش مجرد مبرمجين
+                محلك في جيب العميل.. <br />
+                <span className="text-primary">24 ساعة.</span>
               </h2>
-              <p className="text-lg text-text/70 mb-8 leading-relaxed">
-                سواء بتبدأ بـ Shopify أو عايز سيستم كامل (Laravel & Next.js)..
-                إحنا بنفصلك البدلة اللي تليق على حجم بيزنسك.
+              <p className="mb-8">
+                أنت تاجر شاطر، مش خدمة عملاء. ليه تضيع يومك في &quot;بكام&quot;
+                و &quot;المقاس ده موجود&quot;؟.. السيستم ده هيعرض بضاعتك ويبيع
+                ويحاسب العميل وأنت بتشرب قهوتك.
               </p>
 
               <div className="grid grid-cols-2 gap-4">

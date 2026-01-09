@@ -27,11 +27,11 @@ export default function CTA() {
                 '_blank'
               );
             }}
-            className="bg-primary text-background text-lg lg:text-xl font-black px-10 py-4 rounded-xl glow-orange hover:bg-secondary transition-all mb-6"
+            className="bg-primary text-background text-base lg:text-lg font-black px-9 py-3.5 rounded-xl glow-orange hover:bg-secondary transition-all mb-6 cursor-pointer"
           >
             اطلب نسختك التجريبية مجاناً
           </motion.button>
-          <p className="text-secondary font-bold text-lg animate-pulse">
+          <p className="text-secondary font-bold text-base animate-pulse">
             عرض محدود لأول 5 عملاء فقط
           </p>
         </motion.div>

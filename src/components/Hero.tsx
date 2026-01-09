@@ -1,65 +1,101 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import LeadQuizModal from './LeadQuizModal';
+import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+
+const LeadQuizModal = dynamic(() => import('./LeadQuizModal'), {
+  ssr: false,
+});
+
+const socialLinks = [
+  {
+    icon: <Facebook size={18} />,
+    url: 'https://www.facebook.com/koda.solutions.eg/',
+  },
+  {
+    icon: <Instagram size={18} />,
+    url: 'https://www.instagram.com/koda.solutions_/',
+  },
+  {
+    icon: <Linkedin size={18} />,
+    url: 'https://www.linkedin.com/company/koda-solutions',
+  },
+  { icon: <Twitter size={18} />, url: 'https://x.com/Koda_Solutions' },
+];
 
 export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative min-h-[90vh] flex items-center pt-16 lg:pt-24 overflow-hidden">
-      {/* Background Accents - إضاءات الخلفية */}
-      <div className="absolute top-1/4 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-secondary/10 rounded-full blur-[100px]" />
+    <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center pt-20 lg:pt-24 overflow-hidden">
+      {/* Background Accents */}
+      <div className="absolute top-1/4 -right-20 w-60 h-60 lg:w-80 lg:h-80 bg-primary/10 rounded-full blur-[80px] lg:blur-[100px]" />
+      <div className="absolute bottom-1/4 -left-20 w-60 h-60 lg:w-80 lg:h-80 bg-secondary/10 rounded-full blur-[80px] lg:blur-[100px]" />
 
-      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
-        {/* Text Content - جزء الكلام */}
+      <div className="container mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        {/* Text Content */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-right z-10"
+          className="text-center lg:text-right z-10 order-2 lg:order-1"
         >
-          <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-5">
-            🚀 مش مجرد موقع.. ده سيستم بيع
-          </div>
-          <h1 className="font-black mb-5 leading-tight">
+          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 lg:mb-6 leading-tight">
             حول تجارتك من دكان... <br />
             <span className="text-primary glow-text">لإمبراطورية.</span>
           </h1>
-          <p className="text-lg text-text/70 mb-8 max-w-lg ml-auto leading-relaxed">
+          <p className="text-sm md:text-base lg:text-lg mb-6 lg:mb-10 max-w-lg mx-auto lg:ml-auto lg:mr-0 text-text/80 leading-relaxed">
             أنت بتخسر فلوس كل يوم بسبب &quot;تم الرد خاص&quot;. احصل على
             &quot;ماكينة مبيعات&quot; شغالة 24 ساعة.
           </p>
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={() => setIsModalOpen(true)}
-            className="bg-primary text-background text-lg font-black px-8 py-3.5 rounded-xl glow-orange hover:bg-secondary transition-all"
-          >
-            ابدأ إمبراطوريتك الآن
-          </motion.button>
+
+          <div className="flex flex-col items-center lg:items-end gap-8 lg:gap-10">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setIsModalOpen(true)}
+              className="w-full sm:w-auto bg-primary text-background text-base lg:text-lg font-black px-8 py-4 rounded-xl glow-orange hover:bg-secondary transition-all cursor-pointer min-h-[48px]"
+            >
+              ابدأ إمبراطوريتك الآن
+            </motion.button>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-5">
+              {socialLinks.map((link, i) => (
+                <a
+                  key={i}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-text/40 hover:text-primary hover:border-primary/30 transition-all duration-300 cursor-pointer"
+                >
+                  {link.icon}
+                </a>
+              ))}
+            </div>
+          </div>
         </motion.div>
 
+        {/* Image Section */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative aspect-square flex items-center justify-center"
+          className="relative h-64 md:h-80 lg:h-auto aspect-square flex items-center justify-center order-1 lg:order-2"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-primary/15 to-transparent rounded-full blur-3xl opacity-40" />
 
           <motion.div
-            animate={{ y: [0, -15, 0] }} // حركة طيران ناعمة ومخففة
-            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
+            animate={{ y: [0, -10, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
             className="relative z-10 w-full h-full flex items-center justify-center"
           >
-            {/* الصورة نفسها */}
-            <div className="relative w-[85%] h-[85%]">
+            <div className="relative w-[90%] h-[90%] lg:w-[85%] lg:h-[85%]">
               <Image
                 src="/Hero-Photo.png"
                 alt="Koda Mobile Store Application"
