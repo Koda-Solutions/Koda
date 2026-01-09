@@ -9,61 +9,66 @@ export default function Hero() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center pt-16 lg:pt-24 overflow-hidden">
       {/* Background Accents - إضاءات الخلفية */}
-      <div className="absolute top-1/4 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 -left-20 w-96 h-96 bg-secondary/10 rounded-full blur-[120px]" />
+      <div className="absolute top-1/4 -right-20 w-80 h-80 bg-primary/10 rounded-full blur-[100px]" />
+      <div className="absolute bottom-1/4 -left-20 w-80 h-80 bg-secondary/10 rounded-full blur-[100px]" />
 
-      <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-10 items-center">
         {/* Text Content - جزء الكلام */}
         <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="text-right z-10"
         >
-          <div className="inline-block px-4 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-bold mb-6">
+          <div className="inline-block px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-bold mb-5">
             🚀 مش مجرد موقع.. ده سيستم بيع
           </div>
-          <h1 className="text-5xl lg:text-7xl font-black mb-6 leading-tight">
+          <h1 className="font-black mb-5 leading-tight">
             حول تجارتك من دكان... <br />
             <span className="text-primary glow-text">لإمبراطورية.</span>
           </h1>
-          <p className="text-xl text-text/80 mb-10 max-w-xl ml-auto">
+          <p className="text-lg text-text/70 mb-8 max-w-lg ml-auto leading-relaxed">
             أنت بتخسر فلوس كل يوم بسبب &quot;تم الرد خاص&quot;. احصل على
             &quot;ماكينة مبيعات&quot; شغالة 24 ساعة.
           </p>
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             onClick={() => setIsModalOpen(true)}
-            className="bg-primary text-background text-xl font-black px-10 py-4 rounded-xl glow-orange hover:bg-secondary transition-all"
+            className="bg-primary text-background text-lg font-black px-8 py-3.5 rounded-xl glow-orange hover:bg-secondary transition-all"
           >
             ابدأ إمبراطوريتك الآن
           </motion.button>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
+          initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="relative aspect-square flex items-center justify-center"
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-transparent rounded-full blur-3xl opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/15 to-transparent rounded-full blur-3xl opacity-40" />
 
           <motion.div
-            animate={{ y: [0, -25, 0] }} // حركة طيران ناعمة
-            transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+            animate={{ y: [0, -15, 0] }} // حركة طيران ناعمة ومخففة
+            transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             className="relative z-10 w-full h-full flex items-center justify-center"
           >
             {/* الصورة نفسها */}
-            <Image
-              src="/Hero-Photo.png"
-              alt="Koda Mobile Store Application"
-              fill
-              className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
-              priority
-            />
+            <div className="relative w-[85%] h-[85%]">
+              <Image
+                src="/Hero-Photo.png"
+                alt="Koda Mobile Store Application"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-contain drop-shadow-2xl"
+                priority
+              />
+            </div>
           </motion.div>
         </motion.div>
       </div>

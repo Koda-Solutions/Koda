@@ -4,24 +4,24 @@ import Image from 'next/image';
 import { Zap, CreditCard, Truck, Lock } from 'lucide-react';
 
 const features = [
-  { icon: <Zap size={20} />, text: 'سرعة صاروخية' },
-  { icon: <CreditCard size={20} />, text: 'دفع إلكتروني' },
-  { icon: <Truck size={20} />, text: 'ربط شحن' },
-  { icon: <Lock size={20} />, text: 'تأمين كامل' },
+  { icon: <Zap size={18} />, text: 'سرعة صاروخية' },
+  { icon: <CreditCard size={18} />, text: 'دفع إلكتروني' },
+  { icon: <Truck size={18} />, text: 'ربط شحن' },
+  { icon: <Lock size={18} />, text: 'تأمين كامل' },
 ];
 
 export default function Solution() {
   return (
-    <section className="py-24 relative">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto bg-card border border-white/10 rounded-[40px] p-8 lg:p-16 relative overflow-hidden">
+    <section className="py-16 lg:py-20 relative">
+      <div className="container mx-auto px-6">
+        <div className="max-w-5xl mx-auto bg-card border border-white/10 rounded-[32px] p-8 lg:p-12 relative overflow-hidden">
           {/* Top Border Gradient */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center">
             {/* Text Content */}
             <div>
-              <h2 className="text-4xl font-black mb-6 leading-tight">
+              <h2 className="font-black mb-5 leading-tight">
                 إحنا بنبني{' '}
                 <span className="text-primary italic">Architects</span> <br />
                 مش مجرد مبرمجين
@@ -35,9 +35,9 @@ export default function Solution() {
                 {features.map((f, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 text-secondary font-bold"
+                    className="flex items-center gap-3 text-secondary font-bold text-sm lg:text-base"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center">
+                    <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
                       {f.icon}
                     </div>
                     {f.text}
@@ -52,12 +52,12 @@ export default function Solution() {
                 src="/Solution-shopping-app.png"
                 alt="Koda E-commerce Solution"
                 fill
+                sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover hover:scale-105 transition-transform duration-700"
-                priority
               />
 
               {/* Optional: Subtle Overlay for better blending */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent pointer-events-none" />
             </div>
           </div>
         </div>
