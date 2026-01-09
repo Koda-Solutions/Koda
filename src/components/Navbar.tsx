@@ -14,6 +14,15 @@ export default function Navbar() {
         <motion.button
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
+          onClick={() => {
+            const message =
+              'السلام عليكم، عندي استفسار بخصوص خدمات Koda Solutions.';
+            const encodedMessage = encodeURIComponent(message);
+            window.open(
+              `https://wa.me/201212228091?text=${encodedMessage}`,
+              '_blank'
+            );
+          }}
           className="bg-primary text-background font-bold px-6 py-2 rounded-full glow-orange transition-all hover:bg-secondary"
         >
           تواصل معنا

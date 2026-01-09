@@ -19,6 +19,15 @@ export default function CTA() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              const message =
+                'مساء الخير، شوفت صور الأبلكيشن والنظام وعايز أجرب نسخة تجريبية (Demo) للتطبيق.';
+              const encodedMessage = encodeURIComponent(message);
+              window.open(
+                `https://wa.me/201212228091?text=${encodedMessage}`,
+                '_blank'
+              );
+            }}
             className="bg-primary text-background text-2xl font-black px-12 py-6 rounded-2xl glow-orange hover:bg-secondary transition-all mb-6"
           >
             اطلب نسختك التجريبية مجاناً

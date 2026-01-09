@@ -1,9 +1,13 @@
 'use client';
 
-import React from 'react';
+import Image from 'next/image';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import LeadQuizModal from './LeadQuizModal';
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden">
       {/* Background Accents - إضاءات الخلفية */}
@@ -32,6 +36,7 @@ export default function Hero() {
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            onClick={() => setIsModalOpen(true)}
             className="bg-primary text-background text-xl font-black px-10 py-4 rounded-xl glow-orange hover:bg-secondary transition-all"
           >
             ابدأ إمبراطوريتك الآن
@@ -52,14 +57,21 @@ export default function Hero() {
             className="relative z-10 w-full h-full flex items-center justify-center"
           >
             {/* الصورة نفسها */}
-            <img
+            <Image
               src="/Hero-Photo.png"
               alt="Koda Mobile Store Application"
-              className="w-[90%] h-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+              fill
+              className="object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+              priority
             />
           </motion.div>
         </motion.div>
       </div>
+
+      <LeadQuizModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </section>
   );
 }
