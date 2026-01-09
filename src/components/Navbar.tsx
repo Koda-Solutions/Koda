@@ -15,8 +15,7 @@ export default function Navbar() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
           onClick={() => {
-            const message =
-              'السلام عليكم، عندي استفسار بخصوص خدمات Koda Solutions.';
+            const message = 'السلام عليكم، عندي استفسار بخصوص خدمات كودا.';
             const encodedMessage = encodeURIComponent(message);
             window.open(
               `https://wa.me/201212228091?text=${encodedMessage}`,
