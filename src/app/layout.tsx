@@ -10,9 +10,9 @@ const cairo = Cairo({
 });
 
 export const metadata: Metadata = {
-  title: 'Koda Solutions | من دكان لإمبراطورية',
+  title: 'كودا',
   description:
-    'حول تجارتك لبراند كبير مع Koda. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن. ابدأ إمبراطوريتك الآن.',
+    'حول تجارتك لبراند كبير مع كودا. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن. ابدأ إمبراطوريتك الآن.',
   keywords: [
     'متجر إلكتروني',
     'انشاء موقع',
@@ -42,14 +42,28 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Koda Solutions | من دكان لإمبراطورية',
+    title: 'كودا | من دكان.. لإمبراطورية',
     description:
-      'حول تجارتك لبراند كبير مع Koda. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن.',
+      'حول تجارتك لبراند كبير مع كودا. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن.',
     images: ['/og-image.png'],
   },
   robots: {
     index: true,
     follow: true,
+  },
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/apple-icon.png',
+    other: {
+      rel: 'apple-touch-icon-precomposed',
+      url: '/icon.png',
+    },
+  },
+  appleWebApp: {
+    title: 'Koda',
+    statusBarStyle: 'black-translucent',
+    startupImage: ['/logo.png'],
   },
 };
 
