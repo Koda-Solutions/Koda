@@ -6,24 +6,34 @@ import { Plus, Minus } from 'lucide-react';
 
 const faqs = [
   {
-    question: 'هل السيستم صعب في الاستخدام؟',
+    question: 'إيه الفرق بين "باقة الصاروخ" و"باقة الإمبراطور"؟',
     answer:
-      'أسهل من الفيسبوك. لو بتعرف تبعت رسايل على الواتساب، هتعرف تدير متجرك باحترافية من غير ما تحتاج مبرمج.',
+      'باقة الصاروخ (منصات جاهزة) مناسبة لو عايز تبدأ بسرعة وبأقل تكلفة في الأول، بس بتدفع اشتراكات شهرية وعمولات للمنصة. أما باقة الإمبراطور (برمجة خاصة) بتدفع مرة واحدة وبتمتلك الكود والبيانات 100% بدون أي عمولات شريك.',
   },
   {
-    question: 'إيه اللي يخليني أسيب Shopify وأجيلكم؟',
+    question: 'هل الاستشارة بفلوس؟',
     answer:
-      'إحنا بنوفرلك سيستم متفصل على السوق المصري، ربط شحن محلي، دفع عند الاستلام، والأهم من ده كله 0% عمولة.. شوبيفاي بياخد منك نسبة على كل بيعة غير الاشتراك الشهري.',
+      'لأ، جلسة الاستشارة "مجانية تماماً". بنقعد معاك، نفهم ميزانيتك وحجم شغلك، وبناءً عليه بنرشحلك الحل اللي يوفرلك فلوس ويحققلك أعلى عائد، سواء كان شوبيفاي، ووردبريس، أو برمجة خاصة.',
   },
   {
-    question: 'الموقع بيشتغل على الموبايل؟',
+    question: 'بتاخدوا عمولة كام على المبيعات؟',
     answer:
-      'طبعاً، متجرك هيكون "Responsive" يعني بيفتح كأنه تطبيق على موبايل العميل، سريع وخفيف وبيشجع الزبون يشتري بضغطة زرار.',
+      'في البرمجة الخاصة (باقة الإمبراطور) عمولتنا 0%، كل جنيه بتكسبه بيدخل جيبك. في المنصات الجاهزة (زي شوبيفاي)، المنصة نفسها هي اللي بتاخد العمولة، وإحنا دورنا نختارلك البوابة الأقل في التكلفة عشان نوفر عليك.',
   },
   {
-    question: 'لو واجهت مشكلة، أكلم مين؟',
+    question: 'هعرف أربط الموقع بشركات الشحن والدفع؟',
     answer:
-      'عندنا دعم فني مصري 24/7 معاك على الواتساب والتليفون، مش هنسيبك غير والمشكلة محلولة لأننا شركاء في نجاحك.',
+      'طبعاً! إحنا بنسلمك السيستم مربوط جاهز بشركات زي (Bosta, Mylerz, Aramex) وبوابات دفع زي (Fawry, Paymob, Instapay). ومش بس كده، بنعرفك أنسب تعاقد يوفر عليك مصاريف.',
+  },
+  {
+    question: 'لو الموقع وقف أو احتاجت تعديل، هتعملوا إيه؟',
+    answer:
+      'إحنا مش بنسلمك ونمشي. عندنا عقود دعم فني بتضمنلك إن موقعك شغال 24/7، ولو احتجت تطوير أو ميزة جديدة، التيم الهندسي بتاعنا جاهز ينفذها فوراً.',
+  },
+  {
+    question: 'أنا لسه ببدأ وميزانيتي محدودة، هل "كودا" مناسبة ليا؟',
+    answer:
+      'جداً! ده دورنا الأساسي. مش لازم تبدأ بحاجة غالية. ممكن نبدأ معاك بمتجر بسيط وتكلفة قليلة، ولما تجارتك تكبر، نكبر الموقع معاك. كلمنا وهنظبطلك خطة على قد جيبك.',
   },
 ];
 
@@ -39,23 +49,25 @@ const FAQItem = ({
   onClick: () => void;
 }) => {
   return (
-    <div className="border-b border-white/5">
+    <div className="border-b border-white/5 last:border-0">
       <button
         onClick={onClick}
-        className="w-full py-6 flex items-center justify-between text-right gap-4 hover:text-primary transition-colors cursor-pointer"
+        className="w-full py-5 lg:py-6 flex items-center justify-between text-right gap-4 hover:text-primary transition-colors cursor-pointer group"
       >
-        <span className="text-base lg:text-lg font-bold">{question}</span>
+        <span className="text-base lg:text-lg font-bold group-hover:text-primary transition-colors">
+          {question}
+        </span>
         <div
-          className={`shrink-0 w-6 h-6 lg:w-8 lg:h-8 rounded-full border border-white/10 flex items-center justify-center transition-transform duration-300 ${
+          className={`shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-white/10 flex items-center justify-center transition-all duration-300 ${
             isOpen
-              ? 'rotate-180 bg-primary/10 border-primary/20 text-primary'
-              : ''
+              ? 'rotate-180 bg-primary border-primary text-black'
+              : 'group-hover:border-primary/50 group-hover:bg-white/5'
           }`}
         >
           {isOpen ? (
-            <Minus size={14} className="lg:w-[18px] lg:h-[18px]" />
+            <Minus size={16} className="lg:w-5 lg:h-5" />
           ) : (
-            <Plus size={14} className="lg:w-[18px] lg:h-[18px]" />
+            <Plus size={16} className="lg:w-5 lg:h-5" />
           )}
         </div>
       </button>
@@ -68,7 +80,7 @@ const FAQItem = ({
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-sm lg:text-base text-text/60 leading-relaxed">
+            <p className="pb-6 text-sm lg:text-base text-gray-400 leading-relaxed pl-12">
               {answer}
             </p>
           </motion.div>
@@ -82,18 +94,25 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-12 lg:py-24 relative">
-      <div className="container mx-auto px-6 max-w-3xl">
-        <div className="text-center mb-8 lg:mb-12">
-          <h2 className="text-xl md:text-3xl font-black mb-4">
-            أسئلة بتدور في بالك
+    <section className="py-16 lg:py-24 relative overflow-hidden">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
+        <div className="absolute top-[20%] right-[10%] w-72 h-72 bg-primary/5 rounded-full blur-[100px]" />
+        <div className="absolute bottom-[20%] left-[10%] w-72 h-72 bg-blue-500/5 rounded-full blur-[100px]" />
+      </div>
+
+      <div className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
+        <div className="text-center mb-10 lg:mb-16">
+          <h2 className="text-2xl md:text-4xl font-black mb-4">
+            أسئلة <span className="text-primary">بتدور في بالك</span> ؟
           </h2>
-          <p className="text-sm lg:text-base text-text/60">
-            كل اللي محتاج تعرفه عشان تبدأ إمبراطوريتك صح.
+          <p className="text-sm md:text-lg text-gray-400 max-w-2xl mx-auto">
+            عارفين إن عندك استفسارات كتير قبل ما تبدأ، جمعنالك أهمها هنا عشان
+            تاخد القرار وأنت مطمن.
           </p>
         </div>
 
-        <div className="bg-card/30 border border-white/5 rounded-[24px] lg:rounded-[32px] p-5 lg:p-10">
+        <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl lg:rounded-3xl p-4 lg:p-8">
           {faqs.map((faq, index) => (
             <FAQItem
               key={index}

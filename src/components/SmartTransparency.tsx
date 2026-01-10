@@ -70,7 +70,7 @@ export default function SmartTransparency() {
           </motion.p>
         </div>
 
-        <div className="flex lg:grid lg:grid-cols-2 gap-6 lg:gap-12 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory pb-8 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 scrollbar-hide">
+        <div className="flex lg:grid lg:grid-cols-2 gap-6 lg:gap-12 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory pt-6 pb-8 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 scrollbar-hide">
           {paths.map((path, index) => (
             <motion.div
               key={path.id}
@@ -83,9 +83,8 @@ export default function SmartTransparency() {
                   : 'bg-white/5 border-white/10 hover:border-secondary/40'
               }`}
             >
-              {/* Tag */}
               <div
-                className={`absolute -top-4 right-12 px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest ${
+                className={`absolute -top-3 lg:-top-4 right-6 lg:right-12 px-4 py-1.5 rounded-full text-[10px] lg:text-xs font-black uppercase tracking-widest shadow-xl z-20 ${
                   path.color === 'primary'
                     ? 'bg-primary text-background'
                     : 'bg-secondary text-background'
