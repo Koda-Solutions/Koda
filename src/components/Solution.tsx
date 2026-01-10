@@ -1,31 +1,32 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
 import { Zap, CreditCard, Truck, Lock } from 'lucide-react';
 
 const features = [
-  { icon: <Zap size={18} />, text: 'سريع طيارة' },
-  { icon: <CreditCard size={18} />, text: 'كاش أو فيزا' },
-  { icon: <Truck size={18} />, text: 'بيسمع مع الشحن' },
-  { icon: <Lock size={18} />, text: 'محدش يعرف يقلدك' },
+  { icon: <Zap className="w-full h-full" />, text: 'سريع طيارة' },
+  { icon: <CreditCard className="w-full h-full" />, text: 'كاش أو فيزا' },
+  { icon: <Truck className="w-full h-full" />, text: 'بيسمع مع الشحن' },
+  { icon: <Lock className="w-full h-full" />, text: 'محدش يعرف يقلدك' },
 ];
 
 export default function Solution() {
   return (
-    <section className="py-16 lg:py-20 relative">
+    <section className="py-12 lg:py-20 relative">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto bg-card border border-white/10 rounded-[32px] p-6 lg:p-10 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-card border border-white/10 rounded-[24px] lg:rounded-[32px] p-5 lg:p-10 relative overflow-hidden">
           {/* Top Border Gradient */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
 
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             {/* Text Content */}
             <div>
-              <h2 className="font-black mb-5 leading-tight">
+              <h2 className="text-xl md:text-3xl font-black mb-5 leading-tight">
                 محلك في جيب العميل.. <br />
                 <span className="text-primary">24 ساعة.</span>
               </h2>
-              <p className="mb-8">
+              <p className="text-sm lg:text-base mb-6 lg:mb-8">
                 أنت تاجر شاطر، مش خدمة عملاء. ليه تضيع يومك في &quot;بكام&quot;
                 و &quot;المقاس ده موجود&quot;؟.. السيستم ده هيعرض بضاعتك ويبيع
                 ويحاسب العميل وأنت بتشرب قهوتك.
@@ -35,10 +36,12 @@ export default function Solution() {
                 {features.map((f, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-3 text-secondary font-bold text-sm lg:text-base"
+                    className="flex items-center gap-2 lg:gap-3 text-secondary font-bold text-xs lg:text-base"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
-                      {f.icon}
+                    <div className="w-6 h-6 lg:w-8 lg:h-8 rounded-lg bg-secondary/10 flex items-center justify-center shrink-0">
+                      <div className="w-3.5 h-3.5 lg:w-[18px] lg:h-[18px]">
+                        {f.icon}
+                      </div>
                     </div>
                     {f.text}
                   </div>

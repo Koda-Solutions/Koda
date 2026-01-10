@@ -23,7 +23,7 @@ const socialLinks = [
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center pt-20 lg:pt-24 overflow-hidden">
+    <section className="relative min-h-[70vh] lg:min-h-[90vh] flex items-center pt-16 lg:pt-24 overflow-hidden">
       {/* Background Accents */}
       <div className="absolute top-1/4 -right-20 w-60 h-60 lg:w-80 lg:h-80 bg-primary/10 rounded-full blur-[80px] lg:blur-[100px]" />
       <div className="absolute bottom-1/4 -left-20 w-60 h-60 lg:w-80 lg:h-80 bg-secondary/10 rounded-full blur-[80px] lg:blur-[100px]" />
@@ -37,11 +37,11 @@ export default function Hero() {
           transition={{ duration: 0.6 }}
           className="text-center lg:text-right z-10 order-2 lg:order-1"
         >
-          <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 lg:mb-6 leading-tight">
+          <h1 className="text-2xl md:text-5xl lg:text-6xl font-black mb-4 lg:mb-6 leading-tight">
             شريكك التقني لبناء... <br />
             <span className="text-primary glow-text">إمبراطورية ذكية.</span>
           </h1>
-          <p className="text-sm md:text-base lg:text-lg mb-6 lg:mb-10 max-w-lg mx-auto lg:ml-auto lg:mr-0 text-text/80 leading-relaxed">
+          <p className="text-xs md:text-base lg:text-lg mb-6 lg:mb-10 max-w-lg mx-auto lg:ml-auto lg:mr-0 text-text/80 leading-relaxed">
             نحن نتولى التفاصيل التقنية المعقدة، لتتفرغ أنت لما تتقنه: إدارة
             وتنمية تجارتك. حلول ذكية مصممة لتناسب ميزانيتك وأهدافك.
           </p>
@@ -59,9 +59,14 @@ export default function Hero() {
                   '_blank'
                 );
               }}
-              className="w-full sm:w-auto bg-primary text-background text-base lg:text-lg font-black px-8 py-4 rounded-xl glow-orange hover:bg-secondary transition-all cursor-pointer min-h-[48px]"
+              className="w-full sm:w-auto bg-primary text-background text-sm lg:text-lg font-black px-6 lg:px-8 py-3 lg:py-4 rounded-xl glow-orange hover:bg-secondary transition-all cursor-pointer min-h-[44px] lg:min-h-[48px]"
             >
-              مش عارف أنهي طريق يوفرلك أكتر؟ تعالي نحسبها سوا
+              <span className="hidden sm:inline">
+                مش عارف أنهي طريق يوفرلك أكتر؟ تعالي نحسبها سوا
+              </span>
+              <span className="sm:hidden">
+                تعالي نحسبها سوا ونشوف الأوفر لك
+              </span>
             </motion.button>
 
             {/* Social Links */}
@@ -87,7 +92,7 @@ export default function Hero() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative h-64 md:h-80 lg:h-auto aspect-square flex items-center justify-center order-1 lg:order-2"
+          className="relative h-48 md:h-80 lg:h-auto aspect-square flex items-center justify-center order-1 lg:order-2"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-primary/15 to-transparent rounded-full blur-3xl opacity-40" />
 

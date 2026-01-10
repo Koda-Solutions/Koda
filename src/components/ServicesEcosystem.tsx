@@ -38,18 +38,18 @@ const ecosystemFeatures = [
 
 export default function ServicesEcosystem() {
   return (
-    <section className="py-20 lg:py-32 relative overflow-hidden" id="services">
+    <section className="py-12 lg:py-32 relative overflow-hidden" id="services">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-12 lg:mb-20">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
+            <h2 className="text-2xl md:text-5xl font-black mb-6 lg:mb-8 leading-tight">
               بنية تحتية <span className="text-primary">تفهم السوق المصري</span>
             </h2>
-            <p className="text-text/60 text-lg mb-10 leading-relaxed">
+            <p className="text-text/60 text-base lg:text-lg mb-8 lg:mb-10 leading-relaxed">
               نحن لا نبني مجرد مواقع، بل نربط تجارتك بأقوى مقدمي الخدمات في مصر
               لضمان دورة عمل آلية بالكامل من الطلب وحتى التحصيل.
             </p>
@@ -71,7 +71,7 @@ export default function ServicesEcosystem() {
             </div>
           </motion.div>
 
-          <div className="grid gap-6">
+          <div className="flex lg:grid gap-4 lg:gap-6 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory pb-8 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 scrollbar-hide">
             {ecosystemFeatures.map((feature, i) => (
               <motion.div
                 key={i}
@@ -79,11 +79,11 @@ export default function ServicesEcosystem() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="p-8 rounded-[32px] bg-card border border-white/5 hover:border-primary/20 transition-all group"
+                className="p-6 lg:p-8 rounded-[24px] lg:rounded-[32px] bg-card border border-white/5 hover:border-primary/20 transition-all group w-[80vw] lg:w-full shrink-0 snap-center"
               >
                 <div className="flex gap-6">
                   <div
-                    className={`shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center ${
+                    className={`shrink-0 w-12 h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl flex items-center justify-center ${
                       feature.color === 'primary'
                         ? 'bg-primary/10 text-primary'
                         : 'bg-secondary/10 text-secondary'
@@ -120,13 +120,13 @@ export default function ServicesEcosystem() {
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="p-10 lg:p-16 rounded-[48px] bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 text-center"
+          className="p-6 lg:p-16 rounded-[32px] lg:rounded-[48px] bg-gradient-to-br from-primary/10 to-transparent border border-primary/20 text-center"
         >
-          <h3 className="text-2xl md:text-4xl font-black mb-6">
+          <h3 className="text-xl md:text-4xl font-black mb-4 lg:mb-6">
             نحن لا نثبت برمجيات فقط.. <br />
             <span className="text-primary">نحن نحمي هوامش ربحك.</span>
           </h3>
-          <p className="text-text/60 text-lg max-w-3xl mx-auto mb-10">
+          <p className="text-text/60 text-sm lg:text-lg max-w-3xl mx-auto mb-8 lg:mb-10">
             اختيار بوابة الدفع الخاطئة قد يكلفك آلاف الجنيهات شهرياً في العمولات
             الضائعة. نحن نوجهك للأفضل بناءً على أرقامك الحقيقية.
           </p>
@@ -141,10 +141,10 @@ export default function ServicesEcosystem() {
                 '_blank'
               );
             }}
-            className="text-primary font-black text-xl flex items-center gap-3 mx-auto cursor-pointer group"
+            className="text-primary font-black text-lg lg:text-xl flex items-center gap-3 mx-auto cursor-pointer group"
           >
             ناقش خياراتك مع خبير مالي وتقني
-            <ArrowRight className="w-6 h-6 group-hover:translate-x-2 transition-transform" />
+            <ArrowRight className="w-5 h-5 lg:w-6 lg:h-6 group-hover:translate-x-2 transition-transform" />
           </motion.button>
         </motion.div>
       </div>

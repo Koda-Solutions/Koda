@@ -7,7 +7,7 @@ import { Rocket, Crown, CheckCircle2, XCircle, ArrowRight } from 'lucide-react';
 const paths = [
   {
     id: 'fast-start',
-    title: 'المسار أ: الانطلاق السريع',
+    title: 'باقة الصاروخ: انطلاقة سريعة',
     subtitle: 'المنصات الجاهزة',
     icon: <Rocket className="w-8 h-8" />,
     color: 'secondary',
@@ -26,7 +26,7 @@ const paths = [
   },
   {
     id: 'empire-builder',
-    title: 'المسار ب: بناء الإمبراطورية',
+    title: 'باقة الإمبراطور: ملكية كاملة',
     subtitle: 'البرمجة الخاصة',
     icon: <Crown className="w-8 h-8" />,
     color: 'primary',
@@ -45,7 +45,7 @@ const paths = [
 export default function SmartTransparency() {
   return (
     <section
-      className="py-20 lg:py-32 bg-card/30 border-y border-white/5 relative overflow-hidden"
+      className="py-12 lg:py-32 bg-card/30 border-y border-white/5 relative overflow-hidden"
       id="comparison"
     >
       <div className="container mx-auto px-6">
@@ -54,7 +54,7 @@ export default function SmartTransparency() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-black mb-6 leading-tight"
+            className="text-2xl md:text-5xl font-black mb-4 lg:mb-6 leading-tight"
           >
             قرار تقني أم <span className="text-primary">قرار استثماري؟</span>
           </motion.h2>
@@ -63,21 +63,21 @@ export default function SmartTransparency() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-text/60 text-lg"
+            className="text-text/60 text-base lg:text-lg"
           >
             نحن لا نبيعك «كود»، بل نوضح لك كيف تؤثر خياراتك التقنية على هوامش
             ربحك. إليك المسارين المتاحين في السوق المصري:
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+        <div className="flex lg:grid lg:grid-cols-2 gap-6 lg:gap-12 overflow-x-auto lg:overflow-x-visible snap-x snap-mandatory pb-8 lg:pb-0 -mx-6 px-6 lg:mx-0 lg:px-0 scrollbar-hide">
           {paths.map((path, index) => (
             <motion.div
               key={path.id}
               initial={{ opacity: 0, x: index === 0 ? -20 : 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className={`relative p-8 lg:p-12 rounded-[40px] border transition-all duration-500 group ${
+              className={`relative p-6 lg:p-12 rounded-[32px] lg:rounded-[40px] border transition-all duration-500 group w-[85vw] lg:w-full shrink-0 snap-center ${
                 path.color === 'primary'
                   ? 'bg-primary/5 border-primary/20 hover:border-primary/40'
                   : 'bg-white/5 border-white/10 hover:border-secondary/40'
@@ -94,9 +94,9 @@ export default function SmartTransparency() {
                 {path.tag}
               </div>
 
-              <div className="flex items-center gap-6 mb-10">
+              <div className="flex items-center gap-4 lg:gap-6 mb-8 lg:mb-10">
                 <div
-                  className={`w-16 h-16 rounded-2xl flex items-center justify-center ${
+                  className={`w-12 h-12 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl flex items-center justify-center ${
                     path.color === 'primary'
                       ? 'bg-primary text-background glow-orange'
                       : 'bg-secondary text-background glow-blue'
@@ -105,10 +105,12 @@ export default function SmartTransparency() {
                   {path.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-black mb-1">{path.title}</h3>
-                  <p className="text-text/40 text-sm font-bold">
+                  <p className="text-gray-900 text-xs lg:text-sm font-black uppercase tracking-wider mb-1">
                     {path.subtitle}
                   </p>
+                  <h3 className="text-xl lg:text-2xl font-black">
+                    {path.title}
+                  </h3>
                 </div>
               </div>
 
@@ -174,11 +176,11 @@ export default function SmartTransparency() {
         >
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
 
-          <h3 className="text-2xl md:text-3xl font-black mb-6">
+          <h3 className="text-xl md:text-3xl font-black mb-4 lg:mb-6">
             مش عارف أنهي طريق يوفرلك أكتر؟ <br />
             <span className="text-primary">تعالي نحسبها سوا.</span>
           </h3>
-          <p className="text-text/60 mb-10 max-w-2xl mx-auto">
+          <p className="text-text/60 text-sm lg:text-lg mb-8 lg:mb-10 max-w-2xl mx-auto">
             نحن نكشف لك ما يخفيه الآخرون عن الرسوم والعمولات. سنقوم بتحليل حجم
             مبيعاتك المتوقع لنخبرك أيهما سيعطيك أعلى صافي ربح.
           </p>

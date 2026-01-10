@@ -13,9 +13,9 @@ import {
 
 export default function GuidanceSection() {
   return (
-    <section className="py-20 lg:py-32 relative overflow-hidden">
+    <section className="py-12 lg:py-32 relative overflow-hidden">
       <div className="container mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Visual: Confusion vs Clarity */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -27,7 +27,7 @@ export default function GuidanceSection() {
 
             <div className="relative grid grid-cols-2 gap-4">
               {/* Confusion Side */}
-              <div className="p-6 rounded-[32px] bg-card/40 border border-white/5 flex flex-col items-center text-center space-y-4 opacity-50 grayscale">
+              <div className="p-4 lg:p-6 rounded-[24px] lg:rounded-[32px] bg-card/40 border border-white/5 flex flex-col items-center text-center space-y-3 lg:space-y-4 opacity-50 grayscale">
                 <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
                   <HelpCircle className="w-6 h-6 text-text/40" />
                 </div>
@@ -42,9 +42,9 @@ export default function GuidanceSection() {
               </div>
 
               {/* Clarity Side */}
-              <div className="p-8 rounded-[32px] bg-primary/10 border border-primary/20 flex flex-col items-center text-center space-y-6 shadow-[0_0_40px_rgba(255,140,66,0.1)]">
-                <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center glow-orange">
-                  <Compass className="w-8 h-8 text-background" />
+              <div className="p-6 lg:p-8 rounded-[24px] lg:rounded-[32px] bg-primary/10 border border-primary/20 flex flex-col items-center text-center space-y-4 lg:space-y-6 shadow-[0_0_40px_rgba(255,140,66,0.1)]">
+                <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl bg-primary flex items-center justify-center glow-orange">
+                  <Compass className="w-6 h-6 lg:w-8 lg:h-8 text-background" />
                 </div>
                 <div className="space-y-3">
                   <div className="h-2.5 w-20 bg-primary/40 rounded-full mx-auto" />
@@ -87,29 +87,31 @@ export default function GuidanceSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-5xl font-black mb-8 leading-tight">
+            <h2 className="text-2xl md:text-5xl font-black mb-6 lg:mb-8 leading-tight">
               تائه وسط مئات الخيارات؟ <br />
               <span className="text-primary">نحن نرشدك للطريق.</span>
             </h2>
 
-            <p className="text-text/60 text-lg mb-10 leading-relaxed">
+            <p className="text-text/60 text-base lg:text-lg mb-8 lg:mb-10 leading-relaxed">
               بدء مشروعك يتطلب اتخاذ مئات القرارات (شركات الشحن، بوابات الدفع،
               الاستضافة، المنصات). هناك خيارات لا حصر لها، لكن القليل منها فقط
               هو ما يناسبك.
             </p>
 
-            <div className="space-y-6 mb-10">
+            <div className="space-y-4 lg:space-y-6 mb-8 lg:mb-10">
               {[
                 'لا نقوم بالبناء فقط، بل ننصحك بالأفضل لعملك.',
                 'نختار لك شركاء الشحن والدفع حسب حجم مبيعاتك.',
                 'نضمن لك عدم دفع مبالغ إضافية في ميزات لا تحتاجها.',
                 'نتولى التفاصيل التقنية لتتفرغ أنت لإدارة تجارتك.',
               ].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 group">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors">
-                    <CheckCircle2 className="w-4 h-4" />
+                <div key={i} className="flex items-center gap-3 lg:gap-4 group">
+                  <div className="w-5 h-5 lg:w-6 lg:h-6 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-background transition-colors">
+                    <CheckCircle2 className="w-3 h-3 lg:w-4 lg:h-4" />
                   </div>
-                  <span className="font-bold text-text/80">{item}</span>
+                  <span className="font-bold text-sm lg:text-base text-text/80">
+                    {item}
+                  </span>
                 </div>
               ))}
             </div>
