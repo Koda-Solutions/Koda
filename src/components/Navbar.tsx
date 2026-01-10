@@ -7,8 +7,19 @@ export default function Navbar() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-white/10">
       <div className="container mx-auto px-6 h-16 lg:h-20 flex items-center justify-between">
-        <div className="text-2xl lg:text-3xl font-black tracking-tighter text-primary">
-          كودا
+        <div className="flex items-center gap-8">
+          <div className="text-2xl lg:text-3xl font-black tracking-tighter text-primary">
+            كودا
+          </div>
+
+          <div className="hidden md:flex items-center gap-6">
+            <a
+              href="#services"
+              className="text-sm font-bold text-text/60 hover:text-primary transition-colors"
+            >
+              خدماتنا
+            </a>
+          </div>
         </div>
 
         <motion.button

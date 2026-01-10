@@ -1,14 +1,9 @@
 'use client';
 
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
-
-const LeadQuizModal = dynamic(() => import('./LeadQuizModal'), {
-  ssr: false,
-});
 
 const socialLinks = [
   {
@@ -27,8 +22,6 @@ const socialLinks = [
 ];
 
 export default function Hero() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
   return (
     <section className="relative min-h-[85vh] lg:min-h-[90vh] flex items-center pt-20 lg:pt-24 overflow-hidden">
       {/* Background Accents */}
@@ -45,22 +38,30 @@ export default function Hero() {
           className="text-center lg:text-right z-10 order-2 lg:order-1"
         >
           <h1 className="text-3xl md:text-5xl lg:text-6xl font-black mb-4 lg:mb-6 leading-tight">
-            حول تجارتك من دكان... <br />
-            <span className="text-primary glow-text">لإمبراطورية.</span>
+            شريكك التقني لبناء... <br />
+            <span className="text-primary glow-text">إمبراطورية ذكية.</span>
           </h1>
           <p className="text-sm md:text-base lg:text-lg mb-6 lg:mb-10 max-w-lg mx-auto lg:ml-auto lg:mr-0 text-text/80 leading-relaxed">
-            أنت بتخسر فلوس كل يوم بسبب &quot;تم الرد خاص&quot;. احصل على
-            &quot;ماكينة مبيعات&quot; شغالة 24 ساعة.
+            لا نفرض عليك حلاً برمجياً، بل نصمم لك النظام الذي يناسب ميزانيتك
+            وأهدافك التجارية بدقة.
           </p>
 
           <div className="flex flex-col items-center lg:items-end gap-8 lg:gap-10">
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => {
+                const message =
+                  'مرحباً كودا، أنا مهتم بمناقشة مشروع لعملي وأرغب في حجز استشارة مجانية.';
+                const encodedMessage = encodeURIComponent(message);
+                window.open(
+                  `https://wa.me/201212228091?text=${encodedMessage}`,
+                  '_blank'
+                );
+              }}
               className="w-full sm:w-auto bg-primary text-background text-base lg:text-lg font-black px-8 py-4 rounded-xl glow-orange hover:bg-secondary transition-all cursor-pointer min-h-[48px]"
             >
-              ابدأ إمبراطوريتك الآن
+              احجز استشارة مجانية الآن
             </motion.button>
 
             {/* Social Links */}
@@ -108,11 +109,6 @@ export default function Hero() {
           </motion.div>
         </motion.div>
       </div>
-
-      <LeadQuizModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 }
