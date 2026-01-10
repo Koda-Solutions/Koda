@@ -1,89 +1,56 @@
 import type { Metadata } from 'next';
-import { Cairo } from 'next/font/google';
-import './globals.css';
-
-const cairo = Cairo({
-  subsets: ['arabic'],
-  weight: ['400', '700', '900'],
-  variable: '--font-cairo',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
-  title: 'كودا',
+  title: 'كودا | شريكك التقني للتجارة الإلكترونية',
   description:
-    'حول تجارتك لبراند كبير مع كودا. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن. ابدأ إمبراطوريتك الآن.',
+    'وكالة برمجية متكاملة لإنشاء المتاجر الإلكترونية. بنقدملك حلول احترافية سواء على Shopify، WordPress، EasyOrders، أو برمجة خاصة (Custom). بنسلمك السيستم مربوط جاهز بشركات الشحن وبوابات الدفع، مع استشارة تختارلك الأنسب لميزانيتك.',
   keywords: [
-    'متجر إلكتروني',
-    'انشاء موقع',
-    'تجارة الكترونية',
-    'Koda Solutions',
-    'شوبيفاي',
-    'WooCommerce',
-    'تسويق الكتروني',
+    'إنشاء متجر إلكتروني',
+    'تصميم مواقع',
+    'كودا',
+    'Shopify Egypt',
+    'خبراء شوبيفاي',
+    'WordPress Woocommerce',
+    'ووردبريس',
+    'EasyOrders',
+    'برمجة خاصة',
+    'Laravel',
+    'شركات شحن مصر',
+    'بوابات دفع إلكتروني',
+    'تجارة إلكترونية',
+    'تطوير ويب',
   ],
-  authors: [{ name: 'Koda Solutions' }],
+  authors: [{ name: 'Koda Team' }],
+  creator: 'Koda',
+  publisher: 'Koda',
+  metadataBase: new URL('https://koda-solutions.vercel.app'), // متنساش تغير الدومين لما تحجز
   openGraph: {
-    title: 'Koda Solutions | من دكان لإمبراطورية',
+    title: 'كودا | ابني متجرك بأي تقنية تناسبك',
     description:
-      'حول تجارتك لبراند كبير مع كودا. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن.',
-    url: 'https://koda-solutions.com',
-    siteName: 'Koda Solutions',
+      'شوبيفاي؟ ووردبريس؟ برمجة خاصة؟ إحنا بنعمل كل حاجة. استلم متجرك مربوط بشركات الشحن والدفع فوراً.',
+    url: 'https://koda-solutions.vercel.app/',
+    siteName: 'كودا',
+    locale: 'ar_EG',
+    type: 'website',
     images: [
       {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'Koda Solutions - From a Shop to an Empire',
+        alt: 'كودا - حلول التجارة الإلكترونية المتكاملة',
       },
     ],
-    locale: 'ar_EG',
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'كودا | من دكان.. لإمبراطورية',
+    title: 'كودا | شوبيفاي، ووردبريس، وبرمجة خاصة',
     description:
-      'حول تجارتك لبراند كبير مع كودا. متجر إلكتروني خاص بيك، 0% عمولة، وربط مع شركات الشحن.',
+      'كل حلول التجارة الإلكترونية في مكان واحد. شحن، دفع، وتطوير كامل.',
     images: ['/og-image.png'],
-  },
-  robots: {
-    index: true,
-    follow: true,
   },
   icons: {
     icon: '/icon.png',
     shortcut: '/icon.png',
     apple: '/apple-icon.png',
-    other: {
-      rel: 'apple-touch-icon-precomposed',
-      url: '/icon.png',
-    },
-  },
-  appleWebApp: {
-    title: 'Koda',
-    statusBarStyle: 'black-translucent',
-    startupImage: ['/logo.png'],
   },
 };
-
-import { Analytics } from '@vercel/analytics/react';
-import FloatingWhatsApp from '@/components/FloatingWhatsApp';
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="ar" dir="rtl">
-      <body
-        className={`${cairo.variable} font-cairo antialiased bg-background text-text`}
-      >
-        {children}
-        <FloatingWhatsApp />
-        <Analytics />
-      </body>
-    </html>
-  );
-}
