@@ -42,8 +42,8 @@ export default function Hero() {
             <span className="text-primary glow-text">إمبراطورية ذكية.</span>
           </h1>
           <p className="text-sm md:text-base lg:text-lg mb-6 lg:mb-10 max-w-lg mx-auto lg:ml-auto lg:mr-0 text-text/80 leading-relaxed">
-            لا نفرض عليك حلاً برمجياً، بل نصمم لك النظام الذي يناسب ميزانيتك
-            وأهدافك التجارية بدقة.
+            نحن نتولى التفاصيل التقنية المعقدة، لتتفرغ أنت لما تتقنه: إدارة
+            وتنمية تجارتك. حلول ذكية مصممة لتناسب ميزانيتك وأهدافك.
           </p>
 
           <div className="flex flex-col items-center lg:items-end gap-8 lg:gap-10">
@@ -52,7 +52,7 @@ export default function Hero() {
               whileTap={{ scale: 0.98 }}
               onClick={() => {
                 const message =
-                  'مرحباً كودا، أنا مهتم بمناقشة مشروع لعملي وأرغب في حجز استشارة مجانية.';
+                  'مرحباً كودا، مش عارف أنهي طريق يوفرلي أكتر (برمجة خاصة ولا منصات جاهزة)؟ تعالي نحسبها سوا.';
                 const encodedMessage = encodeURIComponent(message);
                 window.open(
                   `https://wa.me/201212228091?text=${encodedMessage}`,
@@ -61,7 +61,7 @@ export default function Hero() {
               }}
               className="w-full sm:w-auto bg-primary text-background text-base lg:text-lg font-black px-8 py-4 rounded-xl glow-orange hover:bg-secondary transition-all cursor-pointer min-h-[48px]"
             >
-              احجز استشارة مجانية الآن
+              مش عارف أنهي طريق يوفرلك أكتر؟ تعالي نحسبها سوا
             </motion.button>
 
             {/* Social Links */}

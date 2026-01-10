@@ -14,13 +14,13 @@ export default function CTA() {
           viewport={{ once: true }}
           className="max-w-3xl mx-auto"
         >
-          <h2 className="font-black mb-8">مش عارف تبدأ منين؟</h2>
+          <h2 className="font-black mb-8">مش عارف أنهي طريق يوفرلك أكتر؟</h2>
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => {
               const message =
-                'مرحباً كودا، أحتاج لاستشارة بخصوص أفضل حل تقني لمشروعي بناءً على ميزانيتي وأهدافي.';
+                'مرحباً كودا، أرغب في المساعدة لحساب التكاليف والمقارنة بين الحلول المختلفة لمشروعي.';
               const encodedMessage = encodeURIComponent(message);
               window.open(
                 `https://wa.me/201212228091?text=${encodedMessage}`,
@@ -29,11 +29,11 @@ export default function CTA() {
             }}
             className="bg-primary text-background text-base lg:text-lg font-black px-9 py-3.5 rounded-xl glow-orange hover:bg-secondary transition-all mb-6 cursor-pointer"
           >
-            تحدث مع خبير تقني الآن
+            تعالي نحسبها سوا الآن
           </motion.button>
           <p className="text-text/60 font-medium text-base">
-            دعنا نساعدك في اختيار الحل الأمثل لمشروعك بناءً على ميزانيتك
-            وأهدافك.
+            نحن نكشف لك الأرقام الحقيقية والعمولات الخفية لنضمن لك أعلى صافي
+            ربح.
           </p>
         </motion.div>
       </div>

@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import Integrations from '@/components/Integrations';
 import PainPoints from '@/components/PainPoints';
 import Solution from '@/components/Solution';
+import GuidanceSection from '@/components/GuidanceSection';
 import TrustStats from '@/components/TrustStats';
 import ServicesEcosystem from '@/components/ServicesEcosystem';
 import SmartTransparency from '@/components/SmartTransparency';
@@ -18,6 +19,7 @@ export default function Home() {
       <Integrations />
       <PainPoints />
       <Solution />
+      <GuidanceSection />
       <TrustStats />
       <ServicesEcosystem />
       <SmartTransparency />
