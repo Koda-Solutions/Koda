@@ -100,12 +100,12 @@ export default function Pricing() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
-                className={`relative p-8 rounded-[32px] border transition-all duration-300 shadow-md ${
+                className={`relative p-8 rounded-[32px] border transition-all duration-300 shadow-md glass-panel ${
                   plan.highlighted
-                    ? 'bg-card border-primary scale-105 z-20 shadow-[0_0_40px_rgba(255,140,66,0.15)]'
+                    ? 'border-primary scale-105 z-20 shadow-[0_0_40px_rgba(255,140,66,0.15)]'
                     : plan.premium
-                    ? 'bg-gradient-to-b from-card to-background border-border-custom'
-                    : 'bg-card border-border-custom'
+                    ? 'bg-gradient-to-b from-card/50 to-background/50 border-border-custom'
+                    : 'border-border-custom'
                 }`}
               >
                 {plan.badge && (

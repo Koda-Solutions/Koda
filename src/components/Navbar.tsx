@@ -14,7 +14,6 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -29,7 +28,10 @@ export default function Navbar() {
   if (!mounted) return null;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border-custom transition-all duration-300">
+    <nav
+      // التعديل هنا: سيبنا glass-panel زي ما هي وضفنا backdrop-blur-3xl عشان يتقل البلور
+      className="fixed top-0 left-0 right-0 z-50 glass-panel border-b transition-all duration-300 backdrop-blur-3xl"
+    >
       <div className="container mx-auto px-4 md:px-6 h-16 lg:h-20 flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center gap-3">
@@ -81,16 +83,13 @@ export default function Navbar() {
           </motion.button>
         </div>
 
-        {/* Mobile Actions (التعديل هنا) */}
+        {/* Mobile Actions */}
         <div className="flex md:hidden items-center gap-3">
-          {/* زرار اللغة للموبايل */}
           <button
             onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-            // شيلنا w-10 وحطينا px-3 عشان العرض يبقى مرن حسب الكلمة
             className="h-10 px-3 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-xs font-black text-foreground hover:border-primary transition-colors"
           >
             <span className="mt-0.5">
-              {/* غيرنا Franco لـ فرانكو وغيرنا ع لـ عربي */}
               {language === 'ar' ? 'فرانكو' : 'عربي'}
             </span>
           </button>
@@ -119,7 +118,8 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background/95 backdrop-blur-2xl border-b border-border-custom overflow-hidden"
+            // التعديل هنا برضه: زودنا backdrop-blur-3xl عشان القائمة تبقى رايقة
+            className="md:hidden glass-panel border-b border-border-custom overflow-hidden backdrop-blur-3xl"
           >
             <div className="container mx-auto px-4 py-8 flex flex-col gap-6">
               <div className="text-center">

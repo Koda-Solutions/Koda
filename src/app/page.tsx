@@ -6,7 +6,7 @@ import Solution from '@/components/Solution';
 import GuidanceSection from '@/components/GuidanceSection';
 import TrustStats from '@/components/TrustStats';
 import ServicesEcosystem from '@/components/ServicesEcosystem';
-import SmartTransparency from '@/components/SmartTransparency';
+import ComparisonSection from '@/components/ComparisonSection';
 import FAQ from '@/components/FAQ';
 import CTA from '@/components/CTA';
 import Footer from '@/components/Footer';
@@ -22,7 +22,7 @@ export default function Home() {
       <GuidanceSection />
       <TrustStats />
       <ServicesEcosystem />
-      <SmartTransparency />
+      <ComparisonSection />
       <FAQ />
       <CTA />
       <Footer />

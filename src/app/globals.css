@@ -6,36 +6,31 @@
   --color-foreground-muted: var(--foreground-muted);
   --color-card: var(--card);
   --color-border-custom: var(--border-custom);
-  --color-primary: #ff8c42; /* رجعتلك الدرجة القديمة */
+  --color-primary: #ff8c42;
   --color-secondary: #ffd166;
 
   --font-cairo: 'Cairo', sans-serif;
   --font-inter: 'Inter', sans-serif;
 }
 
-/* هنا اللعب كله:
-   :root = الدارك مود القديم بتاعك (عشان يبقى هو الأساسي)
-   .light = اللايت مود الفخم الجديد
-*/
 :root {
-  /* DARK MODE (DEFAULT) - RESTORED ORIGINAL */
-  --background: #161618; /* الخلفية الغامقة الفخمة */
-  --foreground: #fffbeb; /* التكست البيج المريح */
-  --foreground-muted: #9ca3af; /* رمادي للكلام الفرعي */
-  --card: #050505; /* الكروت سودة فحمي */
-  --border-custom: rgba(255, 255, 255, 0.1); /* بوردر خفيف جداً */
-
-  --font-cairo: 'Cairo', sans-serif;
-  --font-inter: 'Inter', sans-serif;
+  /* ☀️ LIGHT MODE (Clean & Frosted) */
+  --background: #f2f2f7;
+  --foreground: #1c1c1e;
+  --foreground-muted: #8e8e93;
+  --card: rgba(255, 255, 255, 0.65);
+  --border-custom: rgba(0, 0, 0, 0.08);
+  --glass-blur: blur(20px);
 }
 
-.light {
-  /* LIGHT MODE (GEN Z LUXURY STYLE) */
-  --background: #f0f0f2; /* رصاصي فاتح جداً (Ice Gray) مش أبيض صريح */
-  --foreground: #111111; /* أسود صريح للقراءة */
-  --foreground-muted: #555555;
-  --card: #ffffff; /* الكروت بيضا صريحة عشان تبرز فوق الخلفية */
-  --border-custom: #e0e0e0; /* بوردر رصاصي فاتح */
+.dark {
+  /* 🌑 DARK MODE (Deep & Luminous) */
+  --background: #161618;
+  --foreground: #ffffff;
+  --foreground-muted: #aeaeb2;
+  --card: rgba(30, 30, 35, 0.6);
+  --border-custom: rgba(255, 255, 255, 0.1);
+  --glass-blur: blur(25px);
 }
 
 body {
@@ -45,22 +40,24 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.4s ease, color 0.4s ease; /* تنعيم النقلة بين المودين */
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 @layer base {
   * {
-    @apply border-border-custom; /* استخدام المتغير عشان البوردر يتغير مع المود */
+    border-color: var(--border-custom);
   }
 
   h1 {
     font-size: clamp(1.875rem, 6vw, 3.5rem);
     line-height: 1.1;
+    font-weight: 900;
   }
 
   h2 {
     font-size: clamp(1.5rem, 5vw, 2.75rem);
     line-height: 1.2;
+    font-weight: 900;
   }
 
   p {
@@ -73,18 +70,41 @@ body {
   @apply px-4 md:px-6 mx-auto;
 }
 
-/* تظبيط الـ Glow عشان يليق ع المودين 
-*/
+/* 💎 iOS Glassmorphism Utility */
+.glass-panel {
+  background: var(--card);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--border-custom);
+  border-radius: 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.dark .glass-panel {
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ✨ Glow Effects */
 .glow-orange {
-  /* في الدارك: جلو نيون */
-  box-shadow: 0 0 25px rgba(255, 140, 66, 0.25);
+  box-shadow: 0 0 30px rgba(255, 140, 66, 0.15);
+  transition: all 0.3s ease;
 }
 
-.light .glow-orange {
-  /* في اللايت: شادو ناعم بس قوي (High End Vibe) */
-  box-shadow: 0 10px 30px rgba(255, 140, 66, 0.3);
+.glow-orange:hover {
+  box-shadow: 0 0 45px rgba(255, 140, 66, 0.3);
 }
 
-.glow-text {
-  text-shadow: 0 0 10px rgba(255, 140, 66, 0.4);
+/* 🎨 Background Blobs */
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 140, 66, 0.15) 0%,
+    transparent 70%
+  );
+  filter: blur(80px);
+  z-index: -1;
+  pointer-events: none;
 }
