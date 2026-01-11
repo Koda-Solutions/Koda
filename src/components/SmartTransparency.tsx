@@ -104,7 +104,7 @@ export default function SmartTransparency() {
                   {path.icon}
                 </div>
                 <div>
-                  <p className="text-gray-900 text-xs lg:text-sm font-black uppercase tracking-wider mb-1">
+                  <p className="text-gray-200 text-xs lg:text-sm font-black uppercase tracking-wider mb-1">
                     {path.subtitle}
                   </p>
                   <h3 className="text-xl lg:text-2xl font-black">

@@ -92,7 +92,7 @@ export default function Hero() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative h-48 md:h-80 lg:h-auto aspect-square flex items-center justify-center order-1 lg:order-2"
+          className="relative w-full mx-auto md:w-full h-72 md:h-80 lg:h-auto aspect-square flex items-center justify-center order-1 lg:order-2"
         >
           <div className="absolute inset-0 bg-gradient-to-b from-primary/15 to-transparent rounded-full blur-3xl opacity-40" />
 
