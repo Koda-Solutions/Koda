@@ -279,9 +279,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'كودا | شوبيفاي، ووردبريس، وبرمجة خاصة',
-    description:
-      'كل حلول التجارة الإلكترونية في مكان واحد. شحن، دفع، وتطوير كامل.',
+    title: 'كودا | من دكان.. لإمبراطورية',
+    description: 'متجرك الخاص بملكية 100% وبدون عمولات. حلول دفع وشحن متكاملة.',
     images: ['/og-image.png'],
   },
 
