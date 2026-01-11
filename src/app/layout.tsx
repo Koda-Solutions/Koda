@@ -1,33 +1,43 @@
 import type { Metadata } from 'next';
-import { Cairo } from 'next/font/google'; // استخدمنا كايرو عشان العربي يبقى مظبوط
+import { Cairo } from 'next/font/google';
 import './globals.css';
 
-// إعداد الفونت العربي
 const cairo = Cairo({ subsets: ['arabic'] });
 
-// دي الميتاداتا اللي اتفقنا عليها
 export const metadata: Metadata = {
-  title: 'كودا | شريكك التقني للتجارة الإلكترونية',
+  title: 'Koda Solutions | كودا - شريكك التقني للتجارة الإلكترونية والبرمجة',
   description:
-    'وكالة برمجية متكاملة لإنشاء المتاجر الإلكترونية. بنقدملك حلول احترافية سواء على Shopify، WordPress، EasyOrders، أو برمجة خاصة. بنسلمك السيستم مربوط جاهز بشركات الشحن وبوابات الدفع.',
+    'كودا (Koda Solutions) هي وكالة برمجية رائدة في مصر والوطن العربي. متخصصون في إنشاء المتاجر الإلكترونية (Shopify, WordPress), البرمجة الخاصة, وتطوير المواقع. حلول تقنية متكاملة لنمو أعمالك.',
   keywords: [
-    'إنشاء متجر إلكتروني',
-    'تصميم مواقع',
+    'Koda Solutions',
     'كودا',
+    'Koda Agency',
     'Shopify Egypt',
-    'WordPress Woocommerce',
-    'EasyOrders',
+    'شوبيفاي مصر',
+    'WordPress Agency',
+    'ووردبريس',
+    'Custom Development',
     'برمجة خاصة',
-    'شركات شحن مصر',
-    'بوابات دفع إلكتروني',
+    'شركات برمجة',
+    'تصميم متاجر',
+    'إنشاء متجر إلكتروني',
+    'E-commerce solutions Egypt',
+    'Web development agency',
+    'تطوير مواقع',
+    'Digital transformation',
+    'Koda',
   ],
-  authors: [{ name: 'Koda Team' }],
+  authors: [{ name: 'Koda Solutions' }],
+  creator: 'Koda Solutions',
+  alternates: {
+    canonical: 'https://kodasolutions.net',
+  },
   openGraph: {
-    title: 'كودا | ابني متجرك بأي تقنية تناسبك',
+    title: 'Koda Solutions | كودا - ابني متجرك بأي تقنية تناسبك',
     description:
-      'شوبيفاي؟ ووردبريس؟ برمجة خاصة؟ إحنا بنعمل كل حاجة. استلم متجرك مربوط بشركات الشحن والدفع فوراً.',
-    url: 'https://koda-solutions.vercel.app',
-    siteName: 'كودا',
+      'شوبيفاي؟ ووردبريس؟ برمجة خاصة؟ إحنا بنعمل كل حاجة. استلم متجرك مربوط بشركات الشحن والدفع فوراً مع كودا.',
+    url: 'https://kodasolutions.net',
+    siteName: 'Koda Solutions',
     locale: 'ar_EG',
     type: 'website',
     images: [
@@ -35,28 +45,87 @@ export const metadata: Metadata = {
         url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'كودا - حلول التجارة الإلكترونية المتكاملة',
+        alt: 'Koda Solutions - حلول التجارة الإلكترونية المتكاملة',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'كودا | شوبيفاي، ووردبريس، وبرمجة خاصة',
+    title: 'Koda Solutions | كودا - شوبيفاي، ووردبريس، وبرمجة خاصة',
     description:
-      'كل حلول التجارة الإلكترونية في مكان واحد. شحن، دفع، وتطوير كامل.',
+      'كل حلول التجارة الإلكترونية في مكان واحد. شحن، دفع، وتطوير كامل مع كودا سوليوشنز.',
     images: ['/og-image.png'],
   },
 };
 
-// ده الجزء اللي كان ناقص عندك (RootLayout)
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    name: 'Koda Solutions',
+    alternateName: ['Koda', 'كودا', 'Koda Agency'],
+    url: 'https://kodasolutions.net',
+    logo: 'https://kodasolutions.net/icon.png',
+    image: 'https://kodasolutions.net/og-image.png',
+    sameAs: [
+      'https://www.facebook.com/kodasolutions',
+      'https://www.linkedin.com/company/kodasolutions',
+      'https://x.com/kodasolutions',
+      'https://www.instagram.com/kodasolutions',
+    ],
+    priceRange: '$$',
+    address: {
+      '@type': 'PostalAddress',
+      addressCountry: 'EG',
+      addressRegion: 'Egypt',
+    },
+    description:
+      'Koda Solutions is a leading software house specializing in E-commerce development, custom software, and digital transformation.',
+    offers: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Web Development',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'E-commerce Development',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Custom Software Development',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Technical Consultation',
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="ar" dir="rtl">
-      <body className={cairo.className}>{children}</body>
+      <body className={cairo.className}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
