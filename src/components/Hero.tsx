@@ -4,6 +4,7 @@ import Image from 'next/image';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 const socialLinks = [
   {
@@ -22,8 +23,10 @@ const socialLinks = [
 ];
 
 export default function Hero() {
+  const { t, isRTL } = useLanguage();
+
   return (
-    <section className="relative min-h-[70vh] lg:min-h-[90vh] flex items-center pt-16 lg:pt-24 overflow-hidden">
+    <section className="relative min-h-[70vh] lg:min-h-[90vh] flex items-center pt-16 lg:pt-24 overflow-hidden bg-background">
       {/* Background Accents */}
       <div className="absolute top-1/4 -right-20 w-60 h-60 lg:w-80 lg:h-80 bg-primary/10 rounded-full blur-[80px] lg:blur-[100px]" />
       <div className="absolute bottom-1/4 -left-20 w-60 h-60 lg:w-80 lg:h-80 bg-secondary/10 rounded-full blur-[80px] lg:blur-[100px]" />
@@ -35,38 +38,42 @@ export default function Hero() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center lg:text-right z-10 order-2 lg:order-1"
+          className={`text-center ${
+            isRTL ? 'lg:text-right' : 'lg:text-left'
+          } z-10 order-2 lg:order-1`}
         >
-          <h1 className="text-2xl md:text-5xl lg:text-6xl font-black mb-4 lg:mb-6 leading-tight">
-            شريكك التقني لبناء... <br />
-            <span className="text-primary glow-text">إمبراطورية ذكية.</span>
+          <h1 className="text-2xl md:text-5xl lg:text-6xl font-black mb-4 lg:mb-6 leading-tight text-foreground">
+            {t.hero.title} <br />
+            <span className="text-primary glow-text">{t.hero.titleAccent}</span>
           </h1>
-          <p className="text-xs md:text-base lg:text-lg mb-6 lg:mb-10 max-w-lg mx-auto lg:ml-auto lg:mr-0 text-text/80 leading-relaxed">
-            نحن نتولى التفاصيل التقنية المعقدة، لتتفرغ أنت لما تتقنه: إدارة
-            وتنمية تجارتك. حلول ذكية مصممة لتناسب ميزانيتك وأهدافك.
+          <p
+            className={`text-xs md:text-base lg:text-lg mb-6 lg:mb-10 max-w-lg mx-auto ${
+              isRTL ? 'lg:ml-auto lg:mr-0' : 'lg:mr-auto lg:ml-0'
+            } text-foreground-muted leading-relaxed`}
+          >
+            {t.hero.subtitle}
           </p>
 
-          <div className="flex flex-col items-center lg:items-end gap-8 lg:gap-10">
+          <div
+            className={`flex flex-col items-center ${
+              isRTL ? 'lg:items-end' : 'lg:items-start'
+            } gap-8 lg:gap-10`}
+          >
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               onClick={() => {
-                const message =
-                  'مرحباً كودا، مش عارف أنهي طريق يوفرلي أكتر (برمجة خاصة ولا منصات جاهزة)؟ تعالي نحسبها سوا.';
+                const message = t.hero.whatsappMessage;
                 const encodedMessage = encodeURIComponent(message);
                 window.open(
                   `https://wa.me/201212228091?text=${encodedMessage}`,
                   '_blank'
                 );
               }}
-              className="w-full sm:w-auto bg-primary text-background text-sm lg:text-lg font-black px-6 lg:px-8 py-3 lg:py-4 rounded-xl glow-orange hover:bg-secondary transition-all cursor-pointer min-h-[44px] lg:min-h-[48px]"
+              className="w-full sm:w-auto bg-primary text-white text-sm lg:text-lg font-black px-6 lg:px-8 py-3 lg:py-4 rounded-xl glow-orange hover:bg-primary/90 transition-all cursor-pointer min-h-[44px] lg:min-h-[48px]"
             >
-              <span className="hidden sm:inline">
-                مش عارف أنهي طريق يوفرلك أكتر؟ تعالي نحسبها سوا
-              </span>
-              <span className="sm:hidden">
-                تعالي نحسبها سوا ونشوف الأوفر لك
-              </span>
+              <span className="hidden sm:inline">{t.hero.ctaDesktop}</span>
+              <span className="sm:hidden">{t.hero.ctaMobile}</span>
             </motion.button>
 
             {/* Social Links */}
@@ -77,7 +84,7 @@ export default function Hero() {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-text/40 hover:text-primary hover:border-primary/30 transition-all duration-300 cursor-pointer"
+                  className="w-10 h-10 rounded-full border border-border-custom flex items-center justify-center text-foreground-muted hover:text-primary hover:border-primary/30 transition-all duration-300 cursor-pointer"
                 >
                   {link.icon}
                 </a>

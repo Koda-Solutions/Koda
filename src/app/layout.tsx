@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
-import { Cairo } from 'next/font/google';
+import { Cairo, Inter } from 'next/font/google';
 import './globals.css';
+import { Providers } from '@/components/Providers';
 
 // تظبيط الفونت العربي (Cairo)
-const cairo = Cairo({ subsets: ['arabic'] });
+const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kodasolutions.net'),
@@ -327,7 +329,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl">
+    <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
         {/* حقن الـ Schema في الهيدر */}
         <script
@@ -335,7 +337,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={cairo.className}>{children}</body>
+      <body
+        className={`${cairo.variable} ${inter.variable} font-cairo antialiased`}
+      >
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }

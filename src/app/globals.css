@@ -1,18 +1,41 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-background: #161618;
-  --color-card: #050505;
-  --color-text: #fffbeb;
-  --color-primary: #ff8c42;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-card: var(--card);
+  --color-border-custom: var(--border-custom);
+  --color-primary: #ff8c42; /* رجعتلك الدرجة القديمة */
   --color-secondary: #ffd166;
 
   --font-cairo: 'Cairo', sans-serif;
+  --font-inter: 'Inter', sans-serif;
 }
 
+/* هنا اللعب كله:
+   :root = الدارك مود القديم بتاعك (عشان يبقى هو الأساسي)
+   .light = اللايت مود الفخم الجديد
+*/
 :root {
-  --background: #161618;
-  --foreground: #fffbeb;
+  /* DARK MODE (DEFAULT) - RESTORED ORIGINAL */
+  --background: #161618; /* الخلفية الغامقة الفخمة */
+  --foreground: #fffbeb; /* التكست البيج المريح */
+  --foreground-muted: #9ca3af; /* رمادي للكلام الفرعي */
+  --card: #050505; /* الكروت سودة فحمي */
+  --border-custom: rgba(255, 255, 255, 0.1); /* بوردر خفيف جداً */
+
+  --font-cairo: 'Cairo', sans-serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+.light {
+  /* LIGHT MODE (GEN Z LUXURY STYLE) */
+  --background: #f0f0f2; /* رصاصي فاتح جداً (Ice Gray) مش أبيض صريح */
+  --foreground: #111111; /* أسود صريح للقراءة */
+  --foreground-muted: #555555;
+  --card: #ffffff; /* الكروت بيضا صريحة عشان تبرز فوق الخلفية */
+  --border-custom: #e0e0e0; /* بوردر رصاصي فاتح */
 }
 
 body {
@@ -22,25 +45,26 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.4s ease, color 0.4s ease; /* تنعيم النقلة بين المودين */
 }
 
 @layer base {
   * {
-    @apply border-white/10;
+    @apply border-border-custom; /* استخدام المتغير عشان البوردر يتغير مع المود */
   }
 
   h1 {
-    font-size: clamp(1.875rem, 6vw, 3.5rem); /* text-3xl to 56px */
+    font-size: clamp(1.875rem, 6vw, 3.5rem);
     line-height: 1.1;
   }
 
   h2 {
-    font-size: clamp(1.5rem, 5vw, 2.75rem); /* text-2xl to 44px */
+    font-size: clamp(1.5rem, 5vw, 2.75rem);
     line-height: 1.2;
   }
 
   p {
-    @apply text-sm md:text-base lg:text-lg leading-relaxed text-text/70;
+    @apply text-sm md:text-base lg:text-lg leading-relaxed text-foreground-muted;
   }
 }
 
@@ -49,8 +73,16 @@ body {
   @apply px-4 md:px-6 mx-auto;
 }
 
+/* تظبيط الـ Glow عشان يليق ع المودين 
+*/
 .glow-orange {
-  box-shadow: 0 0 20px rgba(255, 140, 66, 0.2);
+  /* في الدارك: جلو نيون */
+  box-shadow: 0 0 25px rgba(255, 140, 66, 0.25);
+}
+
+.light .glow-orange {
+  /* في اللايت: شادو ناعم بس قوي (High End Vibe) */
+  box-shadow: 0 10px 30px rgba(255, 140, 66, 0.3);
 }
 
 .glow-text {

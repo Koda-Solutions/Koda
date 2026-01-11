@@ -9,6 +9,7 @@ import {
   useInView,
 } from 'framer-motion';
 import { Wallet, Zap, Headphones, ShieldCheck } from 'lucide-react';
+import { useLanguage } from '../context/LanguageContext';
 
 interface StatProps {
   value: number;
@@ -44,7 +45,7 @@ const StatItem = ({
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="relative p-4 lg:p-6 rounded-xl lg:rounded-2xl bg-background/50 border border-white/5 flex flex-col items-center text-center group hover:border-primary/20 transition-colors"
+      className="relative p-4 lg:p-6 rounded-xl lg:rounded-2xl bg-card border border-border-custom flex flex-col items-center text-center group hover:border-primary/20 transition-colors shadow-sm"
     >
       <div className="absolute inset-0 bg-primary/5 blur-3xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
@@ -57,8 +58,10 @@ const StatItem = ({
         {suffix && <span>{suffix}</span>}
       </div>
 
-      <div className="text-sm lg:text-lg font-bold mb-1 lg:mb-2">{label}</div>
-      <p className="text-text/60 text-[10px] lg:text-sm leading-relaxed">
+      <div className="text-sm lg:text-lg font-bold mb-1 lg:mb-2 text-foreground">
+        {label}
+      </div>
+      <p className="text-foreground-muted text-[10px] lg:text-sm leading-relaxed">
         {subtext}
       </p>
     </motion.div>
@@ -66,8 +69,10 @@ const StatItem = ({
 };
 
 export default function TrustStats() {
+  const { t } = useLanguage();
+
   return (
-    <section className="py-12 lg:py-24 relative overflow-hidden bg-gradient-to-b from-background to-card/30">
+    <section className="py-12 lg:py-24 relative overflow-hidden bg-background">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -76,30 +81,30 @@ export default function TrustStats() {
           <StatItem
             value={0}
             suffix="%"
-            label="عمولة على المبيعات"
-            subtext="مكسبك كله ليك، مش بنشاركك في تعبك."
+            label={t.trustStats.commission.label}
+            subtext={t.trustStats.commission.subtext}
             icon={<Wallet className="w-full h-full" />}
           />
           <StatItem
             value={99.9}
             suffix="%"
-            label="سيستم مبيقعش"
-            subtext="شغال وقت العروض والضغط العالي."
+            label={t.trustStats.uptime.label}
+            subtext={t.trustStats.uptime.subtext}
             icon={<Zap className="w-full h-full" />}
             decimals={1}
           />
           <StatItem
             value={24}
             suffix="/7"
-            label="دعم فني في ضهرك"
-            subtext="فريق كامل بيحل مشاكلك في لحظتها."
+            label={t.trustStats.support.label}
+            subtext={t.trustStats.support.subtext}
             icon={<Headphones className="w-full h-full" />}
           />
           <StatItem
             value={100}
             suffix="%"
-            label="بياناتك في أمان"
-            subtext="محدش بيشوف داتا عملائك غيرك."
+            label={t.trustStats.security.label}
+            subtext={t.trustStats.security.subtext}
             icon={<ShieldCheck className="w-full h-full" />}
           />
         </div>

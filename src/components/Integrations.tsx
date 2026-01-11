@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 
 const integrations = [
   { name: 'Vodafone Cash', brandColor: '#E60000' },
@@ -15,14 +16,15 @@ const integrations = [
 ];
 
 export default function Integrations() {
+  const { t } = useLanguage();
   // Use exactly 2 sets for a perfect 50% loop logic
   const duplicatedIntegrations = [...integrations, ...integrations];
 
   return (
-    <section className="py-12 bg-background/30 border-y border-white/5 overflow-hidden">
+    <section className="py-12 bg-background border-y border-border-custom overflow-hidden">
       <div className="container mx-auto px-6 mb-8">
-        <p className="text-center text-text/30 text-xs font-bold uppercase tracking-[0.3em]">
-          متكامل مع خدماتك المفضلة
+        <p className="text-center text-foreground-muted text-xs font-bold uppercase tracking-[0.3em]">
+          {t.integrations.title}
         </p>
       </div>
 
@@ -45,7 +47,7 @@ export default function Integrations() {
           {duplicatedIntegrations.map((item, i) => (
             <div
               key={i}
-              className="text-xl lg:text-2xl font-black text-text/20 hover:text-[var(--brand-color)] transition-all duration-500 cursor-default select-none grayscale hover:grayscale-0 opacity-40 hover:opacity-100"
+              className="text-xl lg:text-2xl font-black text-foreground-muted hover:text-[var(--brand-color)] transition-all duration-500 cursor-default select-none grayscale hover:grayscale-0 opacity-40 hover:opacity-100"
               style={
                 { '--brand-color': item.brandColor } as React.CSSProperties
               }

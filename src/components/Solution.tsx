@@ -3,33 +3,37 @@
 import React from 'react';
 import Image from 'next/image';
 import { Zap, CreditCard, Truck, Lock } from 'lucide-react';
-
-const features = [
-  { icon: <Zap className="w-full h-full" />, text: 'سريع طيارة' },
-  { icon: <CreditCard className="w-full h-full" />, text: 'كاش أو فيزا' },
-  { icon: <Truck className="w-full h-full" />, text: 'بيسمع مع الشحن' },
-  { icon: <Lock className="w-full h-full" />, text: 'محدش يعرف يقلدك' },
-];
+import { useLanguage } from '../context/LanguageContext';
 
 export default function Solution() {
+  const { t } = useLanguage();
+
+  const features = [
+    { icon: <Zap className="w-full h-full" />, text: t.solution.features[0] },
+    {
+      icon: <CreditCard className="w-full h-full" />,
+      text: t.solution.features[1],
+    },
+    { icon: <Truck className="w-full h-full" />, text: t.solution.features[2] },
+    { icon: <Lock className="w-full h-full" />, text: t.solution.features[3] },
+  ];
+
   return (
     <section className="py-12 lg:py-20 relative">
       <div className="container mx-auto px-6">
-        <div className="max-w-4xl mx-auto bg-card border border-white/10 rounded-[24px] lg:rounded-[32px] p-5 lg:p-10 relative overflow-hidden">
+        <div className="max-w-4xl mx-auto bg-card border border-border-custom rounded-[24px] lg:rounded-[32px] p-5 lg:p-10 relative overflow-hidden shadow-xl">
           {/* Top Border Gradient */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary to-transparent" />
 
           <div className="grid lg:grid-cols-2 gap-10 items-center">
             {/* Text Content */}
             <div>
-              <h2 className="text-xl md:text-3xl font-black mb-5 leading-tight">
-                محلك في جيب العميل.. <br />
-                <span className="text-primary">24 ساعة.</span>
+              <h2 className="text-xl md:text-3xl font-black mb-5 leading-tight text-foreground">
+                {t.solution.title} <br />
+                <span className="text-primary">{t.solution.titleAccent}</span>
               </h2>
-              <p className="text-sm lg:text-base mb-6 lg:mb-8">
-                أنت تاجر شاطر، مش خدمة عملاء. ليه تضيع يومك في &quot;بكام&quot;
-                و &quot;المقاس ده موجود&quot;؟.. السيستم ده هيعرض بضاعتك ويبيع
-                ويحاسب العميل وأنت بتشرب قهوتك.
+              <p className="text-sm lg:text-base mb-6 lg:mb-8 text-foreground-muted">
+                {t.solution.desc}
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -50,7 +54,7 @@ export default function Solution() {
             </div>
 
             {/* Image Section */}
-            <div className="relative aspect-video rounded-2xl bg-background border border-white/5 overflow-hidden shadow-2xl">
+            <div className="relative aspect-video rounded-2xl bg-card border border-border-custom overflow-hidden shadow-2xl">
               <Image
                 src="/Solution-shopping-app.png"
                 alt="Koda E-commerce Solution"
