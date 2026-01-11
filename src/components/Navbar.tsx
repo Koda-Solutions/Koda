@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useLanguage } from '../context/LanguageContext';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
-import Image from 'next/image'; // 1. لازم نعمل استيراد للكومبوننت ده
+import Image from 'next/image';
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -33,15 +33,12 @@ export default function Navbar() {
       <div className="container mx-auto px-4 md:px-6 h-16 lg:h-20 flex items-center justify-between">
         {/* Logo Section */}
         <div className="flex items-center gap-3">
-          {' '}
-          {/* 2. ضفت gap عشان يبعدوا عن بعض شوية */}
-          {/* 3. ضفت الصورة هنا في الأول عشان تظهر على اليمين في العربي */}
           <div className="relative w-9 h-9 lg:w-10 lg:h-10 hover:scale-105 transition-transform">
             <Image
-              src="/icon.png" // Next.js بيقرا الصورة دي تلقائي من app directory
+              src="/icon.png"
               alt="Koda Solutions Logo"
               fill
-              className="object-contain" // عشان يحافظ على أبعاد اللوجو وميمطش
+              className="object-contain"
               priority
             />
           </div>
@@ -50,9 +47,8 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Desktop Actions (شاشات الكمبيوتر) */}
+        {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
-          {/* Language Switcher */}
           <button
             onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
             className="px-4 py-2 rounded-full hover:bg-card transition-all duration-300 flex items-center gap-2 text-sm font-bold border border-transparent hover:border-border-custom group"
@@ -63,11 +59,10 @@ export default function Navbar() {
               className="text-foreground-muted group-hover:text-primary transition-colors"
             />
             <span className="mt-0.5 text-foreground">
-              {language === 'ar' ? 'Franco' : 'عربي'}
+              {language === 'ar' ? 'فرانكو' : 'عربي'}
             </span>
           </button>
 
-          {/* Theme Switcher */}
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="p-2.5 rounded-full hover:bg-card transition-all duration-300 border border-transparent hover:border-border-custom text-foreground"
@@ -76,7 +71,6 @@ export default function Navbar() {
             {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
           </button>
 
-          {/* CTA Button */}
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -87,13 +81,18 @@ export default function Navbar() {
           </motion.button>
         </div>
 
-        {/* Mobile Actions (ظاهرين في الموبايل فوق) */}
+        {/* Mobile Actions (التعديل هنا) */}
         <div className="flex md:hidden items-center gap-3">
+          {/* زرار اللغة للموبايل */}
           <button
             onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-            className="w-10 h-10 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-xs font-black text-foreground hover:border-primary transition-colors"
+            // شيلنا w-10 وحطينا px-3 عشان العرض يبقى مرن حسب الكلمة
+            className="h-10 px-3 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-xs font-black text-foreground hover:border-primary transition-colors"
           >
-            {language === 'ar' ? 'FR' : 'ع'}
+            <span className="mt-0.5">
+              {/* غيرنا Franco لـ فرانكو وغيرنا ع لـ عربي */}
+              {language === 'ar' ? 'فرانكو' : 'عربي'}
+            </span>
           </button>
 
           <button
@@ -113,7 +112,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Drawer (القائمة الجانبية) */}
+      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
