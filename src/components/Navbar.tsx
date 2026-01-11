@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useLanguage } from '../context/LanguageContext';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
+import Image from 'next/image'; // 1. لازم نعمل استيراد للكومبوننت ده
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -13,7 +14,6 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setMounted(true);
   }, []);
 
@@ -28,11 +28,22 @@ export default function Navbar() {
   if (!mounted) return null;
 
   return (
-    // 1. عدلت الشفافية لـ /80 عشان اللون يبان أنطق وأفتح
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border-custom transition-all duration-300">
       <div className="container mx-auto px-4 md:px-6 h-16 lg:h-20 flex items-center justify-between">
-        {/* Logo */}
-        <div className="flex items-center">
+        {/* Logo Section */}
+        <div className="flex items-center gap-3">
+          {' '}
+          {/* 2. ضفت gap عشان يبعدوا عن بعض شوية */}
+          {/* 3. ضفت الصورة هنا في الأول عشان تظهر على اليمين في العربي */}
+          <div className="relative w-9 h-9 lg:w-10 lg:h-10 hover:scale-105 transition-transform">
+            <Image
+              src="/icon.png" // Next.js بيقرا الصورة دي تلقائي من app directory
+              alt="Koda Solutions Logo"
+              fill
+              className="object-contain" // عشان يحافظ على أبعاد اللوجو وميمطش
+              priority
+            />
+          </div>
           <div className="text-2xl lg:text-3xl font-black tracking-tighter text-primary cursor-default select-none hover:scale-105 transition-transform">
             {t.nav.logo}
           </div>
@@ -51,7 +62,6 @@ export default function Navbar() {
               className="text-foreground-muted group-hover:text-primary transition-colors"
             />
             <span className="mt-0.5 text-foreground">
-              {/* التبديل بين فرانكو وعربي */}
               {language === 'ar' ? 'Franco' : 'عربي'}
             </span>
           </button>
@@ -78,7 +88,6 @@ export default function Navbar() {
 
         {/* Mobile Actions (ظاهرين في الموبايل فوق) */}
         <div className="flex md:hidden items-center gap-3">
-          {/* 1. Language Toggle Mobile (FR / AR) */}
           <button
             onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
             className="w-10 h-10 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-xs font-black text-foreground hover:border-primary transition-colors"
@@ -86,7 +95,6 @@ export default function Navbar() {
             {language === 'ar' ? 'FR' : 'ع'}
           </button>
 
-          {/* 2. Theme Toggle Mobile */}
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
             className="w-10 h-10 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-foreground hover:border-primary transition-colors"
@@ -94,7 +102,6 @@ export default function Navbar() {
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
-          {/* 3. Menu Toggle (للزرار الكبير بس) */}
           <button
             onClick={toggleMenu}
             className="p-2 -mr-2 rounded-full hover:bg-card transition-colors text-foreground"
