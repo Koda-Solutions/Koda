@@ -261,7 +261,7 @@ export const metadata: Metadata = {
 
   // 4. شكل اللينك لما يتبعت شير
   openGraph: {
-    title: 'كودا | ابني إمبراطوريتك الرقمية',
+    title: 'كودا | من دكان.. لأمبراطورية',
     description: 'متجرك الخاص بملكية 100% وبدون عمولات. حلول دفع وشحن متكاملة.',
     url: 'https://kodasolutions.net',
     siteName: 'Koda Solutions',
