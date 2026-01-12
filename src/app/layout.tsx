@@ -285,7 +285,10 @@ export const metadata: Metadata = {
   },
 
   icons: {
-    icon: '/icon.png',
+    icon: [
+      { url: '/icon.png' },
+      { url: '/icon.png', sizes: '192x192', type: 'image/png' }, // دي مهمة لجوجل
+    ],
   },
 };
 
