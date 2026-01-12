@@ -41,7 +41,7 @@ export default function Pricing() {
           {/* Toggle Switch */}
           <div className="flex items-center justify-center gap-4 mb-8">
             <span
-              className={`text-sm font-bold ${
+              className={`text-base font-bold ${
                 billingCycle === 'monthly'
                   ? 'text-primary'
                   : 'text-foreground-muted'
@@ -65,7 +65,7 @@ export default function Pricing() {
               />
             </button>
             <span
-              className={`text-sm font-bold ${
+              className={`text-base font-bold ${
                 billingCycle === 'yearly'
                   ? 'text-primary'
                   : 'text-foreground-muted'
@@ -92,7 +92,7 @@ export default function Pricing() {
             >
               {plan.badge && (
                 <div
-                  className={`absolute -top-4 left-1/2 -translate-x-1/2 text-xs font-black px-4 py-1.5 rounded-full whitespace-nowrap shadow-lg ${
+                  className={`absolute -top-4 left-1/2 -translate-x-1/2 text-sm font-black px-5 py-2 rounded-full whitespace-nowrap shadow-lg ${
                     plan.highlighted
                       ? 'bg-gradient-to-r from-primary to-secondary text-white'
                       : 'bg-card border border-border-custom text-foreground-muted'
@@ -112,23 +112,23 @@ export default function Pricing() {
                 >
                   <plan.Icon size={32} strokeWidth={1.5} />
                 </div>
-                <h3 className="text-2xl font-black mb-2 text-foreground">
+                <h3 className="text-3xl font-black mb-3 text-foreground">
                   {plan.name}
                 </h3>
-                <p className="text-foreground-muted text-sm font-medium">
+                <p className="text-foreground-muted text-lg font-medium">
                   {plan.tagline}
                 </p>
               </div>
 
               <div className="mb-8 text-center">
-                <div className="text-xl font-black text-primary">
+                <div className="text-2xl font-black text-primary">
                   {plan.priceModel}
                 </div>
               </div>
 
               <ul className="space-y-4 mb-8 flex-grow">
                 {plan.features.map((feature: string, i: number) => (
-                  <li key={i} className="flex items-start gap-3 text-sm">
+                  <li key={i} className="flex items-start gap-3 text-lg">
                     <Check
                       size={18}
                       className={`shrink-0 mt-0.5 ${
@@ -149,14 +149,14 @@ export default function Pricing() {
               </ul>
 
               {plan.note && (
-                <p className="text-[10px] text-foreground-muted text-center mb-4 leading-tight opacity-70">
+                <p className="text-sm text-foreground-muted text-center mb-4 leading-tight opacity-70">
                   {plan.note}
                 </p>
               )}
 
               <button
                 onClick={() => handleWhatsApp(plan.whatsappMessage)}
-                className={`w-full py-4 rounded-2xl font-black transition-all duration-300 cursor-pointer text-base ${
+                className={`w-full py-4 rounded-2xl font-black transition-all duration-300 cursor-pointer text-lg ${
                   plan.buttonStyle === 'solid'
                     ? 'bg-gradient-to-r from-primary to-secondary text-white glow-orange hover:shadow-primary/40'
                     : 'bg-transparent text-foreground border-2 border-border-custom hover:border-primary/50 hover:bg-primary/5'

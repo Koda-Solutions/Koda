@@ -251,6 +251,26 @@ export const content = {
           answer:
             'طبعاً! تقدر تبدأ بـ "الصاروخ"، ولما مبيعاتك تزيد (وده اللي بنتمناه) تنقل لـ "باقة كودا" عشان توفر العمولات وتاخد مميزات أكتر. إحنا معاك في كل خطوة نمو.',
         },
+        {
+          question: 'إيه اللي يضمن لي إن بياناتي وعملائي في أمان؟',
+          answer:
+            'في كودا، الخصوصية خط أحمر. بيانات عملائك ملكك أنت بس، ومش بنشاركها مع أي طرف تالت. في باقة "الإمبراطور" كمان بنوفرلك قواعد بيانات معزولة تماماً لأقصى درجات الأمان.',
+        },
+        {
+          question: 'لو واجهت مشكلة تقنية، مين هيساعدني؟',
+          answer:
+            'فريق الدعم الفني بتاعنا مصري 100% وموجود معاك 24/7 على واتساب. مش هكلم "بوت" أو حد مش فاهم طبيعة سوقك، إحنا معاك لحظة بلحظة.',
+        },
+        {
+          question: 'هل المتجر بيدعم الدفع بالفيزا والتقسيط؟',
+          answer:
+            'أكيد! بنربطلك المتجر بأشهر بوابات الدفع في مصر (بيموب، فوري، تاب) وبنساعدك تفعل خدمات التقسيط (فاليو، سهولة) عشان تزود مبيعاتك.',
+        },
+        {
+          question: 'المتجر بياخد وقت قد إيه عشان يفتح؟',
+          answer:
+            'باقة "الصاروخ" بتستلم متجرك في 48 ساعة. "باقة كودا" و"الإمبراطور" بتاخد وقت أطول شوية (من أسبوع لـ 3 أسابيع) عشان بنهتم بكل تفصيلة في التصميم والبرمجة الخاصة.',
+        },
       ],
     },
     servicesEcosystem: {
@@ -574,6 +594,26 @@ export const content = {
           question: 'Hal a2dar a3mel Upgrade ba3dein?',
           answer:
             'Akeed! Tebda2 b-"Rocket", w lama el sales tzeed (InshaAllah) ten2el le "Koda" 3ashan twafar el commissions w takhod features aktar. E7na ma3ak step-by-step.',
+        },
+        {
+          question: 'Eh elly ydmanly en el data bta3ty fil aman?',
+          answer:
+            'Fe Koda, el privacy khat a7mar. Data 3omala2ak melkak enta bas, w msh bn-shareha ma3 ay 7ad. Fil "Empire" bn-provide isolated databases le a3la daragat el security.',
+        },
+        {
+          question: "Law wa3'et moshkela technical, meen hay-sa3edny?",
+          answer:
+            'Team el support bta3na Masry 100% w mawgood 24/7 3ala WhatsApp. Msh hat-kalem "Bot", e7na ma3ak la7za b-la7za.',
+        },
+        {
+          question: 'Hal el store by-support el Visa wel installments?',
+          answer:
+            'Akeed! Ben-rbot el store bi-ash-har payment gateways fe Masr (Paymob, Fawry, Tabby) w bn-sa3dak t-activate installments (ValU, Souhoola) 3ashan t-increase el sales.',
+        },
+        {
+          question: 'El store by-akhod wa2t ad eh 3ashan y-launch?',
+          answer:
+            'Baqet el "Rocket" btestalemha fe 48 hours. "Koda" w "Empire" by-akhdo wa2t aktar (mn week le 3 weeks) 3ashan bn-ehtam b-kol details el design wel custom code.',
         },
       ],
     },

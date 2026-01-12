@@ -120,7 +120,7 @@ export default function SmartTransparency() {
                 duration: 0.5,
                 ease: [0.23, 1, 0.32, 1],
               }}
-              className={`relative p-6 lg:p-8 rounded-[32px] transition-all duration-500 group w-[85vw] lg:w-full shrink-0 snap-center flex flex-col backdrop-blur-xl border ${
+              className={`relative p-5 lg:p-7 rounded-[32px] transition-all duration-500 group w-[85vw] lg:w-full shrink-0 snap-center flex flex-col backdrop-blur-xl border ${
                 path.highlighted
                   ? 'bg-card/90 border-primary shadow-[0_20px_60px_rgba(255,140,66,0.15)] z-20 ring-1 ring-primary/50'
                   : 'bg-card/40 border-border-custom hover:border-primary/40 hover:bg-card/60 shadow-lg'
@@ -130,7 +130,7 @@ export default function SmartTransparency() {
               <div
                 className={`absolute -top-4 ${
                   isRTL ? 'left-8' : 'right-8'
-                } px-5 py-2 rounded-2xl text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] shadow-2xl z-30 transform group-hover:scale-110 transition-transform ${
+                } px-5 py-2 rounded-2xl text-sm font-black uppercase tracking-[0.2em] shadow-2xl z-30 transform group-hover:scale-110 transition-transform ${
                   path.highlighted
                     ? 'bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_auto] animate-gradient text-white'
                     : 'bg-foreground text-background'
@@ -140,7 +140,7 @@ export default function SmartTransparency() {
               </div>
 
               {/* Header Section */}
-              <div className="flex items-center gap-4 lg:gap-5 mb-8">
+              <div className="flex items-center gap-4 lg:gap-5 mb-4">
                 <div
                   className={`w-12 h-12 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl flex items-center justify-center relative group-hover:rotate-6 transition-transform duration-500 ${
                     path.highlighted
@@ -156,32 +156,32 @@ export default function SmartTransparency() {
                   )}
                 </div>
                 <div>
-                  <p className="text-primary text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] mb-1 opacity-80">
+                  <p className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-1 opacity-80">
                     {path.subtitle}
                   </p>
-                  <h3 className="text-lg lg:text-xl font-black text-foreground tracking-tight">
+                  <h3 className="text-2xl lg:text-3xl font-black text-foreground tracking-tight">
                     {path.title}
                   </h3>
                 </div>
               </div>
 
               {/* Content Section */}
-              <div className="space-y-8 flex-grow">
+              <div className="space-y-4 flex-grow">
                 {/* Pros Section */}
                 <div className="relative">
-                  <h4 className="text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] text-foreground-muted mb-4 flex items-center gap-2.5">
+                  <h4 className="text-base font-black uppercase tracking-[0.2em] text-foreground-muted mb-2 flex items-center gap-2.5">
                     <div className="w-5 h-5 rounded-lg bg-green-500/10 flex items-center justify-center">
                       <CheckCircle2 className="w-3 h-3 text-green-500" />
                     </div>
                     {t.smartTransparency.prosLabel}
                   </h4>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2">
                     {path.pros.map((pro, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-3 text-foreground font-bold text-xs lg:text-sm leading-snug group/item"
+                        className="flex items-start gap-2 text-foreground font-bold text-base leading-snug group/item"
                       >
-                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 group-hover/item:scale-150 transition-transform" />
+                        <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 group-hover/item:scale-150 transition-transform" />
                         {pro}
                       </li>
                     ))}
@@ -191,19 +191,19 @@ export default function SmartTransparency() {
                 {/* Investment Style Section */}
                 <div className="relative">
                   <div className="absolute -left-4 -right-4 h-px bg-gradient-to-r from-transparent via-border-custom to-transparent opacity-50 mb-6" />
-                  <h4 className="text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] text-foreground-muted mb-4 mt-6 flex items-center gap-2.5">
+                  <h4 className="text-base font-black uppercase tracking-[0.2em] text-foreground-muted mb-2 mt-4 flex items-center gap-2.5">
                     <div className="w-5 h-5 rounded-lg bg-primary/10 flex items-center justify-center">
                       <Info className="w-3 h-3 text-primary" />
                     </div>
                     {t.smartTransparency.investmentLabel}
                   </h4>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2">
                     {path.cons.map((con, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-3 text-foreground-muted text-[10px] lg:text-xs font-medium leading-relaxed group/item"
+                        className="flex items-start gap-2 text-foreground-muted text-base font-medium leading-relaxed group/item"
                       >
-                        <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0 group-hover/item:scale-150 transition-transform" />
+                        <div className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0 group-hover/item:scale-150 transition-transform" />
                         {con}
                       </li>
                     ))}
@@ -212,10 +212,10 @@ export default function SmartTransparency() {
               </div>
 
               {/* Footer Section */}
-              <div className="pt-8 mt-8 border-t border-border-custom/50">
+              <div className="pt-4 mt-4 border-t border-border-custom/50">
                 <div className="bg-foreground/5 rounded-2xl p-4 mb-6 group-hover:bg-foreground/10 transition-colors">
-                  <p className="text-foreground text-[10px] lg:text-xs leading-relaxed italic">
-                    <span className="font-black text-primary not-italic block mb-1 uppercase tracking-wider text-[9px]">
+                  <p className="text-foreground text-sm font-medium leading-relaxed italic">
+                    <span className="font-black text-primary not-italic block mb-1 uppercase tracking-wider text-sm">
                       {isRTL ? 'لمن هذا؟ ' : 'Best for? '}
                     </span>
                     {path.bestFor}
@@ -231,7 +231,7 @@ export default function SmartTransparency() {
                       : 'bg-foreground text-background hover:bg-foreground/90'
                   }`}
                 >
-                  <span className="relative z-10 flex items-center gap-2 text-sm lg:text-base">
+                  <span className="relative z-10 flex items-center gap-2 text-base lg:text-lg">
                     {isRTL ? 'ابدأ بهذه الباقة' : 'Start with this'}
                     <ArrowRight
                       className={`w-4 h-4 lg:w-5 lg:h-5 transition-transform group-hover/btn:translate-x-1 ${
