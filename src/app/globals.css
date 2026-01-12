@@ -17,7 +17,7 @@
   /* ☀️ LIGHT MODE (Clean & Frosted) */
   --background: #f2f2f7;
   --foreground: #1c1c1e;
-  --foreground-muted: #8e8e93;
+  --foreground-muted: #636366; /* غمقتها سنة عشان تبقى أوضح في اللايت */
   --card: rgba(255, 255, 255, 0.65);
   --border-custom: rgba(0, 0, 0, 0.08);
   --glass-blur: blur(20px);
@@ -48,6 +48,16 @@ body {
     border-color: var(--border-custom);
   }
 
+  /* 🔹 تعديل العناوين: مسافة نسبية مريحة */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: 0.02em; /* ده هيفرق معاك جداً في الشكل */
+  }
+
   h1 {
     font-size: clamp(1.875rem, 6vw, 3.5rem);
     line-height: 1.1;
@@ -60,8 +70,19 @@ body {
     font-weight: 900;
   }
 
-  p {
-    @apply text-sm md:text-base lg:text-lg leading-relaxed text-foreground-muted;
+  /* 🔹 تعديل النصوص: مسافة هادية عشان القراءة */
+  p,
+  li,
+  button,
+  a {
+    @apply text-sm md:text-base lg:text-lg leading-relaxed;
+    letter-spacing: 0.015em;
+  }
+
+  /* خليت اللون الميوتد للـ p والـ li بس، عشان الزراير واللينكات تبقى واضحة */
+  p,
+  li {
+    @apply text-foreground-muted;
   }
 }
 
@@ -107,4 +128,24 @@ body {
   filter: blur(80px);
   z-index: -1;
   pointer-events: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  /* قيمة كبيرة عشان عينك تلمح الفرق فوراً */
+  letter-spacing: 1.5px !important;
+  /* فك السطور عن بعض عشان التداخل الرأسي */
+  line-height: 1.5 !important;
+}
+
+p,
+li,
+button,
+a {
+  letter-spacing: 0.5px !important;
+  line-height: 1.8 !important;
 }
