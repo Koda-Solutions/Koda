@@ -120,7 +120,7 @@ export default function SmartTransparency() {
                 duration: 0.5,
                 ease: [0.23, 1, 0.32, 1],
               }}
-              className={`relative p-5 lg:p-7 rounded-[32px] transition-all duration-500 group w-[85vw] lg:w-full shrink-0 snap-center flex flex-col backdrop-blur-xl border ${
+              className={`relative p-4 lg:p-6 rounded-[32px] transition-all duration-500 group w-[85vw] lg:w-full shrink-0 snap-center flex flex-col backdrop-blur-xl border ${
                 path.highlighted
                   ? 'bg-card/90 border-primary shadow-[0_20px_60px_rgba(255,140,66,0.15)] z-20 ring-1 ring-primary/50'
                   : 'bg-card/40 border-border-custom hover:border-primary/40 hover:bg-card/60 shadow-lg'
@@ -140,46 +140,46 @@ export default function SmartTransparency() {
               </div>
 
               {/* Header Section */}
-              <div className="flex items-center gap-4 lg:gap-5 mb-4">
+              <div className="flex items-center gap-4 lg:gap-5 mb-2">
                 <div
-                  className={`w-12 h-12 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl flex items-center justify-center relative group-hover:rotate-6 transition-transform duration-500 ${
+                  className={`w-10 h-10 lg:w-16 lg:h-16 rounded-xl lg:rounded-2xl flex items-center justify-center relative group-hover:rotate-6 transition-transform duration-500 ${
                     path.highlighted
                       ? 'bg-gradient-to-br from-primary to-secondary text-white shadow-[0_10px_30px_rgba(255,140,66,0.3)]'
                       : 'bg-secondary/10 text-secondary border border-secondary/20'
                   }`}
                 >
                   <div className="relative z-10 transform group-hover:scale-110 transition-transform">
-                    <path.icon className="w-6 h-6 lg:w-8 lg:h-8" />
+                    <path.icon className="w-5 h-5 lg:w-8 lg:h-8" />
                   </div>
                   {path.highlighted && (
                     <div className="absolute inset-0 bg-white/20 blur-xl rounded-full animate-pulse" />
                   )}
                 </div>
                 <div>
-                  <p className="text-primary text-sm font-bold uppercase tracking-[0.2em] mb-1 opacity-80">
+                  <p className="text-primary text-lg font-black uppercase tracking-[0.2em] mb-0.5 opacity-80">
                     {path.subtitle}
                   </p>
-                  <h3 className="text-2xl lg:text-3xl font-black text-foreground tracking-tight">
+                  <h3 className="text-4xl font-black text-foreground tracking-tight">
                     {path.title}
                   </h3>
                 </div>
               </div>
 
               {/* Content Section */}
-              <div className="space-y-4 flex-grow">
+              <div className="space-y-2 flex-grow">
                 {/* Pros Section */}
                 <div className="relative">
-                  <h4 className="text-base font-black uppercase tracking-[0.2em] text-foreground-muted mb-2 flex items-center gap-2.5">
+                  <h4 className="text-xl font-black uppercase tracking-[0.2em] text-foreground-muted mb-3 flex items-center gap-2.5">
                     <div className="w-5 h-5 rounded-lg bg-green-500/10 flex items-center justify-center">
                       <CheckCircle2 className="w-3 h-3 text-green-500" />
                     </div>
                     {t.smartTransparency.prosLabel}
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {path.pros.map((pro, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-2 text-foreground font-bold text-base leading-snug group/item"
+                        className="flex items-start gap-2 text-foreground font-bold text-xl leading-relaxed group/item"
                       >
                         <div className="mt-2.5 w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 group-hover/item:scale-150 transition-transform" />
                         {pro}
@@ -190,18 +190,18 @@ export default function SmartTransparency() {
 
                 {/* Investment Style Section */}
                 <div className="relative">
-                  <div className="absolute -left-4 -right-4 h-px bg-gradient-to-r from-transparent via-border-custom to-transparent opacity-50 mb-6" />
-                  <h4 className="text-base font-black uppercase tracking-[0.2em] text-foreground-muted mb-2 mt-4 flex items-center gap-2.5">
+                  <div className="absolute -left-4 -right-4 h-px bg-gradient-to-r from-transparent via-border-custom to-transparent opacity-50 mb-4" />
+                  <h4 className="text-xl font-black uppercase tracking-[0.2em] text-foreground-muted mb-3 mt-2 flex items-center gap-2.5">
                     <div className="w-5 h-5 rounded-lg bg-primary/10 flex items-center justify-center">
                       <Info className="w-3 h-3 text-primary" />
                     </div>
                     {t.smartTransparency.investmentLabel}
                   </h4>
-                  <ul className="space-y-2">
+                  <ul className="space-y-1.5">
                     {path.cons.map((con, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-2 text-foreground-muted text-base font-medium leading-relaxed group/item"
+                        className="flex items-start gap-2 text-foreground-muted text-xl font-bold leading-relaxed group/item"
                       >
                         <div className="mt-2 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0 group-hover/item:scale-150 transition-transform" />
                         {con}
@@ -214,8 +214,8 @@ export default function SmartTransparency() {
               {/* Footer Section */}
               <div className="pt-4 mt-4 border-t border-border-custom/50">
                 <div className="bg-foreground/5 rounded-2xl p-4 mb-6 group-hover:bg-foreground/10 transition-colors">
-                  <p className="text-foreground text-sm font-medium leading-relaxed italic">
-                    <span className="font-black text-primary not-italic block mb-1 uppercase tracking-wider text-sm">
+                  <p className="text-foreground text-lg font-bold leading-relaxed italic">
+                    <span className="font-black text-primary not-italic block mb-1 uppercase tracking-wider text-lg">
                       {isRTL ? 'لمن هذا؟ ' : 'Best for? '}
                     </span>
                     {path.bestFor}

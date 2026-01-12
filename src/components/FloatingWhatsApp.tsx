@@ -2,11 +2,14 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../context/LanguageContext';
 import { MessageCircle } from 'lucide-react';
 
 export default function FloatingWhatsApp() {
+  const { t } = useLanguage();
+
   const handleClick = () => {
-    const message = 'مرحباً كودا، أرغب في استشارة بخصوص مشروعي.';
+    const message = t.common.whatsappContactMessage;
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/201212228091?text=${encodedMessage}`, '_blank');
   };

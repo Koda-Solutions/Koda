@@ -1,7 +1,7 @@
 export const content = {
   ar: {
     common: {
-      whatsappContactMessage: 'السلام عليكم، عندي استفسار بخصوص خدمات كودا.',
+      whatsappContactMessage: 'يا كودا، عندي استفسار بخصوص خدماتكم.',
     },
     nav: {
       logo: 'كودا',
@@ -16,7 +16,7 @@ export const content = {
       ctaDesktop: 'مش عارف أنهي طريق يوفرلك أكتر؟ تعالي نحسبها سوا',
       ctaMobile: 'تعالي نحسبها سوا ونشوف الأوفر لك',
       whatsappMessage:
-        'مرحباً كودا، مش عارف أنهي طريق يوفرلي أكتر (برمجة خاصة ولا منصات جاهزة)؟ تعالي نحسبها سوا.',
+        'يا كودا، مش عارف أبدأ إزاي (برمجة خاصة ولا منصات جاهزة)؟ تعالي نحسبها سوا.',
     },
     pricing: {
       title: 'اختار خطة نموك',
@@ -38,8 +38,7 @@ export const content = {
           note: 'تطبق عمولات بيع خاصة بمنصات التشغيل',
           buttonText: 'ابدأ الصاروخ',
           buttonStyle: 'outline',
-          whatsappMessage:
-            'مرحباً كودا، أنا مهتم بباقة الصاروخ. محتاج تفاصيل أكتر.',
+          whatsappMessage: 'يا كودا، مهتم بباقة الصاروخ وعايز أنطلق.',
           highlighted: false,
         },
         {
@@ -58,8 +57,7 @@ export const content = {
           note: null,
           buttonText: 'اختار التميز',
           buttonStyle: 'solid',
-          whatsappMessage:
-            'مرحباً كودا، أنا مهتم بباقة كودا المميزة. محتاج أعرف العرض.',
+          whatsappMessage: 'يا كودا، مهتم بباقة كودا وعايز أعرف العرض.',
           highlighted: true,
         },
         {
@@ -78,7 +76,7 @@ export const content = {
           buttonText: 'ابني إمبراطوريتك',
           buttonStyle: 'outline',
           whatsappMessage:
-            'مرحباً كودا، أنا مهتم بباقة الإمبراطور والحل المتكامل. محتاج عرض سعر.',
+            'يا كودا، مهتم بباقة الإمبراطور وعايز أبني إمبراطوريتي.',
           highlighted: false,
         },
       ],
@@ -107,8 +105,7 @@ export const content = {
             'بيئة عمل مدارة بالكامل (راحة بال)',
           ],
           bestFor: 'مثالي لتجربة السوق واختبار المنتجات بأقل مخاطرة.',
-          whatsappMessage:
-            'مرحباً كودا، مهتم بباقة الصاروخ وعايز أبدأ بأقل تكلفة.',
+          whatsappMessage: 'يا كودا، مهتم بباقة الصاروخ وعايز أبدأ بأقل تكلفة.',
         },
         {
           title: 'باقة كودا: أفضل قيمة مقابل سعر',
@@ -128,8 +125,7 @@ export const content = {
           ],
           bestFor:
             'للبراندات الجامدة التي تبحث عن التميز والاحترافية من أول يوم.',
-          whatsappMessage:
-            'مرحباً كودا، باقة كودا عجباني وعايز أعرف تفاصيل العرض.',
+          whatsappMessage: 'يا كودا، باقة كودا عجباني وعايز أعرف تفاصيل العرض.',
         },
         {
           title: 'باقة الإمبراطور: ملكية كاملة',
@@ -150,7 +146,7 @@ export const content = {
           bestFor:
             'للشركات الكبرى التي تبحث عن الاستقلال التام، الأمان، وتعظيم قيمة الشركة.',
           whatsappMessage:
-            'مرحباً كودا، بفكر في باقة الإمبراطور وعايز أمتلك السيستم بالكامل.',
+            'يا كودا، بفكر في باقة الإمبراطور وعايز أمتلك السيستم بالكامل.',
         },
       ],
       ctaTitle: 'مش عارف أنهي طريق يوفرلك أكتر؟',
@@ -159,7 +155,7 @@ export const content = {
         'نحن نكشف لك ما يخفيه الآخرون عن الرسوم والعمولات. سنقوم بتحليل حجم مبيعاتك المتوقع لنخبرك أيهما سيعطيك أعلى صافي ربح.',
       ctaButton: 'احسب أرباحك مع خبير',
       whatsappMessage:
-        'مرحباً كودا، أريد المساعدة في حساب التكاليف والمقارنة بين البرمجة الخاصة والمنصات الجاهزة لمشروعي.',
+        'يا كودا، عايز مساعدة في حساب التكاليف والمقارنة بين البرمجة الخاصة والمنصات الجاهزة.',
     },
     painPoints: {
       title: 'التجارة كبرت..',
@@ -223,7 +219,7 @@ export const content = {
       ],
       cta: 'ابدأ التخطيط لمشروعك الآن',
       whatsappMessage:
-        'مرحباً كودا، أحتاج لمساعدة في اختيار أفضل الحلول والشركاء لمشروعي الجديد.',
+        'يا كودا، محتاج مساعدة في اختيار أفضل الحلول والشركاء لمشروعي الجديد.',
     },
     faq: {
       title: 'أسئلة',
@@ -244,17 +240,12 @@ export const content = {
         {
           question: 'الدومين (اسم الموقع) والاستضافة.. عليا ولا عليكم؟',
           answer:
-            'ماتشلش همهم! في باقة "الصاروخ" و "باقة كودا"، إحنا بنقدم لك الدومين والاستضافة "مجاناً" كجزء من العرض عشان تركز في البيع بس.',
-        },
-        {
-          question: 'هل أقدر أرقي (Upgrade) من باقة لباقة بعدين؟',
-          answer:
-            'طبعاً! تقدر تبدأ بـ "الصاروخ"، ولما مبيعاتك تزيد (وده اللي بنتمناه) تنقل لـ "باقة كودا" عشان توفر العمولات وتاخد مميزات أكتر. إحنا معاك في كل خطوة نمو.',
+            'ماتشلش همهم! عاملينلك عرض أول سنه الدومين هيبقا مجاناً تماماً عشان تركز في البيزنيس بتاعك ومبيعاتك.',
         },
         {
           question: 'إيه اللي يضمن لي إن بياناتي وعملائي في أمان؟',
           answer:
-            'في كودا، الخصوصية خط أحمر. بيانات عملائك ملكك أنت بس، ومش بنشاركها مع أي طرف تالت. في باقة "الإمبراطور" كمان بنوفرلك قواعد بيانات معزولة تماماً لأقصى درجات الأمان.',
+            'في كودا، الخصوصية خط أحمر. بيانات عملائك ملكك أنت بس، ومش بنشاركها مع أي طرف تالت وبتكون متشفرة كلياً بأحدث التكنولوجيا اللي في السوق العالمي.',
         },
         {
           question: 'لو واجهت مشكلة تقنية، مين هيساعدني؟',
@@ -262,14 +253,14 @@ export const content = {
             'فريق الدعم الفني بتاعنا مصري 100% وموجود معاك 24/7 على واتساب. مش هكلم "بوت" أو حد مش فاهم طبيعة سوقك، إحنا معاك لحظة بلحظة.',
         },
         {
-          question: 'هل المتجر بيدعم الدفع بالفيزا والتقسيط؟',
+          question: 'هل المتجر بيدعم الدفع بالفيزا والتقسيط وفدافون كاش وفوري؟',
           answer:
             'أكيد! بنربطلك المتجر بأشهر بوابات الدفع في مصر (بيموب، فوري، تاب) وبنساعدك تفعل خدمات التقسيط (فاليو، سهولة) عشان تزود مبيعاتك.',
         },
         {
-          question: 'المتجر بياخد وقت قد إيه عشان يفتح؟',
+          question: 'المتجر بياخد وقت قد إيه عشان استلمه؟',
           answer:
-            'باقة "الصاروخ" بتستلم متجرك في 48 ساعة. "باقة كودا" و"الإمبراطور" بتاخد وقت أطول شوية (من أسبوع لـ 3 أسابيع) عشان بنهتم بكل تفصيلة في التصميم والبرمجة الخاصة.',
+            'باقة "الصاروخ" و "كودا" بتستلم متجرك (من 7 ل 10 أيام) عمل. أما باقة "الإمبراطور" بتاخد وقت أطول شوية (من 3 أسابيع لشهر) عشان بنهتم بكل تفصيلة في التصميم والبرمجة الخاصة.',
         },
       ],
     },
@@ -305,7 +296,7 @@ export const content = {
         'اختيار بوابة الدفع الخاطئة قد يكلفك آلاف الجنيهات شهرياً في العمولات الضائعة. نحن نوجهك للأفضل بناءً على أرقامك الحقيقية.',
       cta: 'ناقش خياراتك مع خبير مالي وتقني',
       whatsappMessage:
-        'مرحباً كودا، أحتاج لاستشارة بخصوص اختيار أفضل بوابات الدفع وشركات الشحن لمشروعي لتقليل التكاليف.',
+        'يا كودا، محتاج استشارة بخصوص بوابات الدفع وشركات الشحن عشان أوفر تكاليف.',
     },
     integrations: {
       title: 'متكامل مع خدماتك المفضلة',
@@ -314,8 +305,7 @@ export const content = {
       title: 'مش عارف أنهي طريق يوفرلك أكتر؟',
       button: 'تعالي نحسبها سوا الآن',
       desc: 'نحن نكشف لك الأرقام الحقيقية والعمولات الخفية لنضمن لك أعلى صافي ربح.',
-      whatsappMessage:
-        'مرحباً كودا، أرغب في المساعدة لحساب التكاليف والمقارنة بين الحلول المختلفة لمشروعي.',
+      whatsappMessage: 'يا كودا، عايز أحسب التكاليف وأقارن بين الحلول لمشروعي.',
     },
     footer: {
       tagline: 'من دكان... لإمبراطورية',
@@ -327,7 +317,7 @@ export const content = {
       next: 'التالي',
       finish: 'شوف الحل المناسب ليك واتساب',
       whatsappMessage: (answers: string[]) =>
-        `مرحباً كودا، أنا جاوبت على الأسئلة: ببيع في ${answers[0]}، حجمي ${answers[1]}، ومشكلتي ${answers[2]}. محتاج الحل المناسب.`,
+        `يا كودا، أنا جاوبت على الأسئلة: ببيع في ${answers[0]}، حجمي ${answers[1]}، ومشكلتي ${answers[2]}. محتاج الحل المناسب.`,
       questions: [
         {
           title: 'بتبيع فين حالياً؟',
@@ -346,7 +336,7 @@ export const content = {
   },
   en: {
     common: {
-      whatsappContactMessage: 'Salam, I want to ask about Koda services.',
+      whatsappContactMessage: 'Ya Koda, 3andy estefsar b-khosos khadamatkom.',
     },
     nav: {
       logo: 'Koda',
@@ -361,7 +351,7 @@ export const content = {
       ctaDesktop: 'Msh 3aref anhy path a7san? Ta3ala ne7sebha.',
       ctaMobile: 'Yalla Ne7sebha Sawa',
       whatsappMessage:
-        'Hello Koda, msh met2aked ekhtar anhy (Custom wla Ready-made), momken ne7sebha sawa?',
+        'Ya Koda, msh 3aref abda2 ezay (Custom wla Ready-made)? Ta3ala ne7sebha sawa.',
     },
     pricing: {
       title: 'Choose Your Growth Plan',
@@ -383,7 +373,7 @@ export const content = {
           note: 'External platform fees apply',
           buttonText: 'Start Rocket',
           buttonStyle: 'outline',
-          whatsappMessage: 'Hello Koda, I am interested in the Rocket package.',
+          whatsappMessage: 'Ya Koda, me7tag el Rocket package w 3ayez antaleq.',
           highlighted: false,
         },
         {
@@ -402,7 +392,8 @@ export const content = {
           note: null,
           buttonText: 'Choose Excellence',
           buttonStyle: 'solid',
-          whatsappMessage: 'Hello Koda, I am interested in the Koda package.',
+          whatsappMessage:
+            'Ya Koda, me7tag el Koda package w 3ayez a3raf el 3ard.',
           highlighted: true,
         },
         {
@@ -421,7 +412,7 @@ export const content = {
           buttonText: 'Build Your Empire',
           buttonStyle: 'outline',
           whatsappMessage:
-            'Hello Koda, I am interested in the Emperor package.',
+            'Ya Koda, me7tag el Emperor package w 3ayez abny el empire bta3ty.',
           highlighted: false,
         },
       ],
@@ -452,7 +443,7 @@ export const content = {
           bestFor:
             'Ideal law 3ayez t-test el market w t-test products b-a2al risk.',
           whatsappMessage:
-            'Hello Koda, me7tag el Rocket package w 3ayez abda2 b-a2al cost.',
+            'Ya Koda, me7tag el Rocket package w 3ayez abda2 b-a2al cost.',
         },
         {
           title: 'Koda: Best Value for Money',
@@ -473,7 +464,7 @@ export const content = {
           bestFor:
             'Lil brands el gada elly btedawar 3al tamayoz wel professionalism mn awel yom.',
           whatsappMessage:
-            'Hello Koda, el Koda package 3agbany w 3ayez a3raf el details.',
+            'Ya Koda, el Koda package 3agbany w 3ayez a3raf el details.',
         },
         {
           title: 'Empire: Full Ownership',
@@ -494,7 +485,7 @@ export const content = {
           bestFor:
             'Lil sharekat el kobra elly btedawar 3al independence, el aman, w ta3zeem qeemat el shareka.',
           whatsappMessage:
-            'Hello Koda, bfakar fil Empire package w 3ayez amtelek el system bel kamel.',
+            'Ya Koda, bfakar fil Emperor package w 3ayez amtelek el system bel kamel.',
         },
       ],
       ctaTitle: 'Lessa msh 3aref anhy awfarlak?',
@@ -503,7 +494,7 @@ export const content = {
         'E7na han2olak el arqam el 7a2e2eya wel hidden fees illi gherna mabiyo2lhash. Han-analyze el sales volume bta3ak w n2olak anhy tare2 haykasabak aktar.',
       ctaButton: 'Calculate Profits with an Expert',
       whatsappMessage:
-        'Hello Koda, 3ayez a7seb el costs w a3mel moqarna ben el Custom wel Ready-made.',
+        'Ya Koda, 3ayez mosa3da fe 7esab el costs wel moqarna ben el Custom wel Ready-made.',
     },
     painPoints: {
       title: 'Scaling Up...',
@@ -567,7 +558,7 @@ export const content = {
       ],
       cta: 'Start Planning Your Project',
       whatsappMessage:
-        'Hello Koda, me7tag mosa3da fe ekhtyar afdal el 7lol wel partners.',
+        'Ya Koda, me7tag mosa3da fe ekhtyar afdal el 7lol wel partners le mashrou3y.',
     },
     faq: {
       title: 'Questions',
@@ -583,37 +574,33 @@ export const content = {
         {
           question: 'Hal btakhoodo Commission 3ala el sales?',
           answer:
-            'Fil "Koda" w "Empire": 0% Commission. Arba7ak kolaha leek. Fil "Rocket", bykon fe "Success Fees" ramzya gidan moqabel tashgheel el khedma.',
+            'Fe baqat "Koda" w "Emperor": 3omolatna 0%. Kol geneh b-tbee3o byed-khol gebak bel kamel. Ama fe "Rocket", bykon fe resoum nagah ramzya (Pay as you grow) lil platform elly 3aleha el store.',
         },
         {
-          question: 'El Domain wel Hosting.. 3aleya wala 3aleiko?',
+          question: 'El Domain wel Hosting.. 3alaya wala 3alekom?',
           answer:
-            'Matshlsh ham! Fe "Rocket" w "Koda", e7na ben-cover el Domain wel Hosting "Free" 3ashan terakez fil sales bas.',
+            'Mat-shel-sh ham-hom! 3amlen-lak 3ard awel sana el domain hayb2a majanan tamaman 3ashan trakez fil business bta3ak w mabe3atak.',
         },
         {
-          question: 'Hal a2dar a3mel Upgrade ba3dein?',
+          question: 'Eh elly yedman-ly en bayanaty w 3omala2y fe aman?',
           answer:
-            'Akeed! Tebda2 b-"Rocket", w lama el sales tzeed (InshaAllah) ten2el le "Koda" 3ashan twafar el commissions w takhod features aktar. E7na ma3ak step-by-step.',
+            'Fe Koda, el khososya khat a7mar. Bayanat 3omala2ak melkak enta bas, w msh bn-share-ha ma3 ay taraf talt w b-tkon encrypted b-a7das el tech elly fil so2 el 3alamy.',
         },
         {
-          question: 'Eh elly ydmanly en el data bta3ty fil aman?',
-          answer:
-            'Fe Koda, el privacy khat a7mar. Data 3omala2ak melkak enta bas, w msh bn-shareha ma3 ay 7ad. Fil "Empire" bn-provide isolated databases le a3la daragat el security.',
-        },
-        {
-          question: "Law wa3'et moshkela technical, meen hay-sa3edny?",
+          question: 'Law wa2et moshkela technical, meen hay-sa3edny?',
           answer:
             'Team el support bta3na Masry 100% w mawgood 24/7 3ala WhatsApp. Msh hat-kalem "Bot", e7na ma3ak la7za b-la7za.',
         },
         {
-          question: 'Hal el store by-support el Visa wel installments?',
+          question:
+            'Hal el store by-support el Visa wel installments w Vodafone Cash w Fawry?',
           answer:
             'Akeed! Ben-rbot el store bi-ash-har payment gateways fe Masr (Paymob, Fawry, Tabby) w bn-sa3dak t-activate installments (ValU, Souhoola) 3ashan t-increase el sales.',
         },
         {
           question: 'El store by-akhod wa2t ad eh 3ashan y-launch?',
           answer:
-            'Baqet el "Rocket" btestalemha fe 48 hours. "Koda" w "Empire" by-akhdo wa2t aktar (mn week le 3 weeks) 3ashan bn-ehtam b-kol details el design wel custom code.',
+            'Baqet el "Rocket" w "Koda" btestalemha fe (7 le 10 ayam) 3amal. Ama el "Emperor" b-takhod wa2t aktar shwaya (mn 3 weeks le shahr) 3ashan bn-ehtam b-kol details el design wel custom code.',
         },
       ],
     },
@@ -649,7 +636,7 @@ export const content = {
         'Ekhtyar Payment Gateway ghalat momken yekhsarak floos kteer fil commissions. E7na han-guide you lil sa7.',
       cta: 'Discuss Options with an Expert',
       whatsappMessage:
-        'Hello Koda, 3ayez a3raf eh afdal Payment & Shipping integrations leya.',
+        'Ya Koda, me7tag esteshara b-khosos payment gateways w shipping 3ashan awafar costs.',
     },
     integrations: {
       title: 'Integrated with Your Favorites',
@@ -658,7 +645,8 @@ export const content = {
       title: 'Lessa msh 3aref anhy awfarlak?',
       button: 'Yalla Ne7sebha Sawa',
       desc: 'E7na hankshflak el arqam el 7a2e2eya wel hidden costs 3ashan t-maximize el profit.',
-      whatsappMessage: 'Hello Koda, 3ayez a7seb el costs w a3mel moqarna.',
+      whatsappMessage:
+        'Ya Koda, 3ayez a7seb el costs w a3mel moqarna le mashrou3y.',
     },
     footer: {
       tagline: 'Mn Dokan... Li Empire',
@@ -670,7 +658,7 @@ export const content = {
       next: 'El Jay',
       finish: 'Shoof el 7al el monaseb (WhatsApp)',
       whatsappMessage: (answers: string[]) =>
-        `Hello Koda, I answered the quiz: Selling on ${answers[0]}, Volume ${answers[1]}, Challenge ${answers[2]}.`,
+        `Ya Koda, I answered the quiz: Selling on ${answers[0]}, Volume ${answers[1]}, Challenge ${answers[2]}.`,
       questions: [
         {
           title: 'Bet-sell feen currently?',

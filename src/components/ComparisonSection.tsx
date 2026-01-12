@@ -179,7 +179,7 @@ export default function ComparisonSection() {
                     {path.pros.map((pro, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-3 text-foreground font-bold text-xs lg:text-sm leading-snug group/item"
+                        className="flex items-start gap-3 text-foreground font-bold text-base leading-relaxed group/item"
                       >
                         <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 group-hover/item:scale-150 transition-transform" />
                         {pro}
@@ -201,7 +201,7 @@ export default function ComparisonSection() {
                     {path.cons.map((con, i) => (
                       <li
                         key={i}
-                        className="flex items-start gap-3 text-foreground-muted text-[10px] lg:text-xs font-medium leading-relaxed group/item"
+                        className="flex items-start gap-3 text-foreground-muted text-base font-medium leading-relaxed group/item"
                       >
                         <div className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary/40 shrink-0 group-hover/item:scale-150 transition-transform" />
                         {con}
