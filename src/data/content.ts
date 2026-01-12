@@ -657,4 +657,4 @@ export const content = {
   },
 } as const;
 
-export type ContentType = typeof content.ar;
+export type ContentType = typeof content.ar | typeof content.en;
