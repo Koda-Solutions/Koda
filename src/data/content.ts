@@ -227,29 +227,29 @@ export const content = {
     },
     faq: {
       title: 'أسئلة',
-      titleAccent: 'بتدور في بالك',
+      titleAccent: 'تساعدك في القرار',
       subtitle:
-        'عارفين إن عندك استفسارات كتير قبل ما تبدأ، جمعنالك أهمها هنا عشان تاخد القرار وأنت مطمن.',
+        'إجابات شفافة وصريحة لأكثر الأسئلة اللي بتوصلنا، عشان تاخد قرارك وأنت مطمن 100%.',
       items: [
         {
-          question: 'إيه الفرق بين "باقة الصاروخ" و"باقة الإمبراطور"؟',
+          question: 'إزاي أختار الباقة المناسبة لشغلي؟',
           answer:
-            'باقة الصاروخ (منصات جاهزة) مناسبة لو عايز تبدأ بسرعة وبأقل تكلفة في الأول، بس بتدفع اشتراكات شهرية وعمولات للمنصة. أما باقة الإمبراطور (برمجة خاصة) بتدفع مرة واحدة وبتمتلك الكود والبيانات 100% بدون أي عمولات شريك.',
+            'بسيطة! لو لسه بتجرب السوق وعايز أقل تكلفة كاش، ابدأ بـ "الصاروخ". لو عندك براند وعايز شكل احترافي وأرباحك كاملة ليك (بدون عمولات)، "باقة كودا" هي الأنسب. أما لو شركة كبيرة وعايز تمتلك السورس كود والداتا بالكامل، "الإمبراطور" هو استثمارك الصح.',
         },
         {
-          question: 'هل الاستشارة بفلوس؟',
+          question: 'هل بتاخدوا نسبة أو عمولة على مبيعاتي؟',
           answer:
-            'لأ، جلسة الاستشارة "مجانية تماماً". بنقعد معاك، نفهم ميزانيتك وحجم شغلك، وبناءً عليه بنرشحلك الحل اللي يوفرلك فلوس ويحققلك أعلى عائد، سواء كان شوبيفاي، ووردبريس، أو برمجة خاصة.',
+            'في باقات "كودا" و "الإمبراطور": عمولتنا 0%. كل جنيه بتبيعه بيدخل جيبك بالكامل. أما في "باقة الصاروخ"، بيكون فيه رسوم على المبيعات من المنصة اللي عليها المتجر زي (شوبيفاي، ايزي اوردرز).',
         },
         {
-          question: 'بتاخدوا عمولة كام على المبيعات؟',
+          question: 'الدومين (اسم الموقع) والاستضافة.. عليا ولا عليكم؟',
           answer:
-            'في البرمجة الخاصة (باقة الإمبراطور) عمولتنا 0%، كل جنيه بتكسبه بيدخل جيبك. في المنصات الجاهزة (زي شوبيفاي)، المنصة نفسها هي اللي بتاخد العمولة، وإحنا دورنا نختارلك البوابة الأقل في التكلفة عشان نوفر عليك.',
+            'ماتشلش همهم! في باقة "الصاروخ" و "باقة كودا"، إحنا بنقدم لك الدومين والاستضافة "مجاناً" كجزء من العرض عشان تركز في البيع بس.',
         },
         {
-          question: 'هعرف أربط الموقع بشركات الشحن والدفع؟',
+          question: 'هل أقدر أرقي (Upgrade) من باقة لباقة بعدين؟',
           answer:
-            'طبعاً! إحنا بنسلمك السيستم مربوط جاهز بشركات زي (Bosta, Mylerz, Aramex) وبوابات دفع زي (Fawry, Paymob, Instapay). ومش بس كده، بنعرفك أنسب تعاقد يوفر عليك مصاريف.',
+            'طبعاً! تقدر تبدأ بـ "الصاروخ"، ولما مبيعاتك تزيد (وده اللي بنتمناه) تنقل لـ "باقة كودا" عشان توفر العمولات وتاخد مميزات أكتر. إحنا معاك في كل خطوة نمو.',
         },
       ],
     },
@@ -551,27 +551,29 @@ export const content = {
     },
     faq: {
       title: 'Questions',
-      titleAccent: 'Betdor fe balak',
-      subtitle: '3arfeen enak 3andak as2ela kteer, gama3nalak ahamhom hena.',
+      titleAccent: 'To Help You Decide',
+      subtitle:
+        'Agweba shafafa w sare7a 3ashan takhod el decision w enta metamen 100%.',
       items: [
         {
-          question: 'Eih el far2 ben "Rocket" w "Empire"?',
+          question: 'Ezay akhtar el package el monasba leya?',
           answer:
-            'Rocket (Ready-made) 3ashan tebda2 besor3a w cost olayel, bas fiha ishtrakat shahrya. Empire (Custom) btadfa3 mara wa7da w el code byb2a melkak 100%.',
+            'Simple! Law lessa bet-test el market, abda2 b-"Rocket". Law 3andak brand w 3ayez 0% Commission w UI professional, "Koda Package" hya el a7san. Law company kebeera w 3ayez tamleek 100%, "Empire" hya el investment el sa7.',
         },
         {
-          question: 'Hal el Consultation bi floos?',
-          answer: 'La2, el session "Free 100%" 3ashan ne3raf eh el anasb leek.',
+          question: 'Hal btakhoodo Commission 3ala el sales?',
+          answer:
+            'Fil "Koda" w "Empire": 0% Commission. Arba7ak kolaha leek. Fil "Rocket", bykon fe "Success Fees" ramzya gidan moqabel tashgheel el khedma.',
         },
         {
-          question: 'Btakhdo Commission kam?',
+          question: 'El Domain wel Hosting.. 3aleya wala 3aleiko?',
           answer:
-            'Fil Custom (Empire) 0%, kol geneh leek. Fil Ready-made, el platform hya illi btakhood, msh e7na.',
+            'Matshlsh ham! Fe "Rocket" w "Koda", e7na ben-cover el Domain wel Hosting "Free" 3ashan terakez fil sales bas.',
         },
         {
-          question: 'Hatrboto el Shipping wel Payment?',
+          question: 'Hal a2dar a3mel Upgrade ba3dein?',
           answer:
-            'Akeed! Bensalmek el system marbot gahez bi Bosta, Fawry, Paymob, etc.',
+            'Akeed! Tebda2 b-"Rocket", w lama el sales tzeed (InshaAllah) ten2el le "Koda" 3ashan twafar el commissions w takhod features aktar. E7na ma3ak step-by-step.',
         },
       ],
     },
