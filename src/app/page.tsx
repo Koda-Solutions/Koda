@@ -1,5 +1,6 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import ComingSoonFeatures from '@/components/ComingSoonFeatures';
 import Integrations from '@/components/Integrations';
 import PainPoints from '@/components/PainPoints';
 import Solution from '@/components/Solution';
@@ -16,6 +17,7 @@ export default function Home() {
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <ComingSoonFeatures />
       <Integrations />
       <PainPoints />
       <Solution />

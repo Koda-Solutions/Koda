@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import { Cairo, Inter } from 'next/font/google';
 import './globals.css';
 import { Providers } from '@/components/Providers';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp'; // تأكد ان المسار صح
 
-// تظبيط الفونت العربي (Cairo)
+// تظبيط الفونت العربي (Cairo) والانجليزي (Inter)
 const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -15,262 +16,56 @@ export const metadata: Metadata = {
     google: 'nVxOxzZbIM5NOMJe2Qt7z0PyVF1_3mSXENCni1ZS1UE',
   },
 
-  // 2. إعدادات العنوان والوصف
+  // 2. إعدادات العنوان والوصف (مأخوذة من الهوية القوية للمشروع)
   title: {
-    default: 'كودا | من دكان.. لأمبراطورية',
+    default: 'كودا | من دكان.. لإمبراطورية',
     template: '%s | كودا',
   },
   description:
     'حول دكانك لإمبراطورية رقمية بملكية كاملة و0% عمولة. نصمم لك متجرك على Shopify، Easy Order، أو برمجة خاصة (Custom)، مع ربط ذكي وفوري بكافة بوابات الدفع وشركات الشحن في مصر.',
 
-  // 3. الكلمات المفتاحية (عربي وإنجليزي)
+  // 3. الكلمات المفتاحية (SEO Keywords Bomb)
   keywords: [
-    // --- Brand Identity ---
     'كودا',
     'Koda',
     'Koda Solutions',
-    'Koda Agency',
-    'Koda Tech',
-    'Koda Software House',
-    'شركة كودا',
-    'كودا للبرمجيات',
-    'موقع كودا',
-    'Kodasolutions.net',
-    'Koda Egypt',
-
-    // --- General Services (Arabic) ---
-    'تصميم مواقع',
-    'انشاء متجر الكتروني',
-    'برمجة مواقع',
-    'تصميم متجر الكتروني',
-    'تطوير مواقع الويب',
-    'شركات برمجة في مصر',
-    'افضل شركة تصميم مواقع',
-    'عمل موقع الكتروني',
-    'انشاء موقع بيع اونلاين',
-    'تصميم موقع شركة',
-    'تصميم ويب سايت',
-    'سعر تصميم موقع الكتروني',
-    'تكلفة انشاء متجر الكتروني',
-    'عرض سعر تصميم موقع',
-    'باقات تصميم المواقع',
-    'شركات تصميم مواقع في القاهرة',
-    'تصميم تطبيقات ويب',
-    'تطوير تطبيقات الويب',
-    'برمجة تطبيقات',
-
-    // --- General Services (English) ---
-    'Web Design Egypt',
-    'Web Development Cairo',
-    'Software House Egypt',
-    'E-commerce Development',
-    'Create Online Store',
-    'Build Website',
-    'Website Design Agency',
-    'Custom Web Application',
-    'Web Development Company',
-    'Best Software House in Cairo',
-    'Website Builders Egypt',
-    'Online Shop Creation',
-    'E-commerce Solutions',
-    'Digital Transformation Agency',
-
-    // --- Custom Development & Tech ---
+    'تصميم متاجر الكترونية',
     'برمجة خاصة',
-    'Custom Development',
-    'Custom Programming',
-    'Full Stack Development',
-    'Next.js Developer',
-    'React.js Agency',
-    'Node.js Backend',
-    'Laravel Developer',
-    'MERN Stack Egypt',
-    'SaaS Development',
-    'Dashboard Development',
-    'CRM System',
-    'ERP System',
-    'لوحة تحكم خاصة',
-    'سيستم إدارة مخازن',
-    'برمجة سيستم خاص',
-    'تطوير واجهات المستخدم',
-    'UI/UX Design',
-    'تجربة المستخدم',
-
-    // --- Shopify & Platforms ---
-    'Shopify',
     'Shopify Egypt',
-    'Shopify Expert',
-    'Shopify Developer',
-    'شوبيفاي',
-    'انشاء متجر شوبيفاي',
-    'تصميم متجر شوبيفاي',
-    'تعريب قالب شوبيفاي',
-    'بديل شوبيفاي',
-    'Shopify Alternative',
-    'WooCommerce',
-    'ووكومرس',
-    'WordPress',
-    'ووردبريس',
-    'متجر ووردبريس',
-    'WordPress Agency Egypt',
-    'EasyOrders',
-    'Zid',
-    'Salla',
-    'ExpandCart',
-    'زد',
-    'سلة',
-    'اكسباند كارت',
-    'منصات تجارة الكترونية',
-    'افضل منصة متجر الكتروني',
-
-    // --- Payments & Shipping Integration ---
-    'Payment Integration',
-    'Payment Gateway Egypt',
-    'Fawry Integration',
-    'Paymob Integration',
-    'Instapay Integration',
-    'Kashier',
-    'Accept Payments Online',
-    'ربط بوابات الدفع',
-    'الدفع الالكتروني في مصر',
-    'ربط فوري',
-    'ربط بايموب',
-    'الدفع عند الاستلام',
-    'COD Egypt',
-    'Cash on Delivery',
-    'Shipping Integration',
-    'Bosta Integration',
-    'Mylerz Integration',
-    'Aramex Integration',
-    'ربط شركات الشحن',
-    'بوسطة',
-    'ارامكس',
-    'شحن وتوصيل',
-    'تتبع الشحنات',
-
-    // --- Specific Long-Tail & Intent (Arabic) ---
+    'شوبيفاي مصر',
+    'انشاء متجر الكتروني',
+    'Software House Egypt',
+    'شركات برمجة في مصر',
+    'Web Development Cairo',
+    'Next.js Developer',
+    'SaaS Development',
+    'E-commerce Solutions',
+    'بوابات الدفع مصر',
+    'شركات الشحن مصر',
+    'Digital Transformation',
+    'Full Stack Development',
+    'React.js Agency',
     'ازاي اعمل موقع الكتروني',
-    'خطوات انشاء متجر الكتروني',
-    'الربح من التجارة الالكترونية',
-    'تحويل المحل لمتجر الكتروني',
-    'بيع اونلاين في مصر',
-    'تسويق الكتروني',
-    'ادارة المتاجر الالكترونية',
-    'متجر الكتروني متكامل',
-    'متجر متعدد التجار',
-    'متجر دروبشيبينغ',
-    'Dropshipping Egypt',
-    'Multi-vendor Marketplace',
-    'نظام افلييت',
-    'Affiliate System',
-    'برمجة موقع عقارات',
-    'برمجة موقع مطعم',
-    'منيو الكتروني',
-    'QR Code Menu',
-    'موقع حجز مواعيد',
-    'Booking System',
-
-    // --- Specific Long-Tail & Intent (English) ---
-    'Start E-commerce Business',
-    'Sell Online in Egypt',
-    'Online Store Cost',
-    'Cheap Website Design',
-    'Professional Web Design',
-    'Responsive Web Design',
-    'Mobile First Design',
-    'SEO Friendly Website',
-    'Fast Loading Website',
-    'Secure Payment Online',
-    'Business Website',
-    'Corporate Website',
-    'Landing Page Design',
-    'تصميم صفحة هبوط',
-    'High Conversion Store',
-
-    // --- Location Based ---
-    'تصميم مواقع الاسكندرية',
-    'شركات برمجة التجمع الخامس',
-    'شركات برمجة مدينة نصر',
-    'Software House Maadi',
-    'Software House Sheikh Zayed',
-    'Web Design Alexandria',
-    'مطورين ويب مصر',
-    'مستقلين برمجة',
-    'Freelance Developer Egypt',
-    'وكالة تسويق رقمي',
-    'Digital Marketing Agency',
-
-    // --- Comparative & Competitive ---
-    'لماذا كودا',
-    'مميزات البرمجة الخاصة',
-    'عيوب شوبيفاي',
-    'مميزات ووردبريس',
-    'مقارنة منصات المتاجر',
-    'افضل شركة برمجة 2026',
-    'ارخص شركة تصميم مواقع',
-    'حلول تقنية للشركات',
-    'Tech Solutions',
-    'IT Consultancy',
-    'استشارات تقنية',
-    'تحليل انظمة',
-    'System Analysis',
-    'Database Design',
-    'تطوير قواعد البيانات',
-
-    // --- Support & Maintenance ---
-    'دعم فني مواقع',
-    'Website Maintenance',
-    'Website Hosting Egypt',
-    'استضافة مواقع',
-    'حجز دومين',
-    'Domain Registration',
-    'GoDaddy Egypt',
-    'Hostinger Egypt',
-    'تأمين المواقع',
-    'Website Security',
-    'SSL Certificate',
-    'شهادة امان',
-    'سرعة الموقع',
-    'Website Performance',
-    'Google PageSpeed',
-
-    // --- Tech Stack Keywords ---
-    'JavaScript',
-    'TypeScript',
-    'Tailwind CSS',
-    'HTML5',
-    'CSS3',
-    'Vercel',
-    'AWS',
-    'Cloud Hosting',
-    'Server Management',
-    'API Integration',
-    'REST API',
-    'GraphQL',
-    'Headless CMS',
-    'Sanity CMS',
-    'Strapi',
-    'PWA',
-    'Progressive Web App',
-    'تطبيقات الويب التقدمية',
+    'البيع اونلاين',
+    'دروبشيبينغ مصر',
   ],
 
   authors: [{ name: 'Koda Team' }],
-  creator: 'Koda',
-  publisher: 'Koda',
+  creator: 'Koda Solutions',
+  publisher: 'Koda Solutions',
 
-  // 4. شكل اللينك لما يتبعت شير
+  // 4. السوشيال ميديا والشير
   openGraph: {
-    title: 'كودا | من دكان.. لأمبراطورية',
+    title: 'كودا | من دكان.. لإمبراطورية',
     description:
-      'امتلك متجرك الإلكتروني بملكية كاملة و0% عمولة. حلول احترافية عبر Shopify، Easy Order، وبرمجة خاصة (Custom) مع ربط فوري بشركات الشحن والدفع في مصر.',
+      'امتلك متجرك الإلكتروني بملكية كاملة و0% عمولة. حلول احترافية وبرمجة خاصة.',
     url: 'https://kodasolutions.net',
     siteName: 'Koda Solutions',
     locale: 'ar_EG',
     type: 'website',
     images: [
       {
-        url: '/og-image.png',
+        url: '/og-image.png', // لازم تكون الصورة دي موجودة في folder public
         width: 1200,
         height: 630,
         alt: 'كودا - حلول التجارة الإلكترونية',
@@ -280,26 +75,27 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'كودا | من دكان.. لإمبراطورية',
-    description: 'متجرك الخاص بملكية 100% وبدون عمولات. حلول دفع وشحن متكاملة.',
+    description: 'متجرك الخاص بملكية 100% وبدون عمولات.',
     images: ['/og-image.png'],
   },
 
   icons: {
     icon: [
-      { url: '/icon.png' },
-      { url: '/icon.png', sizes: '192x192', type: 'image/png' }, // دي مهمة لجوجل
+      { url: '/favicon.ico' },
+      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
     ],
+    apple: '/apple-icon.png',
   },
 };
 
-// 5. الـ Schema (الكود السري لتعريف البيزنس لجوجل)
+// 5. الـ Schema (Structured Data) لجوجل
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'Koda Solutions',
   alternateName: ['كودا', 'Koda'],
   url: 'https://kodasolutions.net',
-  logo: 'https://kodasolutions.net/og-image.png',
+  logo: 'https://kodasolutions.net/icon.png',
   address: {
     '@type': 'PostalAddress',
     addressCountry: 'EG',
@@ -307,7 +103,7 @@ const jsonLd = {
   },
   priceRange: '$$',
   description:
-    'وكالة حلول برمجية متخصصة في التجارة الإلكترونية، تقديم استشارات تقنية، وتطوير متاجر شوبيفاي وبرمجة خاصة.',
+    'وكالة حلول برمجية متخصصة في التجارة الإلكترونية وتطوير المتاجر.',
   offers: [
     {
       '@type': 'Offer',
@@ -334,16 +130,22 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" suppressHydrationWarning>
       <head>
-        {/* حقن الـ Schema في الهيدر */}
+        {/* حقن الـ Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
       <body
-        className={`${cairo.variable} ${inter.variable} font-cairo antialiased`}
+        className={`${cairo.variable} ${inter.variable} font-cairo antialiased bg-background text-foreground`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          {/* المحتوى الأساسي للصفحة */}
+          <main className="min-h-screen flex flex-col">{children}</main>
+
+          {/* ✅ الفلوتينج واتساب هنا عشان يظهر فوق كل الصفحات */}
+          <FloatingWhatsApp />
+        </Providers>
       </body>
     </html>
   );

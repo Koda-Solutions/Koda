@@ -11,6 +11,18 @@
 
   --font-cairo: 'Cairo', sans-serif;
   --font-inter: 'Inter', sans-serif;
+
+  /* 🔥 Spinning Border Animation */
+  --animate-spin-slow: spin-slow 3s linear infinite;
+
+  @keyframes spin-slow {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
 }
 
 :root {

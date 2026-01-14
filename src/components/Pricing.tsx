@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Check, Rocket, Diamond, Crown } from 'lucide-react';
+import { Check, Rocket, Diamond, Crown, Lock } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const iconMap = {
@@ -24,7 +24,7 @@ export default function Pricing() {
 
   const plans = t.pricing.plans.map((plan, index) => ({
     ...plan,
-    id: `plan-${index}`,
+    id: plan.id || `plan-${index}`,
     Icon: iconMap[plan.icon as keyof typeof iconMap] || Diamond,
   }));
 
@@ -36,7 +36,9 @@ export default function Pricing() {
 
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="font-black mb-6 text-foreground">{t.pricing.title}</h2>
+          <h2 className="text-4xl md:text-6xl font-black mb-6 text-foreground">
+            {t.pricing.title}
+          </h2>
 
           {/* Toggle Switch */}
           <div className="flex items-center justify-center gap-4 mb-8">
@@ -120,10 +122,21 @@ export default function Pricing() {
                 </p>
               </div>
 
-              <div className="mb-8 text-center">
-                <div className="text-2xl font-black text-primary">
-                  {plan.priceModel}
-                </div>
+              <div className="mb-8 text-center relative">
+                {plan.pricePlaceholder === 'Locked' ? (
+                  <div className="relative inline-block">
+                    <div className="text-4xl font-black text-primary blur-sm select-none opacity-70">
+                      9999 EGP
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Lock className="w-6 h-6 text-primary drop-shadow-lg" />
+                    </div>
+                  </div>
+                ) : (
+                  <div className="text-4xl font-black text-primary">
+                    {plan.priceModel}
+                  </div>
+                )}
               </div>
 
               <ul className="space-y-4 mb-8 flex-grow">
@@ -155,14 +168,32 @@ export default function Pricing() {
               )}
 
               <button
-                onClick={() => handleWhatsApp(plan.whatsappMessage)}
-                className={`w-full py-4 rounded-2xl font-black transition-all duration-300 cursor-pointer text-lg ${
-                  plan.buttonStyle === 'solid'
-                    ? 'bg-gradient-to-r from-primary to-secondary text-white glow-orange hover:shadow-primary/40'
-                    : 'bg-transparent text-foreground border-2 border-border-custom hover:border-primary/50 hover:bg-primary/5'
+                onClick={() =>
+                  plan.pricePlaceholder !== 'Locked' &&
+                  handleWhatsApp(plan.whatsappMessage)
+                }
+                className={`w-full py-4 rounded-2xl font-black transition-all duration-300 text-lg relative overflow-hidden ${
+                  plan.pricePlaceholder === 'Locked'
+                    ? 'bg-card border-2 border-border-custom text-foreground-muted/50 cursor-not-allowed'
+                    : plan.buttonStyle === 'solid' || plan.highlighted
+                    ? 'bg-gradient-to-r from-primary to-secondary text-white glow-orange hover:shadow-primary/40 cursor-pointer'
+                    : 'bg-transparent text-foreground border-2 border-border-custom hover:border-primary/50 hover:bg-primary/5 cursor-pointer'
                 }`}
               >
-                {plan.buttonText}
+                <span
+                  className={
+                    plan.pricePlaceholder === 'Locked'
+                      ? 'blur-sm select-none'
+                      : ''
+                  }
+                >
+                  {plan.buttonText}
+                </span>
+                {plan.pricePlaceholder === 'Locked' && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Lock className="w-5 h-5 text-foreground-muted" />
+                  </div>
+                )}
               </button>
             </motion.div>
           ))}

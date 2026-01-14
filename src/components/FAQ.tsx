@@ -20,11 +20,14 @@ const FAQItem = ({
     <div className="border-b border-border-custom last:border-0">
       <button
         onClick={onClick}
-        className="w-full py-5 lg:py-6 flex items-center justify-between text-right gap-4 hover:text-primary transition-colors cursor-pointer group"
+        className="w-full py-4 lg:py-6 flex items-center justify-between gap-4 hover:text-primary transition-colors cursor-pointer group text-start"
+        // text-start: يضمن المحاذاة الصحيحة سواء عربي أو إنجليزي
       >
-        <span className="text-base lg:text-lg font-bold group-hover:text-primary transition-colors text-foreground">
+        <span className="text-base lg:text-lg font-bold group-hover:text-primary transition-colors text-foreground flex-1">
           {question}
         </span>
+
+        {/* Icon Container */}
         <div
           className={`shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-border-custom flex items-center justify-center transition-all duration-300 ${
             isOpen
@@ -39,6 +42,7 @@ const FAQItem = ({
           )}
         </div>
       </button>
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -48,7 +52,11 @@ const FAQItem = ({
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            <p className="pb-6 text-sm lg:text-base text-foreground-muted leading-relaxed pl-12">
+            {/* التعديل الجوهري هنا:
+               ps-0 md:ps-4: تقليل المسافة البادئة على الموبايل
+               pe-12: ترك مسافة ناحية الأيقونة (اليسار في العربي) لتناسق الشكل
+            */}
+            <p className="pb-6 text-sm lg:text-base text-foreground-muted leading-relaxed ps-0 pe-0 lg:pe-14 opacity-90">
               {answer}
             </p>
           </motion.div>
@@ -63,11 +71,11 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <section className="py-16 lg:py-24 relative overflow-hidden">
+    <section className="py-12 lg:py-24 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-        <div className="absolute top-[20%] right-[10%] w-72 h-72 bg-primary/5 rounded-full blur-[100px]" />
-        <div className="absolute bottom-[20%] left-[10%] w-72 h-72 bg-blue-500/5 rounded-full blur-[100px]" />
+        <div className="absolute top-[20%] right-[10%] w-60 h-60 lg:w-72 lg:h-72 bg-primary/5 rounded-full blur-[80px] lg:blur-[100px]" />
+        <div className="absolute bottom-[20%] left-[10%] w-60 h-60 lg:w-72 lg:h-72 bg-blue-500/5 rounded-full blur-[80px] lg:blur-[100px]" />
       </div>
 
       <div className="container mx-auto px-4 md:px-6 max-w-4xl relative z-10">
@@ -76,12 +84,12 @@ export default function FAQ() {
             {t.faq.title}{' '}
             <span className="text-primary">{t.faq.titleAccent}</span> ؟
           </h2>
-          <p className="text-sm md:text-lg text-foreground-muted max-w-2xl mx-auto">
+          <p className="text-sm md:text-lg text-foreground-muted max-w-2xl mx-auto leading-relaxed">
             {t.faq.subtitle}
           </p>
         </div>
 
-        <div className="bg-card backdrop-blur-sm border border-border-custom rounded-2xl lg:rounded-3xl p-4 lg:p-8 shadow-md">
+        <div className="bg-card/50 backdrop-blur-sm border border-border-custom rounded-2xl lg:rounded-3xl p-5 lg:p-8 shadow-sm">
           {t.faq.items.map((faq, index) => (
             <FAQItem
               key={index}

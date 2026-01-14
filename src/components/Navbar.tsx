@@ -29,13 +29,15 @@ export default function Navbar() {
 
   return (
     <nav
-      // التعديل هنا: سيبنا glass-panel زي ما هي وضفنا backdrop-blur-3xl عشان يتقل البلور
+      // التعديل 1: شيلنا lg:h-20 وخليناها تعتمد على الـ Padding بتاع الكونتينر اللي تحت
       className="fixed top-0 left-0 right-0 z-50 glass-panel border-b transition-all duration-300 backdrop-blur-3xl"
     >
-      <div className="container mx-auto px-4 md:px-6 h-16 lg:h-20 flex items-center justify-between">
+      {/* التعديل 2: h-16 (64px) ثابتة للكل، ده المقاس البروفيشنال */}
+      <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
         {/* Logo Section */}
-        <div className="flex items-center gap-3">
-          <div className="relative w-9 h-9 lg:w-10 lg:h-10 hover:scale-105 transition-transform">
+        <div className="flex items-center gap-2.5 lg:gap-3">
+          {/* تصغير اللوجو سنة بسيطة */}
+          <div className="relative w-8 h-8 lg:w-9 lg:h-9 hover:scale-105 transition-transform">
             <Image
               src="/icon.png"
               alt="Koda Solutions Logo"
@@ -44,20 +46,22 @@ export default function Navbar() {
               priority
             />
           </div>
-          <div className="text-2xl lg:text-3xl font-black tracking-tighter text-primary cursor-default select-none hover:scale-105 transition-transform">
+          {/* تصغير الفونت لـ 2xl بدل 3xl */}
+          <div className="text-xl lg:text-2xl font-black tracking-tighter text-primary cursor-default select-none hover:scale-105 transition-transform">
             {t.nav.logo}
           </div>
         </div>
 
         {/* Desktop Actions */}
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-            className="px-4 py-2 rounded-full hover:bg-card transition-all duration-300 flex items-center gap-2 text-sm font-bold border border-transparent hover:border-border-custom group"
+            // تقليل الـ padding عشان الزرار يبقى ملموم
+            className="px-3 py-1.5 rounded-full hover:bg-card transition-all duration-300 flex items-center gap-2 text-xs lg:text-sm font-bold border border-transparent hover:border-border-custom group"
             aria-label="Toggle Language"
           >
             <Globe
-              size={18}
+              size={16}
               className="text-foreground-muted group-hover:text-primary transition-colors"
             />
             <span className="mt-0.5 text-foreground">
@@ -67,27 +71,28 @@ export default function Navbar() {
 
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-2.5 rounded-full hover:bg-card transition-all duration-300 border border-transparent hover:border-border-custom text-foreground"
+            className="p-2 rounded-full hover:bg-card transition-all duration-300 border border-transparent hover:border-border-custom text-foreground"
             aria-label="Toggle Theme"
           >
-            {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
 
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={handleContactClick}
-            className="bg-primary text-white text-sm lg:text-base font-black px-6 py-2.5 rounded-xl glow-orange transition-all hover:bg-primary/90 cursor-pointer shadow-lg shadow-primary/20"
+            // تصغير زرار الـ CTA: px-5 py-2 وخلينا الخط text-sm
+            className="bg-primary text-white text-sm font-black px-5 py-2 rounded-xl glow-orange transition-all hover:bg-primary/90 cursor-pointer shadow-lg shadow-primary/20"
           >
             {t.nav.contact}
           </motion.button>
         </div>
 
         {/* Mobile Actions */}
-        <div className="flex md:hidden items-center gap-3">
+        <div className="flex md:hidden items-center gap-2.5">
           <button
             onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-            className="h-10 px-3 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-xs font-black text-foreground hover:border-primary transition-colors"
+            className="h-9 px-3 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-[10px] font-black text-foreground hover:border-primary transition-colors"
           >
             <span className="mt-0.5">
               {language === 'ar' ? 'فرانكو' : 'عربي'}
@@ -96,17 +101,17 @@ export default function Navbar() {
 
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="w-10 h-10 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-foreground hover:border-primary transition-colors"
+            className="w-9 h-9 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-foreground hover:border-primary transition-colors"
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
 
           <button
             onClick={toggleMenu}
-            className="p-2 -mr-2 rounded-full hover:bg-card transition-colors text-foreground"
+            className="p-1.5 -mr-1.5 rounded-full hover:bg-card transition-colors text-foreground"
             aria-label="Toggle Menu"
           >
-            {isOpen ? <X size={28} /> : <Menu size={28} />}
+            {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
@@ -118,12 +123,11 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            // التعديل هنا برضه: زودنا backdrop-blur-3xl عشان القائمة تبقى رايقة
             className="md:hidden glass-panel border-b border-border-custom overflow-hidden backdrop-blur-3xl"
           >
-            <div className="container mx-auto px-4 py-8 flex flex-col gap-6">
+            <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
               <div className="text-center">
-                <p className="text-foreground-muted text-sm mb-4 font-bold">
+                <p className="text-foreground-muted text-xs mb-3 font-bold">
                   {language === 'ar' ? 'جاهز تبدأ رحلتك؟' : 'Ready to start?'}
                 </p>
                 <motion.button
@@ -132,7 +136,7 @@ export default function Navbar() {
                     handleContactClick();
                     setIsOpen(false);
                   }}
-                  className="w-full bg-primary text-white text-lg font-black py-4 rounded-2xl glow-orange text-center shadow-lg shadow-primary/20"
+                  className="w-full bg-primary text-white text-base font-black py-3 rounded-xl glow-orange text-center shadow-lg shadow-primary/20"
                 >
                   {t.nav.contact}
                 </motion.button>
