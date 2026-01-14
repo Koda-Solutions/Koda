@@ -19,8 +19,14 @@ import {
 } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
+// Interface for feature items
+interface FeatureItem {
+  title: string;
+  desc: string;
+  icon: string;
+}
+
 const iconMap: { [key: string]: React.ReactNode } = {
-  // تصغير الأيقونات للمساحات الضيقة
   Smartphone: <Smartphone className="w-5 h-5 md:w-6 md:h-6" />,
   Mic: <Mic className="w-5 h-5 md:w-6 md:h-6" />,
   Dices: <Dices className="w-5 h-5 md:w-6 md:h-6" />,
@@ -64,15 +70,11 @@ export default function ComingSoonFeatures() {
 
         {/* The Grid Wrapper */}
         <div className="relative">
-          {/* 🔥🔥 TWEAK: grid-cols-2 from the start (mobile)
-             Reduced gap to gap-3 for mobile to save space
-          */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6 pb-20 md:pb-0">
-            {list.map((feature: any, index: number) => {
+            {list.map((feature: FeatureItem, index: number) => {
               const Icon = iconMap[feature.icon] || (
                 <Zap className="w-5 h-5 md:w-6 md:h-6" />
               );
-              // 🔥 LOGIC: Blur everything after index 3 (The 4th item)
               const isLocked = index > 3;
 
               return (
@@ -101,11 +103,9 @@ export default function ComingSoonFeatures() {
                     {Icon}
                   </div>
                   <div>
-                    {/* Smaller text on mobile to fit 2 cols */}
                     <h3 className="text-sm md:text-lg font-bold mb-1 md:mb-2 text-foreground truncate">
                       {isLocked ? '••••••' : feature.title}
                     </h3>
-                    {/* Line clamping to prevent cards from getting too long unevenly */}
                     <p className="text-[10px] md:text-sm text-foreground-muted leading-snug line-clamp-3 md:line-clamp-none">
                       {isLocked ? '•••• •••• ••• •••' : feature.desc}
                     </p>
@@ -115,8 +115,7 @@ export default function ComingSoonFeatures() {
             })}
           </div>
 
-          {/* 🔒 THE LOCK OVERLAY */}
-          {/* Adjusted top position since grid is shorter now (2 cols instead of 1) */}
+          {/* Lock Overlay */}
           <div className="absolute inset-x-0 bottom-0 top-[40%] md:top-[25%] z-20 flex flex-col items-center justify-center p-4 bg-gradient-to-t from-background via-background/95 to-transparent pointer-events-none">
             <div className="bg-[#1a1a1a] border border-primary/30 p-5 md:p-8 rounded-2xl md:rounded-3xl text-center max-w-[90%] md:max-w-md shadow-[0_0_30px_rgba(0,0,0,0.6)] md:shadow-[0_0_50px_rgba(0,0,0,0.8)] relative overflow-hidden pointer-events-auto mt-8 md:mt-0">
               <div className="absolute inset-0 bg-primary/5 animate-pulse" />

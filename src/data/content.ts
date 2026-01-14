@@ -668,3 +668,6 @@ export const content = {
     footer: { tagline: 'Mn Dokan... Li Empratoria.' },
   },
 };
+
+// Type export for LanguageContext
+export type ContentType = typeof content.ar;

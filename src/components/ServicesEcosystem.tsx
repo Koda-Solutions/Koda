@@ -48,63 +48,73 @@ export default function ServicesEcosystem() {
           {/* Left Side: The Cards (Visuals) */}
           {/* Mobile: Order 2 (Bottom), Desktop: Order 1 (Left) */}
           <div className="flex flex-col gap-4 md:gap-6 relative z-10 order-2 lg:order-1">
-            {features.map((feature: any, index: number) => {
-              const Icon = iconMap[feature.icon] || <Zap />;
-              return (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group relative bg-card/40 border border-border-custom p-5 md:p-6 rounded-2xl overflow-hidden hover:border-primary/30 transition-colors backdrop-blur-sm"
-                >
-                  <div className="flex items-start gap-4 mb-4 md:mb-6 relative z-10">
-                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform shrink-0">
-                      {Icon}
+            {features.map(
+              (
+                feature: {
+                  title: string;
+                  desc: string;
+                  icon: string;
+                  partners: string[];
+                },
+                index: number
+              ) => {
+                const Icon = iconMap[feature.icon] || <Zap />;
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="group relative bg-card/40 border border-border-custom p-5 md:p-6 rounded-2xl overflow-hidden hover:border-primary/30 transition-colors backdrop-blur-sm"
+                  >
+                    <div className="flex items-start gap-4 mb-4 md:mb-6 relative z-10">
+                      <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform shrink-0">
+                        {Icon}
+                      </div>
+                      <div>
+                        <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">
+                          {feature.title}
+                        </h3>
+                        <p className="text-xs md:text-sm text-foreground-muted leading-relaxed">
+                          {feature.desc}
+                        </p>
+                      </div>
                     </div>
-                    <div>
-                      <h3 className="text-lg md:text-xl font-bold text-foreground mb-1">
-                        {feature.title}
-                      </h3>
-                      <p className="text-xs md:text-sm text-foreground-muted leading-relaxed">
-                        {feature.desc}
-                      </p>
+
+                    {/* Infinite Marquee Section */}
+                    <div className="relative w-full overflow-hidden py-2 border-t border-border-custom/50">
+                      <div className="absolute left-0 top-0 bottom-0 w-6 md:w-8 bg-gradient-to-r from-card to-transparent z-10" />
+                      <div className="absolute right-0 top-0 bottom-0 w-6 md:w-8 bg-gradient-to-l from-card to-transparent z-10" />
+
+                      <motion.div
+                        className="flex gap-3 md:gap-4 whitespace-nowrap w-max"
+                        // Duplicate the list to ensure seamless loop
+                        animate={{ x: isRTL ? [0, 500] : [0, -500] }}
+                        transition={{
+                          repeat: Infinity,
+                          duration: 25,
+                          ease: 'linear',
+                        }}
+                      >
+                        {[
+                          ...feature.partners,
+                          ...feature.partners,
+                          ...feature.partners,
+                        ].map((partner: string, i: number) => (
+                          <span
+                            key={i}
+                            className="text-[10px] md:text-xs font-bold px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg bg-background/50 border border-border-custom text-foreground-muted/80 whitespace-nowrap"
+                          >
+                            {partner}
+                          </span>
+                        ))}
+                      </motion.div>
                     </div>
-                  </div>
-
-                  {/* Infinite Marquee Section */}
-                  <div className="relative w-full overflow-hidden py-2 border-t border-border-custom/50">
-                    <div className="absolute left-0 top-0 bottom-0 w-6 md:w-8 bg-gradient-to-r from-card to-transparent z-10" />
-                    <div className="absolute right-0 top-0 bottom-0 w-6 md:w-8 bg-gradient-to-l from-card to-transparent z-10" />
-
-                    <motion.div
-                      className="flex gap-3 md:gap-4 whitespace-nowrap w-max"
-                      // Duplicate the list to ensure seamless loop
-                      animate={{ x: isRTL ? [0, 500] : [0, -500] }}
-                      transition={{
-                        repeat: Infinity,
-                        duration: 25,
-                        ease: 'linear',
-                      }}
-                    >
-                      {[
-                        ...feature.partners,
-                        ...feature.partners,
-                        ...feature.partners,
-                      ].map((partner: string, i: number) => (
-                        <span
-                          key={i}
-                          className="text-[10px] md:text-xs font-bold px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg bg-background/50 border border-border-custom text-foreground-muted/80 whitespace-nowrap"
-                        >
-                          {partner}
-                        </span>
-                      ))}
-                    </motion.div>
-                  </div>
-                </motion.div>
-              );
-            })}
+                  </motion.div>
+                );
+              }
+            )}
           </div>
 
           {/* Right Side: Text & Content */}
