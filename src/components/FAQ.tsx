@@ -21,13 +21,11 @@ const FAQItem = ({
       <button
         onClick={onClick}
         className="w-full py-4 lg:py-6 flex items-center justify-between gap-4 hover:text-primary transition-colors cursor-pointer group text-start"
-        // text-start: يضمن المحاذاة الصحيحة سواء عربي أو إنجليزي
       >
         <span className="text-base lg:text-lg font-bold group-hover:text-primary transition-colors text-foreground flex-1">
           {question}
         </span>
 
-        {/* Icon Container */}
         <div
           className={`shrink-0 w-8 h-8 lg:w-10 lg:h-10 rounded-full border border-border-custom flex items-center justify-center transition-all duration-300 ${
             isOpen
@@ -52,10 +50,6 @@ const FAQItem = ({
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="overflow-hidden"
           >
-            {/* التعديل الجوهري هنا:
-               ps-0 md:ps-4: تقليل المسافة البادئة على الموبايل
-               pe-12: ترك مسافة ناحية الأيقونة (اليسار في العربي) لتناسق الشكل
-            */}
             <p className="pb-6 text-sm lg:text-base text-foreground-muted leading-relaxed ps-0 pe-0 lg:pe-14 opacity-90">
               {answer}
             </p>
@@ -72,7 +66,6 @@ export default function FAQ() {
 
   return (
     <section className="py-12 lg:py-24 relative overflow-hidden">
-      {/* Background Decor */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
         <div className="absolute top-[20%] right-[10%] w-60 h-60 lg:w-72 lg:h-72 bg-primary/5 rounded-full blur-[80px] lg:blur-[100px]" />
         <div className="absolute bottom-[20%] left-[10%] w-60 h-60 lg:w-72 lg:h-72 bg-blue-500/5 rounded-full blur-[80px] lg:blur-[100px]" />
@@ -90,15 +83,18 @@ export default function FAQ() {
         </div>
 
         <div className="bg-card/50 backdrop-blur-sm border border-border-custom rounded-2xl lg:rounded-3xl p-5 lg:p-8 shadow-sm">
-          {t.faq.items.map((faq, index) => (
-            <FAQItem
-              key={index}
-              question={faq.question}
-              answer={faq.answer}
-              isOpen={openIndex === index}
-              onClick={() => setOpenIndex(openIndex === index ? null : index)}
-            />
-          ))}
+          {/* هنا كان التصحيح */}
+          {t.faq.items.map(
+            (faq: { question: string; answer: string }, index: number) => (
+              <FAQItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+                isOpen={openIndex === index}
+                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+              />
+            )
+          )}
         </div>
       </div>
     </section>
