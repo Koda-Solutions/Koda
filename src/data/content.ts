@@ -18,13 +18,13 @@ export const content = {
         'مرحباً كودا، مهتم جداً وعايز أكون من أوائل الناس اللي تجرب السيستم.',
     },
 
-    // --- INTEGRATIONS (Fixed Error Here) ---
+    // --- INTEGRATIONS ---
     integrations: {
       title: 'شركاء النجاح',
-      partners: [], // الكومبوننت هيتعامل مع المصفوفة الفاضية عادي
+      partners: [],
     },
 
-    // --- PAIN POINTS (Added to prevent future errors) ---
+    // --- PAIN POINTS ---
     painPoints: {
       title: 'ليه السوق محتاج',
       titleAccent: 'كودا؟',
@@ -45,7 +45,7 @@ export const content = {
       ],
     },
 
-    // --- SOLUTION (Added to prevent future errors) ---
+    // --- SOLUTION ---
     solution: {
       title: 'كودا هي',
       titleAccent: 'الحل النهائي',
@@ -53,70 +53,79 @@ export const content = {
       features: ['سرعة خيالية', 'ذكاء اصطناعي', 'تجربة عالمية', 'دعم 24/7'],
     },
 
-    // --- COMING SOON FEATURES ---
+    // --- COMING SOON FEATURES (UPDATED & HYPED 🔥) ---
     comingSoonFeatures: {
-      title: 'أسلحة كودا السرية',
+      title: 'انتهى وقت الكلام..', // Hype Title
       subtitle:
-        'بنجهزلك أدوات هتخليك تبيع وأنت نايم.. مفيش حد في مصر شاف التكنولوجيا دي قبل كدة.',
+        'خفينا كل كروتنا. ليه؟ عشان المنافسين ميعرفوش يناموا من القلق. اللي جاي مش مجرد تحديث، دي "إعادة ضبط مصنع" للتجارة الإلكترونية في مصر.',
+
+      // ✅ ده الكلام الجديد للبوكس المقفول
+      lockBox: {
+        title: 'كل الفيتشرز بقت "سر حربي" 🔒',
+        desc: 'عشان اللي جاي هيمسح تاريخ السوق القديم، قررنا نخفي كل أوراقنا ونقفل المطبخ. مش عايزين نحرق المفاجأة، بس نقدر نقولك: "استعد للانبهار".',
+        button: 'احجز مكانك في الصف الأول',
+      },
+
       list: [
+        // الليستة دي هتفضل زي ما هي عشان الخلفية المعمولة بلور (The blurred background needs content)
         {
           title: 'Shoppable Stories',
-          desc: 'العميل هيشتري من الستوري بلمسة واحدة.. مفيش وقت يضيع.',
+          desc: 'البيع بلمسة واحدة من الستوري.',
           icon: 'Smartphone',
         },
         {
           title: 'Voice Search AI',
-          desc: 'العميل هيقول اللي هو عايزه والموقع هيفهمه.. ذكاء اصطناعي حقيقي مش كلام.',
+          desc: 'بحث صوتي بيفهم اللهجة المصرية.',
           icon: 'Mic',
         },
         {
           title: 'Gamification Engine',
-          desc: 'حول الشراء للعبة.. العميل هيدمن الستور بتاعك من كتر المتعة والخصومات.',
+          desc: 'تحويل الشراء للعبة ممتعة.',
           icon: 'Dices',
         },
         {
           title: 'AI Smart Sizing',
-          desc: 'وداعاً للمرتجعات.. السيستم هيعرف مقاس العميل أدق منه هو شخصياً.',
+          desc: 'قياس ذكي لتقليل المرتجعات.',
           icon: 'Ruler',
         },
         {
           title: 'AI Copywriter',
-          desc: 'وصف منتجات بياع في ثواني.. سيب الكتابة للذكاء الاصطناعي وركز في البيع.',
+          desc: 'كتابة محتوى أوتوماتيك.',
           icon: 'Sparkles',
         },
         {
           title: 'Dynamic Pricing',
-          desc: 'السيستم بيذاكر العميل وبيغير السعر في اللحظة المناسبة عشان يقفل البيعة.',
+          desc: 'تسعير ديناميكي ذكي.',
           icon: 'TrendingUp',
         },
         {
           title: 'WhatsApp Automation',
-          desc: 'بوت واتساب شغال 24 ساعة بيرجع السلات المهجورة وبيزود مبيعاتك 40%.',
+          desc: 'أوتوميشن كامل للواتساب.',
           icon: 'MessageCircle',
         },
         {
           title: 'Cyber Dashboard',
-          desc: 'لوحة تحكم من كوكب تاني.. هتشوف البيزنس بتاعك بيكبر قدام عينك لحظة بلحظة.',
+          desc: 'لوحة تحكم خيالية.',
           icon: 'Monitor',
         },
         {
           title: 'Instant BNPL',
-          desc: 'قسط لعملائك في ثانية مع أكبر مقدمي الخدمة في مصر.. البيع ملوش حدود.',
+          desc: 'تقسيط لحظي للعملاء.',
           icon: 'CreditCard',
         },
         {
           title: 'AR Virtual Try-On',
-          desc: 'العميل هيجرب المنتج وهو في بيته.. تجربة شراء عالمية على أرض مصرية.',
+          desc: 'قياس افتراضي (AR).',
           icon: 'Glasses',
         },
         {
           title: 'Influencer Portal',
-          desc: 'جيش من المسوقين في خدمتك.. سيستم أوتوماتيك لإدارة العمولات والمشاهير.',
+          desc: 'بوابة خاصة للمشاهير.',
           icon: 'Users',
         },
         {
           title: 'Hyper-Speed Payout',
-          desc: 'فلوسك بتسمع في حسابك في نفس اللحظة.. سيولة مادية مفيش بعدها.',
+          desc: 'سحب أرباح لحظي.',
           icon: 'Zap',
         },
       ],
@@ -188,7 +197,7 @@ export const content = {
           icon: 'History',
           summary:
             'مواقع شكلها واحد، بطيئة، ومفهاش أي إبداع يخلي العميل يشتري.',
-          pros: ['سريع الإنشاء'],
+          pros: ['موجود دلوقتي'],
           limitations: ['تكنولوجيا 2010', 'مفيش ذكاء اصطناعي', 'شكلها رخيص'],
           bestFor: 'اللي عايز يقلد المنافسين.',
         },
@@ -350,13 +359,13 @@ export const content = {
       whatsappMessage: 'Hello Koda, mohtam gdan w 3ayez akon mn awal el nas.',
     },
 
-    // --- INTEGRATIONS (Fixed Error Here) ---
+    // --- INTEGRATIONS ---
     integrations: {
       title: 'Partners',
       partners: [],
     },
 
-    // --- PAIN POINTS (Added) ---
+    // --- PAIN POINTS ---
     painPoints: {
       title: 'Leh el so2 me7tag',
       titleAccent: 'Koda?',
@@ -377,7 +386,7 @@ export const content = {
       ],
     },
 
-    // --- SOLUTION (Added) ---
+    // --- SOLUTION ---
     solution: {
       title: 'Koda Heya',
       titleAccent: 'El 7al El Neha2y',
@@ -385,69 +394,78 @@ export const content = {
       features: ['Sor3a', 'AI 7a2e2y', 'Global UX', 'Support 24/7'],
     },
 
+    // --- COMING SOON FEATURES (UPDATED & HYPED 🔥) ---
     comingSoonFeatures: {
-      title: "Koda's Secret Weapons",
+      title: 'Entaha Wa2t El Kalam..',
       subtitle:
-        'Bn-جهز-lak tools hat-5alleek tbee3 w enta nayem.. Tech msh mawgooda fe Masr.',
+        'Xafena kol krootna. Leh? 3ashan el competitors may3rafosh ynamo mn el ala2. Elly gay msh update, da "Factory Reset" lil e-commerce fe Masr.',
+
+      // ✅ The New Box Text (Franco)
+      lockBox: {
+        title: 'Kol El Features Ba2et "Top Secret" 🔒',
+        desc: '3ashan elly gay hay-emsa7 taree5 el so2 el adem, qararna ne5fy kol awra2na. Msh 3ayzeen ne7ra2 el surprise, bas ne2dar ne2olak: "Get Ready".',
+        button: 'A7gez Makanak Fel First Row',
+      },
+
       list: [
         {
           title: 'Shoppable Stories',
-          desc: 'El customer hay-shtery mn el story b-lamssa wa7da.. No time to waste.',
+          desc: 'Buy from stories directly.',
           icon: 'Smartphone',
         },
         {
           title: 'Voice Search AI',
-          desc: 'El customer hay-2ool elly howa 3ayzo wel site hay-efhamo.. Real AI.',
+          desc: 'AI voice search.',
           icon: 'Mic',
         },
         {
           title: 'Gamification Engine',
-          desc: '7awel el shera2 l-le3ba.. El customer hay-edmen el store bta3ak.',
+          desc: 'Shopping is a game.',
           icon: 'Dices',
         },
         {
           title: 'AI Smart Sizing',
-          desc: 'Wada3an lil mortaga3at.. El system hay-3raf maqas el customer bel-melly.',
+          desc: 'Perfect sizing AI.',
           icon: 'Ruler',
         },
         {
           title: 'AI Copywriter',
-          desc: 'Description baya3 fe sawany.. Seeb el ketaba lil AI w rakkez fel sales.',
+          desc: 'Auto descriptions.',
           icon: 'Sparkles',
         },
         {
           title: 'Dynamic Pricing',
-          desc: 'El system by-zaker el customer w by-ghayar el se3r 3ashan ye-2fel el deal.',
+          desc: 'Smart pricing.',
           icon: 'TrendingUp',
         },
         {
           title: 'WhatsApp Automation',
-          desc: 'Bot shaghal 24/7 by-raga3 el abandoned carts w by-zawad sales-ak 40%.',
+          desc: 'Full automation.',
           icon: 'MessageCircle',
         },
         {
           title: 'Cyber Dashboard',
-          desc: 'Dashboard mn kawkab tany.. Hat-shoof el business bta3ak by-ekbar.',
+          desc: 'Sci-fi dashboard.',
           icon: 'Monitor',
         },
         {
           title: 'Instant BNPL',
-          desc: '2assat le-3omala2ak fe sanya.. El sales malosh 7odood.',
+          desc: 'Buy Now Pay Later.',
           icon: 'CreditCard',
         },
         {
           title: 'AR Virtual Try-On',
-          desc: 'El customer hay-garab el product w howa fe beto.. Global experience.',
+          desc: 'AR Try-on.',
           icon: 'Glasses',
         },
         {
           title: 'Influencer Portal',
-          desc: 'Gesh mn el bloggers fe 5edmetak.. Automatic commission system.',
+          desc: 'Influencers system.',
           icon: 'Users',
         },
         {
           title: 'Hyper-Speed Payout',
-          desc: 'Floosak fe 7esabak fe nafs el la7za.. Cashflow malosh zay.',
+          desc: 'Instant cashout.',
           icon: 'Zap',
         },
       ],
@@ -522,7 +540,7 @@ export const content = {
           icon: 'History',
           summary:
             'Sites shaklaha wa7ed, slow, w mafhash ay ebda3 ykhaly el customer yeshtery.',
-          pros: ['Fast setup'],
+          pros: ['Available now'],
           limitations: ['Tech 2010', 'No AI', 'Cheap Look'],
           bestFor: 'Illi 3ayez ye2aled.',
         },

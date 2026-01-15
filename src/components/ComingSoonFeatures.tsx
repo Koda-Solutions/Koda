@@ -125,18 +125,18 @@ export default function ComingSoonFeatures() {
                   <Lock className="w-6 h-6 md:w-8 md:h-8" />
                 </div>
                 <h3 className="text-lg md:text-2xl font-black mb-2 text-white">
-                  {isRTL ? 'باقي الفيتشرز سرية!' : 'Top Secret Features'}
+                  {isRTL ? 'الفيتشرز سرية!' : 'Top Secret Features'}
                 </h3>
                 <p className="text-gray-400 text-xs md:text-sm mb-4 md:mb-6">
                   {isRTL
-                    ? 'عشان المنافسين مياخدوش الأفكار، خبينا الباقي.'
+                    ? 'عشان المنافسين مياخدوش الأفكار، خبيناها.'
                     : 'Classified features. Join waitlist to unlock.'}
                 </p>
                 <button
                   onClick={handleJoinWaitlist}
                   className="bg-primary text-white font-bold py-2.5 px-4 md:py-3 md:px-8 rounded-xl glow-orange text-xs md:text-base hover:scale-105 transition-transform w-full"
                 >
-                  {isRTL ? 'انضم واكشف السر' : 'Join & Unlock'}
+                  {isRTL ? 'انضم الى قائمة الإنتظار' : 'Join to waiting list'}
                 </button>
               </div>
             </div>
