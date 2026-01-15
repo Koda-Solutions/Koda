@@ -75,7 +75,7 @@ export default function ComingSoonFeatures() {
               const Icon = iconMap[feature.icon] || (
                 <Zap className="w-5 h-5 md:w-6 md:h-6" />
               );
-              const isLocked = index > 3;
+              const isLocked = true; // All features are locked for maximum hype
 
               return (
                 <motion.div
