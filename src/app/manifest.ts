@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: 'Koda',
     short_name: 'Koda',
-    description: 'افتح متجرك الإلكتروني في دقايق',
+    description: 'من بيدج لبراند حقيقي يثق فيه عملاؤك',
     start_url: '/',
     display: 'standalone',
     background_color: '#f6f2ea',
