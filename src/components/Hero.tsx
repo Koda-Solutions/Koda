@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 
 export default function Hero() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
 
   return (
     <header className="pt-32 pb-20 md:pt-40 md:pb-28">

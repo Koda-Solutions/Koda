@@ -25,7 +25,7 @@ const previews = [
 
 export default function Themes() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
 
   return (
     <section id="themes" className="py-24">

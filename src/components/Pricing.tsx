@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 
 export default function Pricing() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
 
   return (
     <section id="pricing" className="py-24">

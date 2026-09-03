@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useLanguage } from '../context/LanguageContext';
@@ -11,7 +12,7 @@ import { cn } from '@/lib/utils';
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -35,9 +36,18 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 glass border-b"
     >
       <div className="container h-16 flex items-center justify-between">
-        <span className={cn('font-semibold text-xl', headingFont)}>
-          {t.nav.logo}
-        </span>
+        <div className="flex items-center gap-2.5">
+          <Image
+            src="/logo-mark.png"
+            alt=""
+            width={36}
+            height={36}
+            className="rounded-lg"
+          />
+          <span className={cn('font-semibold text-xl', headingFont)}>
+            {t.nav.logo}
+          </span>
+        </div>
 
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-ink-muted">
           {links.map((link) => (

@@ -13,6 +13,8 @@
   --font-fraunces: var(--font-heading), ui-serif, Georgia, serif;
   --font-figtree: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-thmanyah: var(--font-arabic), 'Segoe UI', Tahoma, sans-serif;
+  --font-thmanyah-display: var(--font-arabic-display), var(--font-arabic),
+    'Segoe UI', Tahoma, sans-serif;
 
   --animate-float: float 6s ease-in-out infinite;
   --animate-pulse-ring: pulse-ring 2.2s ease-out infinite;

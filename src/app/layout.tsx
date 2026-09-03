@@ -49,6 +49,33 @@ const thmanyahSans = localFont({
   display: 'swap',
 });
 
+const thmanyahSerifDisplay = localFont({
+  src: [
+    {
+      path: '../fonts/thmanyah-serif-display/thmanyahserifdisplay-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah-serif-display/thmanyahserifdisplay-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah-serif-display/thmanyahserifdisplay-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah-serif-display/thmanyahserifdisplay-Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-arabic-display',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://kodasolutions.net'),
 
@@ -140,7 +167,7 @@ export default function RootLayout({
       lang="ar"
       dir="rtl"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${figtree.variable} ${thmanyahSans.variable}`}
+      className={`${fraunces.variable} ${figtree.variable} ${thmanyahSans.variable} ${thmanyahSerifDisplay.variable}`}
     >
       <head>
         <script
