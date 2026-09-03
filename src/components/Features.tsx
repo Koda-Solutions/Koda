@@ -9,7 +9,7 @@ const marks = ['Aa', '£', '✓', '→'];
 
 export default function Features() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : '';
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
 
   return (
     <section id="features" className="py-24">

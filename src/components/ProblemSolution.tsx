@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 
 export default function ProblemSolution() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : '';
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
 
   return (
     <section id="problem" className="py-24">

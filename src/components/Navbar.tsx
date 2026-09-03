@@ -6,10 +6,12 @@ import { useTheme } from 'next-themes';
 import { useLanguage } from '../context/LanguageContext';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
 import { Button } from './ui/Button';
+import { cn } from '@/lib/utils';
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -33,7 +35,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 right-0 z-50 glass border-b"
     >
       <div className="container h-16 flex items-center justify-between">
-        <span className="font-fraunces font-semibold text-xl">
+        <span className={cn('font-semibold text-xl', headingFont)}>
           {t.nav.logo}
         </span>
 

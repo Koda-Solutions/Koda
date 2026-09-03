@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 
 export default function CTA() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : '';
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
 
   return (
     <section className="py-8">

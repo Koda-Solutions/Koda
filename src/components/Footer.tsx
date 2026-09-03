@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils';
 
 export default function Footer() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : '';
+  const headingFont = language === 'en' ? 'font-fraunces' : 'font-black';
 
   return (
     <footer className="py-10 border-t border-line">
