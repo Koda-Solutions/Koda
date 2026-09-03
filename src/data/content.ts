@@ -87,7 +87,7 @@ export const content = {
 
     themes: {
       eyebrow: 'التصاميم',
-      title: 'تصاميم مش شكلها Template.',
+      title: 'تصاميم شكلها مش Template',
       subtitle:
         'كل تصميم اتعمل بعناية. اختار الشكل اللي يعجبك، وبعدين خصصه بلوجو وألوان وصور بتاعتك.',
       items: [
