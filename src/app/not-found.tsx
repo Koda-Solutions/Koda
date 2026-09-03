@@ -6,10 +6,9 @@ import { Home } from 'lucide-react';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen bg-background flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
-      {/* Background 404 Text */}
+    <div className="min-h-screen bg-paper flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span className="text-[20rem] lg:text-[30rem] font-black text-white/[0.02] select-none">
+        <span className="text-[16rem] lg:text-[24rem] font-fraunces font-semibold text-ink/[0.04] select-none">
           404
         </span>
       </div>
@@ -20,25 +19,24 @@ export default function NotFound() {
         transition={{ duration: 0.6 }}
         className="relative z-10"
       >
-        <h1 className="text-4xl lg:text-6xl font-black mb-6">طريقك تاه؟</h1>
-        <p className="text-text/60 text-lg lg:text-xl mb-10 max-w-md mx-auto leading-relaxed">
-          الصفحة دي مش موجودة، بس الإمبراطورية لسه مكانها.
+        <h1 className="font-thmanyah text-3xl lg:text-5xl font-black mb-5">
+          الصفحة دي مش موجودة
+        </h1>
+        <p className="text-ink-muted text-base lg:text-lg mb-10 max-w-md mx-auto">
+          جرب ترجع للصفحة الرئيسية وابدأ من هناك.
         </p>
 
         <Link href="/">
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="bg-primary text-background px-8 py-4 rounded-xl text-lg font-black flex items-center gap-3 mx-auto glow-orange cursor-pointer"
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="bg-accent text-paper px-7 py-3.5 rounded-xl text-base font-bold flex items-center gap-2.5 mx-auto"
           >
-            <Home size={24} />
-            رجعني للإمبراطورية
+            <Home size={20} />
+            ارجع للرئيسية
           </motion.button>
         </Link>
       </motion.div>
-
-      {/* Decorative Glows */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
     </div>
   );
 }

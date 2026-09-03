@@ -1,163 +1,131 @@
 @import 'tailwindcss';
 
 @theme {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-foreground-muted: var(--foreground-muted);
-  --color-card: var(--card);
-  --color-border-custom: var(--border-custom);
-  --color-primary: #ff8c42;
-  --color-secondary: #ffd166;
+  --color-paper: var(--paper);
+  --color-paper-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-ink: var(--accent-ink);
 
-  --font-cairo: 'Cairo', sans-serif;
-  --font-inter: 'Inter', sans-serif;
+  --font-fraunces: var(--font-heading), ui-serif, Georgia, serif;
+  --font-figtree: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-thmanyah: var(--font-arabic), 'Segoe UI', Tahoma, sans-serif;
 
-  /* 🔥 Spinning Border Animation */
-  --animate-spin-slow: spin-slow 3s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-pulse-ring: pulse-ring 2.2s ease-out infinite;
 
-  @keyframes spin-slow {
-    from {
-      transform: rotate(0deg);
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
     }
-    to {
-      transform: rotate(360deg);
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes pulse-ring {
+    0% {
+      transform: scale(0.9);
+      opacity: 0.5;
+    }
+    80%,
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
     }
   }
 }
 
 :root {
-  /* ☀️ LIGHT MODE (Clean & Frosted) */
-  --background: #f2f2f7;
-  --foreground: #1c1c1e;
-  --foreground-muted: #636366; /* غمقتها سنة عشان تبقى أوضح في اللايت */
-  --card: rgba(255, 255, 255, 0.65);
-  --border-custom: rgba(0, 0, 0, 0.08);
-  --glass-blur: blur(20px);
+  --paper: #f6f2ea;
+  --paper-raised: #fffdf8;
+  --ink: #262117;
+  --ink-muted: #7c7362;
+  --line: #e3dccb;
+  --accent: #146b64;
+  --accent-soft: #e3eee9;
+  --accent-ink: #0e4f4a;
 }
 
 .dark {
-  /* 🌑 DARK MODE (Deep & Luminous) */
-  --background: #161618;
-  --foreground: #ffffff;
-  --foreground-muted: #aeaeb2;
-  --card: rgba(30, 30, 35, 0.6);
-  --border-custom: rgba(255, 255, 255, 0.1);
-  --glass-blur: blur(25px);
+  --paper: #1e1b15;
+  --paper-raised: #282319;
+  --ink: #f3eee3;
+  --ink-muted: #a79c87;
+  --line: #3a3327;
+  --accent: #3fb0a2;
+  --accent-soft: #1f3b36;
+  --accent-ink: #bfeae3;
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-cairo);
+  background-color: var(--paper);
+  color: var(--ink);
   overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-@layer base {
-  * {
-    border-color: var(--border-custom);
-  }
-
-  /* 🔹 تعديل العناوين: مسافة نسبية مريحة */
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    letter-spacing: 0.02em; /* ده هيفرق معاك جداً في الشكل */
-  }
-
-  h1 {
-    font-size: clamp(1.875rem, 6vw, 3.5rem);
-    line-height: 1.1;
-    font-weight: 900;
-  }
-
-  h2 {
-    font-size: clamp(1.5rem, 5vw, 2.75rem);
-    line-height: 1.2;
-    font-weight: 900;
-  }
-
-  /* 🔹 تعديل النصوص: مسافة هادية عشان القراءة */
-  p,
-  li,
-  button,
-  a {
-    @apply text-sm md:text-base lg:text-lg leading-relaxed;
-    letter-spacing: 0.015em;
-  }
-
-  /* خليت اللون الميوتد للـ p والـ li بس، عشان الزراير واللينكات تبقى واضحة */
-  p,
-  li {
-    @apply text-foreground-muted;
-  }
-}
-
-.container {
-  max-width: 1280px !important;
-  @apply px-4 md:px-6 mx-auto;
-}
-
-/* 💎 iOS Glassmorphism Utility */
-.glass-panel {
-  background: var(--card);
-  backdrop-filter: var(--glass-blur);
-  -webkit-backdrop-filter: var(--glass-blur);
-  border: 1px solid var(--border-custom);
-  border-radius: 24px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-}
-
-.dark .glass-panel {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-}
-
-/* ✨ Glow Effects */
-.glow-orange {
-  box-shadow: 0 0 30px rgba(255, 140, 66, 0.15);
-  transition: all 0.3s ease;
-}
-
-.glow-orange:hover {
-  box-shadow: 0 0 45px rgba(255, 140, 66, 0.3);
-}
-
-/* 🎨 Background Blobs */
-.blob {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 140, 66, 0.15) 0%,
-    transparent 70%
-  );
-  filter: blur(80px);
-  z-index: -1;
-  pointer-events: none;
 }
 
 h1,
 h2,
-h3,
-h4,
-h5,
-h6 {
-  /* قيمة كبيرة عشان عينك تلمح الفرق فوراً */
-  letter-spacing: 1.5px !important;
-  /* فك السطور عن بعض عشان التداخل الرأسي */
-  line-height: 1.5 !important;
+h3 {
+  text-wrap: balance;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
 }
 
-p,
-li,
-button,
-a {
-  letter-spacing: 0.5px !important;
-  line-height: 1.8 !important;
+.container {
+  max-width: 1180px !important;
+  @apply px-4 md:px-8 mx-auto;
+}
+
+/* Apple-style frosted glass surface, used for the nav bar and glass buttons */
+.glass {
+  background: color-mix(in srgb, var(--paper-raised) 55%, transparent);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, white 35%, transparent),
+    0 8px 24px -12px rgba(20, 18, 12, 0.18);
+}
+
+.dark .glass {
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, white 6%, transparent),
+    0 8px 24px -12px rgba(0, 0, 0, 0.5);
+}
+
+.glass-button {
+  background: color-mix(in srgb, var(--paper-raised) 65%, transparent);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.glass-button:hover {
+  background: color-mix(in srgb, var(--paper-raised) 85%, transparent);
+  border-color: color-mix(in srgb, var(--ink) 18%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }

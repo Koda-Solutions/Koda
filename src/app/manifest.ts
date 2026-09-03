@@ -2,26 +2,21 @@ import { MetadataRoute } from 'next';
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'Koda Solutions',
+    name: 'Koda',
     short_name: 'Koda',
-    description: 'حول تجارتك لإمبراطورية',
+    description: 'افتح متجرك الإلكتروني في دقايق',
     start_url: '/',
     display: 'standalone',
-    background_color: '#000000',
-    theme_color: '#ff8c42',
+    background_color: '#f6f2ea',
+    theme_color: '#146b64',
     icons: [
       {
-        src: '/icon',
-        sizes: 'any',
-        type: 'image/x-icon',
-      },
-      {
-        src: '/icon',
+        src: '/icon.png',
         sizes: '512x512',
         type: 'image/png',
       },
       {
-        src: '/apple-icon',
+        src: '/apple-icon.png',
         sizes: '512x512',
         type: 'image/png',
       },

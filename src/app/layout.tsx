@@ -1,125 +1,133 @@
 import type { Metadata } from 'next';
-import { Cairo, Inter } from 'next/font/google';
+import { Fraunces, Figtree } from 'next/font/google';
+import localFont from 'next/font/local';
 import './globals.css';
 import { Providers } from '@/components/Providers';
-import FloatingWhatsApp from '@/components/FloatingWhatsApp'; // تأكد ان المسار صح
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 
-// تظبيط الفونت العربي (Cairo) والانجليزي (Inter)
-const cairo = Cairo({ subsets: ['arabic'], variable: '--font-cairo' });
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-heading',
+  display: 'swap',
+});
+
+const figtree = Figtree({
+  subsets: ['latin'],
+  variable: '--font-body',
+  display: 'swap',
+});
+
+const thmanyahSans = localFont({
+  src: [
+    {
+      path: '../fonts/thmanyah-sans/thmanyah-sans-Light.woff2',
+      weight: '300',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah-sans/thmanyah-sans-Regular.woff2',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah-sans/thmanyah-sans-Medium.woff2',
+      weight: '500',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah-sans/thmanyah-sans-Bold.woff2',
+      weight: '700',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/thmanyah-sans/thmanyah-sans-Black.woff2',
+      weight: '900',
+      style: 'normal',
+    },
+  ],
+  variable: '--font-arabic',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://kodasolutions.net'),
 
-  // ✅ 1. كود التفعيل الخاص بجوجل
   verification: {
     google: 'nVxOxzZbIM5NOMJe2Qt7z0PyVF1_3mSXENCni1ZS1UE',
   },
 
-  // 2. إعدادات العنوان والوصف (مأخوذة من الهوية القوية للمشروع)
   title: {
-    default: 'كودا | من دكان.. لإمبراطورية',
+    default: 'كودا | افتح متجرك الإلكتروني في دقايق',
     template: '%s | كودا',
   },
   description:
-    'حول دكانك لإمبراطورية رقمية بملكية كاملة و0% عمولة. نصمم لك متجرك على Shopify، Easy Order، أو برمجة خاصة (Custom)، مع ربط ذكي وفوري بكافة بوابات الدفع وشركات الشحن في مصر.',
+    'كودا هي أسهل طريقة للتاجر المصري إنه يفتح متجر إلكتروني حقيقي. اختار تصميم، ضيف منتجاتك، واستقبل الدفع كاش أو أونلاين من غير أي برمجة.',
 
-  // 3. الكلمات المفتاحية (SEO Keywords Bomb)
   keywords: [
     'كودا',
     'Koda',
-    'Koda Solutions',
-    'تصميم متاجر الكترونية',
-    'برمجة خاصة',
+    'إنشاء متجر إلكتروني',
+    'متجر إلكتروني مصر',
     'Shopify Egypt',
     'شوبيفاي مصر',
-    'انشاء متجر الكتروني',
-    'Software House Egypt',
-    'شركات برمجة في مصر',
-    'Web Development Cairo',
-    'Next.js Developer',
-    'SaaS Development',
-    'E-commerce Solutions',
+    'دفع عند الاستلام',
     'بوابات الدفع مصر',
     'شركات الشحن مصر',
-    'Digital Transformation',
-    'Full Stack Development',
-    'React.js Agency',
-    'ازاي اعمل موقع الكتروني',
-    'البيع اونلاين',
-    'دروبشيبينغ مصر',
+    'E-commerce Egypt',
+    'SaaS Egypt',
+    'بيزنس أونلاين',
   ],
 
   authors: [{ name: 'Koda Team' }],
-  creator: 'Koda Solutions',
-  publisher: 'Koda Solutions',
+  creator: 'Koda',
+  publisher: 'Koda',
 
-  // 4. السوشيال ميديا والشير
   openGraph: {
-    title: 'كودا | من دكان.. لإمبراطورية',
+    title: 'كودا | افتح متجرك الإلكتروني في دقايق',
     description:
-      'امتلك متجرك الإلكتروني بملكية كاملة و0% عمولة. حلول احترافية وبرمجة خاصة.',
+      'اختار تصميم، ضيف منتجاتك، واستقبل الدفع كاش أو أونلاين من غير أي برمجة.',
     url: 'https://kodasolutions.net',
-    siteName: 'Koda Solutions',
+    siteName: 'Koda',
     locale: 'ar_EG',
     type: 'website',
     images: [
       {
-        url: '/og-image.png', // لازم تكون الصورة دي موجودة في folder public
+        url: '/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'كودا - حلول التجارة الإلكترونية',
+        alt: 'كودا، افتح متجرك الإلكتروني',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'كودا | من دكان.. لإمبراطورية',
-    description: 'متجرك الخاص بملكية 100% وبدون عمولات.',
+    title: 'كودا | افتح متجرك الإلكتروني في دقايق',
+    description: 'اختار تصميم، ضيف منتجاتك، وابدأ البيع من غير برمجة.',
     images: ['/og-image.png'],
   },
 
   icons: {
-    icon: [
-      { url: '/favicon.ico' },
-      { url: '/icon.png', sizes: '192x192', type: 'image/png' },
-    ],
+    icon: [{ url: '/icon.png', sizes: '512x512', type: 'image/png' }],
     apple: '/apple-icon.png',
   },
 };
 
-// 5. الـ Schema (Structured Data) لجوجل
 const jsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'ProfessionalService',
-  name: 'Koda Solutions',
-  alternateName: ['كودا', 'Koda'],
+  '@type': 'SoftwareApplication',
+  name: 'Koda',
+  alternateName: ['كودا'],
   url: 'https://kodasolutions.net',
   logo: 'https://kodasolutions.net/icon.png',
-  address: {
-    '@type': 'PostalAddress',
-    addressCountry: 'EG',
-    addressLocality: 'Cairo',
-  },
-  priceRange: '$$',
+  applicationCategory: 'BusinessApplication',
+  operatingSystem: 'Web',
   description:
-    'وكالة حلول برمجية متخصصة في التجارة الإلكترونية وتطوير المتاجر.',
-  offers: [
-    {
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
-        name: 'Custom E-commerce Development',
-      },
-    },
-    {
-      '@type': 'Offer',
-      itemOffered: {
-        '@type': 'Service',
-        name: 'Shopify Consultation & Setup',
-      },
-    },
-  ],
+    'منصة تساعد التاجر المصري يفتح متجره الإلكتروني بنفسه، من غير خبرة تقنية.',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'EGP',
+  },
 };
 
 export default function RootLayout({
@@ -128,22 +136,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ar" dir="rtl" suppressHydrationWarning>
+    <html
+      lang="ar"
+      dir="rtl"
+      suppressHydrationWarning
+      className={`${fraunces.variable} ${figtree.variable} ${thmanyahSans.variable}`}
+    >
       <head>
-        {/* حقن الـ Schema */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body
-        className={`${cairo.variable} ${inter.variable} font-cairo antialiased bg-background text-foreground`}
-      >
+      <body className="antialiased bg-paper text-ink">
         <Providers>
-          {/* المحتوى الأساسي للصفحة */}
           <main className="min-h-screen flex flex-col">{children}</main>
-
-          {/* ✅ الفلوتينج واتساب هنا عشان يظهر فوق كل الصفحات */}
           <FloatingWhatsApp />
         </Providers>
       </body>

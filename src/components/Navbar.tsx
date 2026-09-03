@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
 import { useLanguage } from '../context/LanguageContext';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
-import Image from 'next/image';
+import { Button } from './ui/Button';
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -17,134 +17,108 @@ export default function Navbar() {
     setMounted(true);
   }, []);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  const handleContactClick = () => {
-    const message = t.common.whatsappContactMessage;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/201212228091?text=${encodedMessage}`, '_blank');
-  };
-
   if (!mounted) return null;
 
+  const links = [
+    { href: '#features', label: t.nav.features },
+    { href: '#themes', label: t.nav.themes },
+    { href: '#pricing', label: t.nav.pricing },
+  ];
+
   return (
-    <nav
-      // التعديل 1: شيلنا lg:h-20 وخليناها تعتمد على الـ Padding بتاع الكونتينر اللي تحت
-      className="fixed top-0 left-0 right-0 z-50 glass-panel border-b transition-all duration-300 backdrop-blur-3xl"
+    <motion.nav
+      initial={{ opacity: 0, y: -16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed top-0 left-0 right-0 z-50 glass border-b"
     >
-      {/* التعديل 2: h-16 (64px) ثابتة للكل، ده المقاس البروفيشنال */}
-      <div className="container mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
-        {/* Logo Section */}
-        <div className="flex items-center gap-2.5 lg:gap-3">
-          {/* تصغير اللوجو سنة بسيطة */}
-          <div className="relative w-8 h-8 lg:w-9 lg:h-9 hover:scale-105 transition-transform">
-            <Image
-              src="/icon.png"
-              alt="Koda Solutions Logo"
-              fill
-              className="object-contain"
-              priority
-            />
-          </div>
-          {/* تصغير الفونت لـ 2xl بدل 3xl */}
-          <div className="text-xl lg:text-2xl font-black tracking-tighter text-primary cursor-default select-none hover:scale-105 transition-transform">
-            {t.nav.logo}
-          </div>
+      <div className="container h-16 flex items-center justify-between">
+        <span className="font-fraunces font-semibold text-xl">
+          {t.nav.logo}
+        </span>
+
+        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-ink-muted">
+          {links.map((link) => (
+            <a key={link.href} href={link.href} className="hover:text-ink">
+              {link.label}
+            </a>
+          ))}
         </div>
 
-        {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-            // تقليل الـ padding عشان الزرار يبقى ملموم
-            className="px-3 py-1.5 rounded-full hover:bg-card transition-all duration-300 flex items-center gap-2 text-xs lg:text-sm font-bold border border-transparent hover:border-border-custom group"
-            aria-label="Toggle Language"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold text-ink-muted hover:text-ink transition-colors"
+            aria-label="Toggle language"
           >
-            <Globe
-              size={16}
-              className="text-foreground-muted group-hover:text-primary transition-colors"
-            />
-            <span className="mt-0.5 text-foreground">
-              {language === 'ar' ? 'فرانكو' : 'عربي'}
-            </span>
+            <Globe size={16} />
+            {language === 'ar' ? 'EN' : 'AR'}
           </button>
-
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="p-2 rounded-full hover:bg-card transition-all duration-300 border border-transparent hover:border-border-custom text-foreground"
-            aria-label="Toggle Theme"
+            className="p-2 rounded-full text-ink-muted hover:text-ink transition-colors"
+            aria-label="Toggle theme"
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleContactClick}
-            // تصغير زرار الـ CTA: px-5 py-2 وخلينا الخط text-sm
-            className="bg-primary text-white text-sm font-black px-5 py-2 rounded-xl glow-orange transition-all hover:bg-primary/90 cursor-pointer shadow-lg shadow-primary/20"
-          >
-            {t.nav.contact}
-          </motion.button>
+          <Button variant="primary" className="px-5 py-2 text-sm">
+            {t.nav.cta}
+          </Button>
         </div>
 
-        {/* Mobile Actions */}
-        <div className="flex md:hidden items-center gap-2.5">
+        <div className="flex md:hidden items-center gap-2">
           <button
             onClick={() => setLanguage(language === 'ar' ? 'en' : 'ar')}
-            className="h-9 px-3 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-[10px] font-black text-foreground hover:border-primary transition-colors"
+            className="h-9 px-3 rounded-full glass-button text-xs font-bold"
           >
-            <span className="mt-0.5">
-              {language === 'ar' ? 'فرانكو' : 'عربي'}
-            </span>
+            {language === 'ar' ? 'EN' : 'AR'}
           </button>
-
           <button
             onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            className="w-9 h-9 rounded-full bg-card/50 border border-border-custom flex items-center justify-center text-foreground hover:border-primary transition-colors"
+            className="w-9 h-9 rounded-full glass-button flex items-center justify-center"
           >
             {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-
           <button
-            onClick={toggleMenu}
-            className="p-1.5 -mr-1.5 rounded-full hover:bg-card transition-colors text-foreground"
-            aria-label="Toggle Menu"
+            onClick={() => setIsOpen(!isOpen)}
+            className="w-9 h-9 rounded-full glass-button flex items-center justify-center"
+            aria-label="Toggle menu"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-panel border-b border-border-custom overflow-hidden backdrop-blur-3xl"
+            className="md:hidden glass border-t overflow-hidden"
           >
-            <div className="container mx-auto px-4 py-6 flex flex-col gap-4">
-              <div className="text-center">
-                <p className="text-foreground-muted text-xs mb-3 font-bold">
-                  {language === 'ar' ? 'جاهز تبدأ رحلتك؟' : 'Ready to start?'}
-                </p>
-                <motion.button
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => {
-                    handleContactClick();
-                    setIsOpen(false);
-                  }}
-                  className="w-full bg-primary text-white text-base font-black py-3 rounded-xl glow-orange text-center shadow-lg shadow-primary/20"
+            <div className="container py-5 flex flex-col gap-4">
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsOpen(false)}
+                  className="text-ink-muted font-medium"
                 >
-                  {t.nav.contact}
-                </motion.button>
-              </div>
+                  {link.label}
+                </a>
+              ))}
+              <Button
+                variant="primary"
+                className="w-full"
+                onClick={() => setIsOpen(false)}
+              >
+                {t.nav.cta}
+              </Button>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </motion.nav>
   );
 }

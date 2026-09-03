@@ -2,25 +2,30 @@
 
 import React from 'react';
 import { useLanguage } from '../context/LanguageContext';
+import { cn } from '@/lib/utils';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const headingFont = language === 'en' ? 'font-fraunces' : '';
 
   return (
-    // زيادة الـ padding لـ py-6 أو py-8 عشان الفوتر ياخد حقه في الصفحة
-    <footer className="py-6 lg:py-8 border-t border-border-custom bg-card relative z-10">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-start">
-          {/* Brand Name */}
-          <div className="text-xl md:text-2xl font-black tracking-tight text-primary">
-            Koda Solutions
-          </div>
-
-          {/* Copyright Text */}
-          <p className="text-foreground-muted text-sm font-medium order-last md:order-first">
-            © {new Date().getFullYear()} {t.footer.tagline}
-          </p>
+    <footer className="py-10 border-t border-line">
+      <div className="container flex flex-col md:flex-row items-center justify-between gap-4">
+        <span className={cn('font-semibold text-lg', headingFont)}>
+          {t.nav.logo}
+        </span>
+        <div className="flex gap-6 text-sm text-ink-muted">
+          <a href="#features" className="hover:text-ink">
+            {t.nav.features}
+          </a>
+          <a href="#themes" className="hover:text-ink">
+            {t.nav.themes}
+          </a>
+          <a href="#pricing" className="hover:text-ink">
+            {t.nav.pricing}
+          </a>
         </div>
+        <span className="text-sm text-ink-muted">{t.footer.tagline}</span>
       </div>
     </footer>
   );
