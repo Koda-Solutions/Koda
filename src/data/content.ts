@@ -15,11 +15,11 @@ export const content = {
     },
 
     hero: {
-      eyebrow: 'مصمم للتاجر المصري',
-      titleLine1: 'حوّل صفحة الانستجرام بتاعتك',
-      titleAccent: 'لموقع بيع حقيقي.',
+      eyebrow: 'لتجار السوشيال ميديا في مصر',
+      titleLine1: 'من صفحة',
+      titleAccent: 'لبراند.',
       subtitle:
-        'كودا هو أسهل طريقة للتاجر المصري إنه يعمل متجر إلكتروني حقيقي. اختار تصميم، ضيف منتجاتك، وابدأ تستقبل الدفع كاش أو أونلاين من النهاردة.',
+        'كودا بيحوّل صفحتك على انستجرام أو فيسبوك لمتجر حقيقي يبان محترف، عشان فريق البيع بتاعك يركّز في البيع بدل ما يضيع وقته في الرد على نفس الأسئلة في الدايركت.',
       ctaPrimary: 'ابدأ متجرك مجانًا',
       ctaSecondary: 'شوف التصاميم',
       fine: 'من غير فيزا. من غير برمجة. هيبقى شغال النهاردة.',
@@ -40,7 +40,7 @@ export const content = {
       eyebrow: 'ليه تتغير طريقتك في البيع',
       title: 'دلوقتي متجرك متقسم على 6 تطبيقات مختلفة.',
       subtitle:
-        'الأوردرات في الدايركت، التأكيد على واتساب، والمخزون في نوت أو إكسيل، والشحن في تطبيق شركة الشحن. كودا بيحط الأربعة دول في مكان واحد.',
+        'الأوردرات في الدايركت، التأكيد على واتساب، والمخزون في نوت أو إكسيل، والشحن في تطبيق شركة الشحن، وفريقك بيقعد يرد على نفس الأسئلة من غير ما يبيع أكتر. كودا بيحط كل ده في مكان واحد.',
       beforeTitle: 'قبل كودا',
       beforeSubtitle: 'متفرقة في تطبيقات مكنتش اختيارك',
       beforeItems: [
@@ -49,14 +49,16 @@ export const content = {
         'شيت إكسيل للمخزون',
         'تطبيق شركة الشحن',
         'حساب الكاش يدوي',
+        'الرد على نفس الأسئلة كل شوية',
       ],
       afterTitle: 'مع كودا',
-      afterSubtitle: 'داشبورد واحد وأربع حاجات متظبطة',
+      afterSubtitle: 'داشبورد واحد وكل حاجة متظبطة',
       afterItems: [
         'المنتجات والتصاميم',
         'الأوردرات وتأكيد واتساب',
         'الدفع كاش وأونلاين وفوري',
         'الشحن والتتبع',
+        'فريقك كله في نفس اللوحة',
       ],
     },
 
@@ -64,7 +66,7 @@ export const content = {
       eyebrow: 'كل حاجة موجودة',
       title: 'متصمم على طريقة بيعك بالظبط.',
       subtitle:
-        'من غير ما تدوّر على إضافات أو تتعاقد مع شركة برمجة. كل ميزة تحت دي شغالة من أول يوم.',
+        'مش أداة تشغّل بيها إعلانات بس. ده متجر بيخلي براندك يبان حقيقي وموثوق من أول يوم.',
       items: [
         {
           title: 'اختار تصميم، مش صداع',
@@ -81,6 +83,14 @@ export const content = {
         {
           title: 'شحن من غير شيتات إكسيل',
           desc: 'اعمل شحنة وتابع حالة التوصيل من نفس الداشبورد بتاع الأوردرات.',
+        },
+        {
+          title: 'فريقك كله يشتغل من مكان واحد',
+          desc: 'ادّي فريق المبيعات بتاعك حسابات خاصة يشوفوا الأوردرات ويردوا عليها، من غير ما تشارك موبايلك أو تتوهوا في الدردشات.',
+        },
+        {
+          title: 'متجر الناس تثق فيه',
+          desc: 'سياسة استرجاع وشحن جاهزة، وبيانات نشاطك التجاري واضحة، عشان عميلك يشتري من غير ما يتردد.',
         },
       ],
     },
@@ -109,31 +119,46 @@ export const content = {
       subtitle: 'من غير رسوم اشتراك أول مرة. تقدر تلغي في أي وقت من الداشبورد.',
       plans: [
         {
-          name: 'البداية',
+          name: 'مجاني',
           price: 'مجاني',
           period: '',
-          desc: 'لحد 30 منتج، الدفع كاش بس',
+          desc: 'لحد 30 منتج، وحساب واحد لإدارة المتجر',
           features: [
             'تصميم واحد',
-            'تأكيد واتساب للأوردرات',
+            'الدفع كاش عند الاستلام',
+            'تأكيد الأوردرات على واتساب',
             'دومين فرعي من كودا',
           ],
           featured: false,
         },
         {
-          name: 'النمو',
+          name: 'برو',
           price: '249',
           period: 'جنيه / الشهر',
-          desc: 'منتجات من غير حد، كل وسائل الدفع',
-          features: ['كل التصاميم', 'دفع فيزا ومحافظ وفوري', 'من غير علامة كودا'],
+          desc: 'لفريق مبيعات صغير جاهز يكبّر',
+          features: [
+            'كل التصاميم',
+            'منتجات من غير حد',
+            'الدفع كاش وفيزا ومحافظ وفوري',
+            'لحد 5 حسابات لفريقك',
+            'كوبونات وخصومات',
+            'من غير علامة كودا',
+          ],
           featured: true,
         },
         {
-          name: 'الاحتراف',
-          price: '549',
+          name: 'ماكس',
+          price: '599',
           period: 'جنيه / الشهر',
-          desc: 'للتاجر اللي جاهز يكبّر الشحن',
-          features: ['ربط الشحن والتتبع', 'دومين خاص', 'دعم فني بالأولوية'],
+          desc: 'لبراند جاهز يبان محترف 100%',
+          features: [
+            'كل حاجة في برو',
+            'صفحة سياسة استرجاع وشحن جاهزة',
+            'دومين خاص بيك',
+            'ربط الشحن والتتبع مع شركات الشحن',
+            'حسابات فريق من غير حد',
+            'دعم فني بالأولوية',
+          ],
           featured: false,
         },
       ],
@@ -141,7 +166,7 @@ export const content = {
 
     cta: {
       title: 'ابدأ في أيام، مش شهور.',
-      subtitle: 'متجرك يبقى شغال، بجد، النهاردة.',
+      subtitle: 'خلي صفحتك تبقى براند الناس تثق فيه، من النهاردة.',
       button: 'اعمل متجرك مجانًا',
     },
 
@@ -166,11 +191,11 @@ export const content = {
     },
 
     hero: {
-      eyebrow: 'Made for Egyptian sellers',
-      titleLine1: 'Turn your Instagram page into',
-      titleAccent: 'a real online store.',
+      eyebrow: 'For Instagram and Facebook sellers in Egypt',
+      titleLine1: 'From page',
+      titleAccent: 'to brand.',
       subtitle:
-        'Koda is the simplest way for Egyptian sellers to launch a real website. Pick a theme, add your products, and start taking Cash on Delivery, card, and Fawry payments today.',
+        'Koda turns your Instagram or Facebook page into a real, trustworthy store, so your sales team spends less time repeating the same answers in DMs and more time actually selling.',
       ctaPrimary: 'Start your store, free',
       ctaSecondary: 'See live themes',
       fine: 'No credit card. No code. Live the same day.',
@@ -191,7 +216,7 @@ export const content = {
       eyebrow: 'Why sellers switch',
       title: 'Right now, your shop lives in six different apps.',
       subtitle:
-        "Orders in your DMs, confirmations on WhatsApp, stock in a notebook or a spreadsheet, and shipping in a courier's own app. Koda puts all four in one place.",
+        "Orders in your DMs, confirmations on WhatsApp, stock in a notebook or a spreadsheet, and shipping in a courier's own app, while your team keeps answering the same questions instead of closing more sales. Koda puts it all in one place.",
       beforeTitle: 'Before',
       beforeSubtitle: "Scattered across apps you didn't choose",
       beforeItems: [
@@ -200,14 +225,16 @@ export const content = {
         'Excel stock sheet',
         "Courier's own app",
         'Cash counted by hand',
+        'Answering the same questions, again and again',
       ],
       afterTitle: 'With Koda',
-      afterSubtitle: 'One dashboard, four things sorted',
+      afterSubtitle: 'One dashboard, everything sorted',
       afterItems: [
         'Products and themes',
         'Orders and WhatsApp confirmation',
         'Cash, card, and Fawry payments',
         'Shipping and tracking',
+        'Your whole team, one dashboard',
       ],
     },
 
@@ -215,7 +242,7 @@ export const content = {
       eyebrow: 'Everything included',
       title: 'Built for how you already sell.',
       subtitle:
-        'No plugins to hunt for, no agency to hire. Every feature below ships on day one.',
+        "This isn't just a tool to run ads with. It's a store that makes your brand look real and trustworthy from day one.",
       items: [
         {
           title: 'Pick a theme, not a headache',
@@ -232,6 +259,14 @@ export const content = {
         {
           title: 'Shipping, without the spreadsheet',
           desc: 'Create shipments and follow delivery status right from the same dashboard as your orders.',
+        },
+        {
+          title: 'Your whole team, one dashboard',
+          desc: 'Give your sales team their own logins to see and answer orders, without sharing your phone or losing track across chats.',
+        },
+        {
+          title: 'A store people trust',
+          desc: 'A ready returns and shipping policy plus clear business info, so your customers buy with confidence instead of hesitating.',
         },
       ],
     },
@@ -254,37 +289,44 @@ export const content = {
       subtitle: 'No setup fee. Cancel anytime from your dashboard.',
       plans: [
         {
-          name: 'Start',
+          name: 'Free',
           price: 'Free',
           period: '',
-          desc: 'Up to 30 products, Cash on Delivery only',
+          desc: 'Up to 30 products, one account to manage your store',
           features: [
             '1 storefront theme',
+            'Cash on Delivery checkout',
             'WhatsApp order confirmation',
             'Koda subdomain',
           ],
           featured: false,
         },
         {
-          name: 'Growth',
+          name: 'Pro',
           price: '249',
           period: 'EGP / month',
-          desc: 'Unlimited products, all payment methods',
+          desc: 'For a small sales team ready to grow',
           features: [
             'All storefront themes',
-            'Card, wallet, and Fawry checkout',
+            'Unlimited products',
+            'Cash, card, wallet, and Fawry payments',
+            'Up to 5 team accounts',
+            'Discount codes',
             'No Koda branding',
           ],
           featured: true,
         },
         {
-          name: 'Pro',
-          price: '549',
+          name: 'Max',
+          price: '599',
           period: 'EGP / month',
-          desc: 'For sellers ready to scale shipping',
+          desc: 'For a brand ready to look 100% professional',
           features: [
+            'Everything in Pro',
+            'Ready returns and shipping policy page',
+            'Your own custom domain',
             'Shipping and tracking integration',
-            'Custom domain',
+            'Unlimited team accounts',
             'Priority support',
           ],
           featured: false,
@@ -294,7 +336,7 @@ export const content = {
 
     cta: {
       title: 'Start in days, not months.',
-      subtitle: 'Your store, live for real, today.',
+      subtitle: 'Turn your page into a brand people trust, starting today.',
       button: 'Create your store, free',
     },
 

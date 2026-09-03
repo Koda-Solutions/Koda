@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { cn } from '@/lib/utils';
 
-const marks = ['Aa', '£', '✓', '→'];
+const marks = ['Aa', '£', '✓', '→', '⊕', '★'];
 
 export default function Features() {
   const { t, language } = useLanguage();
@@ -30,7 +30,7 @@ export default function Features() {
           <p className="mt-4 text-ink-muted">{t.features.subtitle}</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {t.features.items.map((item, i) => (
             <motion.div
               key={item.title}
