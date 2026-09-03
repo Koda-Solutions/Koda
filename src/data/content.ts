@@ -191,7 +191,7 @@ export const content = {
     },
 
     hero: {
-      eyebrow: 'For Instagram and Facebook sellers in Egypt',
+      eyebrow: 'For Social Media Sellers in Egypt',
       titleLine1: 'From page',
       titleAccent: 'to brand.',
       subtitle:
