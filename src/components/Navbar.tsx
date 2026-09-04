@@ -73,7 +73,7 @@ export default function Navbar() {
           >
             {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
           </button>
-          <Button variant="primary" className="px-5 py-2 text-sm">
+          <Button variant="primary" className="px-5 py-2 text-sm" href="/onboarding">
             {t.nav.cta}
           </Button>
         </div>
@@ -123,6 +123,7 @@ export default function Navbar() {
               <Button
                 variant="primary"
                 className="w-full"
+                href="/onboarding"
                 onClick={() => setIsOpen(false)}
               >
                 {t.nav.cta}

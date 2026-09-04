@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
+import { Button } from './ui/Button';
 import { cn } from '@/lib/utils';
 
 export default function Pricing() {
@@ -38,7 +39,7 @@ export default function Pricing() {
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
               className={cn(
-                'rounded-2xl border p-7 flex flex-col gap-4',
+                'rounded-2xl border p-7 flex flex-col gap-4 h-full',
                 plan.featured
                   ? 'bg-accent border-accent text-paper'
                   : 'bg-paper-raised border-line'
@@ -76,6 +77,13 @@ export default function Pricing() {
                   </li>
                 ))}
               </ul>
+              <Button
+                href="/onboarding"
+                variant={plan.featured ? 'glass' : 'primary'}
+                className="w-full mt-auto"
+              >
+                {t.pricing.cta}
+              </Button>
             </motion.div>
           ))}
         </div>

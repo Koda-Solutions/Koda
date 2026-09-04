@@ -34,8 +34,12 @@ export default function Hero() {
             {t.hero.subtitle}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button variant="primary">{t.hero.ctaPrimary}</Button>
-            <Button variant="glass">{t.hero.ctaSecondary}</Button>
+            <Button variant="primary" href="/onboarding">
+              {t.hero.ctaPrimary}
+            </Button>
+            <Button variant="glass" href="#themes">
+              {t.hero.ctaSecondary}
+            </Button>
           </div>
           <p className="mt-4 text-sm text-ink-muted">{t.hero.fine}</p>
         </motion.div>

@@ -24,7 +24,7 @@ export default function CTA() {
             {t.cta.title}
           </h2>
           <p className="text-paper/85">{t.cta.subtitle}</p>
-          <Button variant="glass" className="mt-2">
+          <Button variant="glass" className="mt-2" href="/onboarding">
             {t.cta.button}
           </Button>
         </motion.div>

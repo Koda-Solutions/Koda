@@ -4,24 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '../context/LanguageContext';
 import { cn } from '@/lib/utils';
-
-const previews = [
-  {
-    bg: '#EFE6D6',
-    bars: ['#B99A6B', '#D8C9A8'],
-    blocks: '#DDCDAE',
-  },
-  {
-    bg: '#E4EEEA',
-    bars: ['#146B64', '#8FBDB4'],
-    blocks: '#BFDAD2',
-  },
-  {
-    bg: '#22201A',
-    bars: ['#D8C9A8', '#4B463A'],
-    blocks: '#3A362C',
-  },
-];
+import { themePreviews as previews } from '@/data/themePreviews';
 
 export default function Themes() {
   const { t, language } = useLanguage();
