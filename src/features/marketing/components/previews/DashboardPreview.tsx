@@ -39,7 +39,7 @@ export default function DashboardPreview({
     >
       {/* sidebar */}
       <div
-        className="w-[62px] shrink-0 p-2 flex flex-col gap-1 border-e"
+        className="w-[78px] shrink-0 p-2 flex flex-col gap-[3px] border-e flex flex-col"
         style={{ background: palette.surface, borderColor: palette.line }}
       >
         <div className="flex items-center gap-1 mb-1.5">
@@ -54,7 +54,7 @@ export default function DashboardPreview({
         {copy.nav.map((item, i) => (
           <span
             key={item}
-            className="rounded-[5px] px-1.5 py-1 truncate font-semibold"
+            className="rounded-[5px] px-1.5 py-1 font-semibold whitespace-nowrap"
             style={{
               background: i === 1 ? palette.accent : 'transparent',
               color: i === 1 ? palette.onAccent : palette.muted,

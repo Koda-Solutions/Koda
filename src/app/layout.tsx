@@ -35,7 +35,10 @@ const hand = Caveat({
   subsets: ['latin'],
   variable: '--font-handwritten',
   display: 'swap',
-  weight: ['500', '600', '700'],
+  // One weight. Caveat only ever appears as short annotations, and three
+  // weights of it were three more files on the wire for a difference nobody
+  // can see at the two sizes it is used at.
+  weight: ['600'],
 });
 
 /**
@@ -53,13 +56,23 @@ const body = Karla({
   display: 'swap',
 });
 
+/**
+ * Thmanyah Sans, the Arabic body face.
+ *
+ * Only the weights the page actually sets. Every declared face is preloaded on
+ * every visit, and these are Arabic fonts carrying a full Arabic glyph set at
+ * roughly 75KB each, so an unused weight is not a rounding error: it is 75KB
+ * of a mobile visitor's data competing with the HTML for bandwidth. Light (300)
+ * was declared and referenced nowhere.
+ *
+ * A weight that is not here still renders. The browser synthesises it from the
+ * nearest face, which is exactly the bug documented in CLAUDE.md, where Arabic
+ * headings set to 600 came out visibly thinner than intended. So before setting
+ * a weight on Arabic text, check it is in this list, and add the file if it is
+ * not, rather than letting the browser guess.
+ */
 const thmanyahSans = localFont({
   src: [
-    {
-      path: '../fonts/thmanyah-sans/thmanyah-sans-Light.woff2',
-      weight: '300',
-      style: 'normal',
-    },
     {
       path: '../fonts/thmanyah-sans/thmanyah-sans-Regular.woff2',
       weight: '400',
@@ -85,23 +98,19 @@ const thmanyahSans = localFont({
   display: 'swap',
 });
 
+/**
+ * Thmanyah Serif Display, the Arabic heading face.
+ *
+ * One weight, because the page uses exactly one. Every one of the fifteen
+ * places that reaches for this face pairs it with font-black, matching the
+ * brand's own bold look, so Regular, Medium and Bold were shipping and
+ * preloading 240KB that nothing on the site could ever display.
+ *
+ * If a lighter Arabic heading is ever wanted, add the file back here. Setting
+ * the class alone will not do it.
+ */
 const thmanyahSerifDisplay = localFont({
   src: [
-    {
-      path: '../fonts/thmanyah-serif-display/thmanyahserifdisplay-Regular.woff2',
-      weight: '400',
-      style: 'normal',
-    },
-    {
-      path: '../fonts/thmanyah-serif-display/thmanyahserifdisplay-Medium.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '../fonts/thmanyah-serif-display/thmanyahserifdisplay-Bold.woff2',
-      weight: '700',
-      style: 'normal',
-    },
     {
       path: '../fonts/thmanyah-serif-display/thmanyahserifdisplay-Black.woff2',
       weight: '900',

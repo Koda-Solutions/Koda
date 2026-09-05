@@ -34,15 +34,17 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 hidden lg:block text-ink"
         aria-hidden
       >
-        <Star className="absolute top-[14%] start-[46%] w-7 h-7 text-[var(--marker-coral)] tilt-r-2" />
+        <Star className="absolute top-[9%] start-[47%] w-7 h-7 text-[var(--marker-coral)] tilt-r-2" />
         <Sparkle className="absolute top-[62%] start-[40%] w-6 h-6 text-[var(--marker-sun)]" />
-        <Scribble className="absolute top-[8%] start-[34%] w-24 h-10 opacity-70 tilt-l" />
+        <Scribble className="absolute top-[3%] start-[31%] w-24 h-10 opacity-60 tilt-l" />
         <Zip className="absolute top-[46%] end-[3%] w-12 h-8 text-[var(--marker-sky)] opacity-80" />
         <Hatch className="absolute bottom-[8%] end-[8%] w-16 h-16 opacity-30" />
         <Hatch className="absolute top-[10%] start-[2%] w-14 h-14 opacity-20" />
-        {/* The arrow points from the copy at the phone, which is the one
-            relationship on this screen worth drawing. */}
-        <ArrowCurve className="absolute top-[30%] start-[38%] w-28 h-16 text-[var(--marker-coral)] rtl:-scale-x-100" />
+        {/* The arrow points from the buttons at the phone. It used to sit at
+            30% from the top, which put its head straight through the headline
+            and covered the one word the underline is there to emphasise. It
+            lives below the copy now, in the gap nothing else occupies. */}
+        <ArrowCurve className="hidden lg:block absolute top-[74%] start-[41%] w-24 h-14 text-[var(--marker-coral)] opacity-70 rtl:-scale-x-100" />
       </div>
 
       <div className="container grid md:grid-cols-2 gap-14 items-center">

@@ -129,7 +129,10 @@ export default function Themes() {
                           palette={palette}
                           heightClass="h-[330px]"
                           copy={{
-                            storeName: p.storeName,
+                            // Per theme, like the storefront beside it. This
+                            // read p.storeName, so all six dashboards were
+                            // labelled "Nour" whatever card they sat on.
+                            storeName: theme.shop.storeName,
                             nav: p.nav,
                             stats: p.stats,
                             ordersTitle: p.ordersTitle,

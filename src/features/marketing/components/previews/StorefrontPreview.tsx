@@ -2,7 +2,7 @@
 
 import React from 'react';
 import type { ThemePalette } from '@/data/themePreviews';
-import ProductImage, { SHAPE_CYCLE } from './ProductImage';
+import ProductImage, { SHAPE_CYCLE, type Shape } from './ProductImage';
 
 export interface StorefrontCopy {
   storeName: string;
@@ -11,7 +11,7 @@ export interface StorefrontCopy {
   categories: [string, string, string];
   products: { name: string; price: string; was?: string }[];
   /** Which silhouette each product is drawn as. Falls back to the cycle. */
-  shapes?: string[];
+  shapes?: readonly Shape[];
   saleBadge: string;
   cta: string;
   currency: string;
@@ -129,8 +129,7 @@ export default function StorefrontPreview({
                 <ProductImage
                   palette={palette}
                   shape={
-                    (copy.shapes?.[i] as (typeof SHAPE_CYCLE)[number] | undefined) ??
-                    SHAPE_CYCLE[i % SHAPE_CYCLE.length]
+                    copy.shapes?.[i] ?? SHAPE_CYCLE[i % SHAPE_CYCLE.length]
                   }
                   tint={palette.tiles[i % palette.tiles.length]}
                   className="absolute inset-0"
