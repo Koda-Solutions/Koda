@@ -94,7 +94,10 @@ export default function Themes() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ duration: 0.4, delay: i * 0.07 }}
-                    className="rounded-2xl border border-line bg-paper-raised overflow-hidden flex flex-col"
+                    className={cn(
+                      'bg-paper-raised overflow-hidden flex flex-col sketch-shadow-sm',
+                      i % 3 === 0 ? 'sketch tilt-l' : i % 3 === 1 ? 'sketch-2' : 'sketch-3 tilt-r'
+                    )}
                   >
                     <motion.div
                       key={surface}

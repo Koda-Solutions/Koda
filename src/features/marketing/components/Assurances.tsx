@@ -49,7 +49,10 @@ export default function Assurances() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-60px' }}
                 transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
-                className="rounded-2xl border border-line bg-paper p-6 flex gap-4"
+                className={cn(
+                  'bg-paper-raised p-6 flex gap-4 sketch-shadow-sm',
+                  i % 2 === 0 ? 'sketch tilt-l' : 'sketch-2 tilt-r'
+                )}
               >
                 <span className="w-10 h-10 rounded-xl bg-accent-soft text-accent-ink flex items-center justify-center shrink-0">
                   <Icon size={19} strokeWidth={2.2} />

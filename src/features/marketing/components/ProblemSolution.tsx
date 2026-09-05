@@ -34,7 +34,7 @@ export default function ProblemSolution() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5 }}
-            className="rounded-2xl border border-line bg-paper-raised p-8 opacity-90"
+            className="sketch-light bg-paper-raised p-8 opacity-90 tilt-l-2"
           >
             <h3 className={cn('font-semibold text-lg mb-1.5', headingFont)}>
               {t.problem.beforeTitle}
@@ -59,7 +59,7 @@ export default function ProblemSolution() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5 }}
-            className="rounded-2xl bg-accent-soft p-8"
+            className="sketch-2 sketch-shadow bg-accent-soft p-8 tilt-r"
           >
             <h3 className={cn('font-semibold text-lg mb-1.5 text-accent-ink', headingFont)}>
               {t.problem.afterTitle}

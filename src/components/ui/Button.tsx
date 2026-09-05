@@ -2,22 +2,41 @@
 
 import React from 'react';
 import Link from 'next/link';
-import { motion, HTMLMotionProps } from 'framer-motion';
 import { cn } from '@/lib/utils';
 
-type ButtonVariant = 'primary' | 'glass' | 'ghost';
+type ButtonVariant = 'primary' | 'outline' | 'ghost';
 
-const MotionLink = motion.create(Link);
-
-interface ButtonProps extends HTMLMotionProps<'button'> {
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: ButtonVariant;
   href?: string;
 }
 
+/**
+ * A button drawn with a pen.
+ *
+ * Three deliberate departures from the previous version:
+ *
+ * The border is a wobbly border-radius rather than an even one, and the shadow
+ * is a hard offset instead of a blur, so it reads as a shape someone drew and
+ * then outlined. Blurred shadows on evenly rounded rectangles are most of what
+ * made the old page look generated.
+ *
+ * Press moves the element into its own shadow rather than scaling it. Scaling is
+ * what software does; paper does not get smaller when you push it.
+ *
+ * Framer Motion is gone from here. It was pulling the animation runtime into
+ * every button on the page to do a hover scale that CSS does in one line, and
+ * this component renders a dozen times on the landing page alone. The whole
+ * effect is now transform and box-shadow, composited on the GPU, with no
+ * JavaScript on the interaction path at all.
+ */
 const variantClasses: Record<ButtonVariant, string> = {
-  primary: 'bg-accent text-paper font-bold hover:brightness-110',
-  glass: 'glass-button text-ink font-bold',
-  ghost: 'text-accent-ink font-semibold hover:underline underline-offset-4',
+  // Filled ink on paper. The most confident thing on the page.
+  primary: 'sketch sketch-shadow sketch-press bg-accent text-on-accent font-bold',
+  // Drawn outline, unfilled. For the second choice, which should still look drawn.
+  outline: 'sketch sketch-shadow-sm sketch-press bg-paper-raised text-ink font-bold',
+  // No box at all, for tertiary actions.
+  ghost: 'text-ink font-semibold underline decoration-2 underline-offset-4 decoration-[var(--marker-coral)] hover:decoration-[3px]',
 };
 
 export function Button({
@@ -28,37 +47,28 @@ export function Button({
   onClick,
   ...props
 }: ButtonProps) {
-  const sharedClassName = cn(
-    'inline-flex items-center justify-center gap-2 rounded-xl px-6 py-3 text-[15px] transition-colors disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:brightness-100',
+  const classes = cn(
+    'inline-flex items-center justify-center gap-2 px-6 py-3 text-[15px]',
+    'disabled:opacity-40 disabled:cursor-not-allowed disabled:pointer-events-none',
     variantClasses[variant],
     className
   );
-  const motionProps = {
-    whileHover: variant !== 'ghost' ? { scale: 1.03 } : undefined,
-    whileTap: variant !== 'ghost' ? { scale: 0.97 } : undefined,
-  };
 
   if (href) {
     return (
-      <MotionLink
+      <Link
         href={href}
-        className={sharedClassName}
+        className={classes}
         onClick={onClick as unknown as React.MouseEventHandler<HTMLAnchorElement>}
-        {...motionProps}
       >
         {children}
-      </MotionLink>
+      </Link>
     );
   }
 
   return (
-    <motion.button
-      className={sharedClassName}
-      onClick={onClick}
-      {...motionProps}
-      {...props}
-    >
+    <button className={classes} onClick={onClick} {...props}>
       {children}
-    </motion.button>
+    </button>
   );
 }

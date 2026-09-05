@@ -35,7 +35,7 @@ export default function SuccessStep({
         <Button variant="primary" className="w-full" href="/">
           {t.dashboardBtn}
         </Button>
-        <Button variant="glass" className="w-full" href="/">
+        <Button variant="outline" className="w-full" href="/">
           {t.viewStoreBtn}
         </Button>
       </div>

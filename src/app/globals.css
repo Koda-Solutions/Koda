@@ -4,6 +4,13 @@
   --color-paper: var(--paper);
   --color-paper-raised: var(--paper-raised);
   --color-paper-sunk: var(--paper-sunk);
+  --color-on-accent: var(--on-accent);
+  --color-coral: var(--marker-coral);
+  --color-sun: var(--marker-sun);
+  --color-mint: var(--marker-mint);
+  --color-sky: var(--marker-sky);
+  --color-grape: var(--marker-grape);
+  --color-teal: var(--marker-teal);
   --color-ink: var(--ink);
   --color-ink-muted: var(--ink-muted);
   --color-line: var(--line);
@@ -11,7 +18,12 @@
   --color-accent-soft: var(--accent-soft);
   --color-accent-ink: var(--accent-ink);
 
-  --font-display: var(--font-heading), ui-sans-serif, system-ui, sans-serif;
+  /* Handwriting for display and annotation, never for body copy.
+     The next/font variable is --font-handwritten; these are the Tailwind
+     utilities built on it. Naming them the same thing makes the token reference
+     itself and the face silently falls back to cursive. */
+  --font-hand: var(--font-handwritten), 'Bradley Hand', 'Segoe Script', cursive;
+  --font-display: var(--font-handwritten), 'Bradley Hand', cursive;
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-thmanyah: var(--font-arabic), 'Segoe UI', Tahoma, sans-serif;
   --font-thmanyah-display: var(--font-arabic-display), var(--font-arabic),
@@ -44,45 +56,69 @@
 }
 
 /*
-  The page is a neutral gallery wall. The six storefront themes supply the colour.
+  A sketchbook, not a dashboard.
 
-  This used to be a warm cream ground with a mid-teal used decoratively almost
-  everywhere, which is close enough to the current house style of AI-generated
-  landing pages that a reviewer called it out on sight. Two changes fix it
-  without abandoning the brand:
+  Two earlier attempts were called out as AI-looking, and the reason is worth
+  writing down because it drives every value below: generated designs converge on
+  one accent colour used decoratively over a soft neutral ground, with a geometric
+  sans and perfectly even corners. The fix is not a different accent. It is a
+  different kind of surface.
 
-  The ground is now cool and near-neutral, so a theme screenshot sitting on it
-  reads as a screen rather than as more of the same wash. Cream tinted every
-  preview and made six distinct themes look like one.
+  So: paper, ink, and a set of marker colours rather than a single brand tint.
+  Using four accents is itself the signal, because the templated look never does.
+  Nothing is perfectly aligned, nothing has an even radius, and shadows are hard
+  offsets like a pen outline rather than soft blurs.
 
-  The teal is darker and demoted. It is no longer a decorative tint spread across
-  section backgrounds; it appears on primary actions and almost nowhere else, at
-  a value dense enough to read as ink. The logo stays recognisable, but the page
-  stops wearing its accent as a costume.
+  The teal survives as one marker among several, which keeps the logo at home
+  without the whole page wearing it.
 */
 :root {
-  --paper: #f5f5f3;
+  --paper: #fcfcfa;
   --paper-raised: #ffffff;
-  /* A recessed plane, so the theme gallery sits in the page rather than on it. */
-  --paper-sunk: #ebebe7;
-  --ink: #16171a;
-  --ink-muted: #5d6066;
-  --line: #e0e0dc;
-  --accent: #0c4f46;
-  --accent-soft: #dde9e6;
-  --accent-ink: #063a33;
+  --paper-sunk: #f2f1ec;
+  /* Pencil ruling, the colour of a line on real paper. */
+  --line: #d9d7cd;
+  --ink: #1b1b1b;
+  --ink-muted: #56565c;
+
+  /* Markers. Named for what they are, so a component picks a pen rather than
+     "primary" or "secondary" and the vocabulary stays honest. */
+  --marker-coral: #ff5a47;
+  --marker-sun: #ffc93c;
+  --marker-mint: #17b287;
+  --marker-sky: #3d8bf2;
+  --marker-grape: #8b5cf6;
+  --marker-teal: #12a594;
+
+  /* The pen everything is drawn with. Ink, not a tint: a filled black button on
+     white paper is the most confident thing on the page, and the least like a
+     generated gradient. */
+  --accent: #1b1b1b;
+  --accent-soft: #fff3d6;
+  --accent-ink: #1b1b1b;
+  --on-accent: #fcfcfa;
 }
 
 .dark {
-  --paper: #0f1011;
-  --paper-raised: #171818;
-  --paper-sunk: #0a0b0b;
-  --ink: #f0f0ee;
-  --ink-muted: #9a9d9c;
-  --line: #262828;
-  --accent: #4fcbb8;
-  --accent-soft: #10322d;
-  --accent-ink: #b9ede4;
+  --paper: #16161a;
+  --paper-raised: #1e1e23;
+  --paper-sunk: #101014;
+  --line: #33333c;
+  --ink: #f2f1ec;
+  --ink-muted: #9c9ca6;
+
+  /* Markers lift in the dark so they still read as ink on paper rather than glow. */
+  --marker-coral: #ff7a6b;
+  --marker-sun: #ffd968;
+  --marker-mint: #3fd3a8;
+  --marker-sky: #6aa8f7;
+  --marker-grape: #a78bfa;
+  --marker-teal: #2fc4b2;
+
+  --accent: #f2f1ec;
+  --accent-soft: #3a3320;
+  --accent-ink: #f2f1ec;
+  --on-accent: #16161a;
 }
 
 * {
@@ -174,5 +210,128 @@ h3 {
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+
+/* ============================================================================
+   Hand-drawn surfaces
+
+   Every wobble here is border-radius, never an SVG filter.
+
+   The obvious way to get a rough edge is feTurbulence with feDisplacementMap,
+   and it looks superb on one element. Applied to every card on a landing page it
+   forces the browser to rasterise each one through a filter on every repaint,
+   which on a mid-range Android in Cairo is exactly the latency this project
+   cannot afford. Asymmetric border-radius costs nothing, composites normally,
+   and at a glance is indistinguishable.
+   ============================================================================ */
+
+/* The base wobble. Four different corner values in each direction is what stops
+   the eye reading it as a rounded rectangle. */
+.sketch {
+  border: 2px solid var(--ink);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+/* Alternates, so a grid of cards is not the same drawing repeated. Apply the
+   variant, not a random value, so the page renders identically every time and
+   nothing shifts between server and client. */
+.sketch-2 {
+  border: 2px solid var(--ink);
+  border-radius: 15px 225px 15px 255px / 225px 15px 255px 15px;
+}
+.sketch-3 {
+  border: 2px solid var(--ink);
+  border-radius: 200px 25px 180px 30px / 25px 190px 20px 210px;
+}
+
+/* Softer weight, for surfaces that should recede. */
+.sketch-light {
+  border: 1.5px solid var(--line);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+}
+
+/* A hard offset shadow, like a second pen stroke, never a blur. */
+.sketch-shadow {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+.sketch-shadow-sm {
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.sketch-shadow-color {
+  box-shadow: 4px 4px 0 var(--marker-coral);
+}
+
+/* Pressing something drawn should look like pressing paper: it moves into its
+   own shadow rather than scaling. */
+.sketch-press {
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.sketch-press:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.sketch-press:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+/* Nothing sits perfectly straight. Small enough to feel accidental rather than
+   styled, and applied by class so the layout is deterministic. */
+.tilt-l { transform: rotate(-0.7deg); }
+.tilt-r { transform: rotate(0.6deg); }
+.tilt-l-2 { transform: rotate(-1.4deg); }
+.tilt-r-2 { transform: rotate(1.2deg); }
+
+/* Marker highlight behind a word. Drawn as a background that sits under the
+   text baseline, the way a real highlighter overshoots. */
+.highlight {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 58%,
+    color-mix(in srgb, var(--marker-sun) 78%, transparent) 58%
+  );
+  padding-inline: 0.08em;
+}
+.highlight-coral {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 58%,
+    color-mix(in srgb, var(--marker-coral) 42%, transparent) 58%
+  );
+}
+.highlight-mint {
+  background-image: linear-gradient(
+    to bottom,
+    transparent 58%,
+    color-mix(in srgb, var(--marker-mint) 40%, transparent) 58%
+  );
+}
+
+/* Ruled paper, for a section that should read as a page torn from a notebook. */
+.ruled {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 31px,
+    color-mix(in srgb, var(--line) 55%, transparent) 31px,
+    color-mix(in srgb, var(--line) 55%, transparent) 32px
+  );
+}
+
+/* Graph paper, quieter, for the theme gallery so the storefronts sit on a
+   drafting surface rather than a blank field. */
+.grid-paper {
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--line) 40%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--line) 40%, transparent) 1px, transparent 1px);
+  background-size: 26px 26px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sketch-press:hover,
+  .sketch-press:active {
+    transform: none;
   }
 }

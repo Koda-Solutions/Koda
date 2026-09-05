@@ -38,7 +38,10 @@ export default function Features() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.4, delay: i * 0.08 }}
-              className="rounded-2xl border border-line bg-paper-raised p-6 flex flex-col gap-3.5"
+              className={cn(
+                'bg-paper-raised p-6 flex flex-col gap-3.5 sketch-shadow-sm',
+                i % 3 === 0 ? 'sketch tilt-l' : i % 3 === 1 ? 'sketch-2 tilt-r' : 'sketch-3'
+              )}
             >
               <div
                 className={cn(

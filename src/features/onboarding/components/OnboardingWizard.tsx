@@ -36,8 +36,6 @@ export default function OnboardingWizard() {
 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  /** Shown in development so a tester never has to dig through the service log. */
-  const [devCode, setDevCode] = useState<string | null>(null);
 
   const stepLabel = o.stepLabel
     .replace('{current}', String(Math.min(step, TOTAL_STEPS)))
@@ -68,9 +66,8 @@ export default function OnboardingWizard() {
     setBusy(true);
     setError(null);
     try {
-      const sent = await sendOtp(value);
+      await sendOtp(value);
       setPhone(value);
-      setDevCode(sent.devCode);
       setStep(2);
     } catch (err) {
       setError(describe(err));
@@ -143,12 +140,6 @@ export default function OnboardingWizard() {
             </div>
           )}
 
-          {devCode && step === 2 && (
-            <div className="mb-5 rounded-xl border border-line bg-paper px-4 py-3 text-sm text-ink-muted">
-              {o.step2.devCodeLabel}{' '}
-              <b className="font-mono text-ink tracking-widest">{devCode}</b>
-            </div>
-          )}
 
           {/*
             Deliberately not AnimatePresence. With framer-motion 12 on React 19, the
@@ -182,7 +173,6 @@ export default function OnboardingWizard() {
                   onResend={() => handleSendOtp(phone)}
                   onBack={() => {
                     setError(null);
-                    setDevCode(null);
                     setStep(1);
                   }}
                 />

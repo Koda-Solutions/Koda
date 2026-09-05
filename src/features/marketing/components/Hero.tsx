@@ -42,7 +42,7 @@ export default function Hero() {
             <Button variant="primary" href="/onboarding">
               {t.hero.ctaPrimary}
             </Button>
-            <Button variant="glass" href="#themes">
+            <Button variant="outline" href="#themes">
               {t.hero.ctaSecondary}
             </Button>
           </div>
@@ -76,7 +76,7 @@ export default function Hero() {
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             className="relative w-[300px] rounded-[38px] bg-paper-raised border border-line shadow-2xl p-3"
           >
-            <div className="absolute -start-12 top-24 glass rounded-2xl px-3 py-2 text-xs font-bold flex items-center gap-2 max-w-[140px] shadow-lg">
+            <div className="absolute -start-12 top-24 sketch sketch-shadow-sm bg-[var(--marker-sun)] text-ink px-3 py-2 text-xs font-bold flex items-center gap-2 max-w-[150px] tilt-r-2">
 
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-emerald-400" />

@@ -1,34 +1,37 @@
 import type { Metadata } from 'next';
-import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
+import { Caveat, Karla } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import { Providers } from '@/components/providers/Providers';
 import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp';
 
 /**
- * Display: Bricolage Grotesque.
+ * Handwriting: Caveat.
  *
- * The previous pairing was Fraunces, a serif display, on a cream ground. That
- * combination is the single most recognisable signature of an AI-generated
- * landing page right now, which is exactly what a reviewer said on seeing it.
+ * Used for headlines, labels and margin notes, never for a paragraph. It is a
+ * real handwriting face rather than a rounded sans pretending, which is the
+ * difference between a page that looks drawn and a page that looks friendly.
  *
- * Bricolage is a grotesque with real quirks (the flared stems, the tight apexes)
- * that survive at large sizes, so a headline looks drawn rather than selected.
- * Variable, so weight is a continuum rather than four files.
+ * Latin only, and that is a genuine limitation rather than an oversight. See the
+ * Arabic note below.
  */
-const display = Bricolage_Grotesque({
+const hand = Caveat({
   subsets: ['latin'],
-  variable: '--font-heading',
+  variable: '--font-handwritten',
   display: 'swap',
-  weight: ['500', '600', '700', '800'],
+  weight: ['500', '600', '700'],
 });
 
 /**
- * Body: Instrument Sans. Deliberately not Inter, which is the safe default
- * everything else already uses. Slightly narrower, a little more warmth in the
- * round letters, and it holds up next to Thmanyah in mixed Arabic and Latin.
+ * Body: Karla.
+ *
+ * A humanist grotesque with slightly odd proportions, so it sits next to
+ * handwriting without looking like a system font that wandered in. Deliberately
+ * not Inter, and deliberately not a second handwriting face: nobody reads three
+ * paragraphs of handwriting, and this page has to be read by someone deciding
+ * whether to trust us with their shop.
  */
-const body = Instrument_Sans({
+const body = Karla({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
@@ -187,7 +190,7 @@ export default function RootLayout({
       lang="ar"
       dir="rtl"
       suppressHydrationWarning
-      className={`${display.variable} ${body.variable} ${thmanyahSans.variable} ${thmanyahSerifDisplay.variable}`}
+      className={`${hand.variable} ${body.variable} ${thmanyahSans.variable} ${thmanyahSerifDisplay.variable}`}
     >
       <head>
         <script
