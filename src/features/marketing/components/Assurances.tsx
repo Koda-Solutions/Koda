@@ -4,7 +4,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, ShieldCheck, Wallet, Sparkles } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-import { cn } from '@/lib/utils';
+import { cn, handFont } from '@/lib/utils';
+import { railClass, railItem, SwipeHint } from '@/components/ui/Rail';
 
 const icons = [Zap, ShieldCheck, Wallet, Sparkles];
 
@@ -19,6 +20,7 @@ const icons = [Zap, ShieldCheck, Wallet, Sparkles];
 export default function Assurances() {
   const { t, language } = useLanguage();
   const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
+  const hintFont = handFont(language);
 
   return (
     <section className="py-20 md:py-24 bg-paper-raised border-y border-line">
@@ -39,7 +41,8 @@ export default function Assurances() {
           <p className="mt-4 text-ink-muted">{t.assurances.subtitle}</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        <SwipeHint text={t.common.swipe} className={hintFont} />
+        <div className={railClass('md', 'gap-5 md:grid-cols-2')}>
           {t.assurances.items.map((item, i) => {
             const Icon = icons[i];
             return (
@@ -51,7 +54,8 @@ export default function Assurances() {
                 transition={{ duration: 0.4, delay: (i % 2) * 0.08 }}
                 className={cn(
                   'bg-paper-raised p-6 flex gap-4 sketch-shadow-sm',
-                  i % 2 === 0 ? 'sketch tilt-l' : 'sketch-2 tilt-r'
+                  i % 2 === 0 ? 'sketch tilt-l' : 'sketch-2 tilt-r',
+                  railItem('md')
                 )}
               >
                 <span className="w-10 h-10 rounded-xl bg-accent-soft text-accent-ink flex items-center justify-center shrink-0">

@@ -3,7 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
-import { cn } from '@/lib/utils';
+import { cn, handFont } from '@/lib/utils';
+import { railClass, railItem, SwipeHint } from '@/components/ui/Rail';
 
 /**
  * Three steps, numbered.
@@ -15,6 +16,7 @@ import { cn } from '@/lib/utils';
 export default function HowItWorks() {
   const { t, language } = useLanguage();
   const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
+  const hintFont = handFont(language);
 
   return (
     <section id="how" className="py-20 md:py-24">
@@ -35,7 +37,8 @@ export default function HowItWorks() {
           <p className="mt-4 text-ink-muted">{t.howItWorks.subtitle}</p>
         </motion.div>
 
-        <ol className="grid md:grid-cols-3 gap-8 md:gap-6 relative">
+        <SwipeHint text={t.common.swipe} className={hintFont} />
+        <ol className={railClass('md', 'gap-8 md:grid-cols-3 md:gap-6', 'relative')}>
           {/* the rail, desktop only: it says "this is short" at a glance */}
           <span
             aria-hidden
@@ -49,7 +52,7 @@ export default function HowItWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-60px' }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="relative"
+              className={cn('relative', railItem('md'))}
             >
               <span
                 className={cn(

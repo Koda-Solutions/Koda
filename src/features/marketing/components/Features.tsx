@@ -3,13 +3,15 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
-import { cn } from '@/lib/utils';
+import { cn, handFont } from '@/lib/utils';
+import { railClass, railItem, SwipeHint } from '@/components/ui/Rail';
 
 const marks = ['Aa', '£', '✓', '→', '⊕', '★'];
 
 export default function Features() {
   const { t, language } = useLanguage();
   const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
+  const hintFont = handFont(language);
 
   return (
     <section id="features" className="py-24">
@@ -30,7 +32,8 @@ export default function Features() {
           <p className="mt-4 text-ink-muted">{t.features.subtitle}</p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <SwipeHint text={t.common.swipe} stop="sm" className={hintFont} />
+        <div className={railClass('sm', 'gap-5 sm:grid-cols-2 lg:grid-cols-3')}>
           {t.features.items.map((item, i) => (
             <motion.div
               key={item.title}
@@ -40,7 +43,8 @@ export default function Features() {
               transition={{ duration: 0.4, delay: i * 0.08 }}
               className={cn(
                 'bg-paper-raised p-6 flex flex-col gap-3.5 sketch-shadow-sm',
-                i % 3 === 0 ? 'sketch tilt-l' : i % 3 === 1 ? 'sketch-2 tilt-r' : 'sketch-3'
+                i % 3 === 0 ? 'sketch tilt-l' : i % 3 === 1 ? 'sketch-2 tilt-r' : 'sketch-3',
+                railItem('sm')
               )}
             >
               <div

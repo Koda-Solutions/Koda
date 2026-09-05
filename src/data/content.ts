@@ -3,6 +3,7 @@ export const content = {
     common: {
       whatsappNumber: '201212228091',
       whatsappGeneric: 'السلام عليكم كودا، حابب أعرف تفاصيل أكتر.',
+      swipe: 'اسحب',
     },
 
     nav: {
@@ -110,6 +111,8 @@ export const content = {
         ariaLabel: 'اختر المعاينة',
       },
       groups: { light: 'تصاميم فاتحة', dark: 'تصاميم غامقة' },
+      accentHint: 'جرّب لون براندك',
+      accentLabel: 'لون {n}',
       preview: {
         storeName: 'نور',
         heroTitle: 'تشكيلة الصيف',
@@ -356,9 +359,15 @@ export const content = {
         nextBtn: 'التالي',
         backBtn: 'رجوع',
       },
+      trial: {
+        badge: 'تجربة {plan} · 14 يوم',
+        note: 'من غير فيزا. بعد 14 يوم بترجع للباقة المجانية لوحدها، من غير ما يتسحب منك أي حاجة.',
+        planNames: { FREE: 'مجاني', PRO: 'برو', MAX: 'ماكس' },
+      },
       step4: {
         proBadge: 'برو',
         freeNote: 'تصميم "نور" متاح في الباقة المجانية. باقي التصاميم بتتفتح مع برو.',
+        trialNote: 'كل التصاميم مفتوحة طول التجربة. لو التجربة خلصت من غير اشتراك، متجرك بيرجع لتصميم "نور" ومش هيقع.',
         title: 'اختار تصميم متجرك',
         subtitle: 'تقدر تغيّره في أي وقت من لوحة التحكم.',
         nextBtn: 'التالي',
@@ -433,10 +442,16 @@ export const content = {
         saves: 'توفّر {amount} جنيه في السنة',
         freeForever: 'مجاني للأبد',
       },
+      scale: {
+        alt: 'ميزان بيوزن كام عملة في كفة، وريشة واحدة في الكفة التانية',
+        paidNote: 'الباقات المدفوعة',
+        freeNote: 'المجاني',
+      },
       plans: [
         {
           name: 'مجاني',
           free: true,
+          plan: 'FREE',
           priceMonthly: '0',
           priceAnnual: '0',
           annualTotal: '0',
@@ -454,6 +469,7 @@ export const content = {
         {
           name: 'برو',
           free: false,
+          plan: 'PRO',
           priceMonthly: '299',
           priceAnnual: '249',
           annualTotal: '2,990',
@@ -474,6 +490,7 @@ export const content = {
         {
           name: 'ماكس',
           free: false,
+          plan: 'MAX',
           priceMonthly: '799',
           priceAnnual: '666',
           annualTotal: '7,990',
@@ -508,6 +525,7 @@ export const content = {
     common: {
       whatsappNumber: '201212228091',
       whatsappGeneric: "Hi Koda, I'd like to know more.",
+      swipe: 'swipe',
     },
 
     nav: {
@@ -615,6 +633,8 @@ export const content = {
         ariaLabel: 'Choose a preview',
       },
       groups: { light: 'Light themes', dark: 'Dark themes' },
+      accentHint: 'try your own colour',
+      accentLabel: 'Colour {n}',
       preview: {
         storeName: 'Nour',
         heroTitle: 'Summer collection',
@@ -861,9 +881,15 @@ export const content = {
         nextBtn: 'Next',
         backBtn: 'Back',
       },
+      trial: {
+        badge: '{plan} trial · 14 days',
+        note: 'No card. After 14 days you drop back to the free plan on your own, and nothing is ever charged.',
+        planNames: { FREE: 'Free', PRO: 'Pro', MAX: 'Max' },
+      },
       step4: {
         proBadge: 'Pro',
         freeNote: 'Nour is included on the free plan. The rest unlock with Pro.',
+        trialNote: 'Every theme is open for the whole trial. If it ends without a subscription your shop falls back to Nour, and stays online.',
         title: 'Pick your storefront theme',
         subtitle: 'You can change it anytime from your dashboard.',
         nextBtn: 'Next',
@@ -938,10 +964,16 @@ export const content = {
         saves: 'You keep {amount} EGP a year',
         freeForever: 'Free forever',
       },
+      scale: {
+        alt: 'A balance weighing a few coins against a single feather',
+        paidNote: 'the paid plans',
+        freeNote: 'Free',
+      },
       plans: [
         {
           name: 'Free',
           free: true,
+          plan: 'FREE',
           priceMonthly: '0',
           priceAnnual: '0',
           annualTotal: '0',
@@ -959,6 +991,7 @@ export const content = {
         {
           name: 'Pro',
           free: false,
+          plan: 'PRO',
           priceMonthly: '299',
           priceAnnual: '249',
           annualTotal: '2,990',
@@ -979,6 +1012,7 @@ export const content = {
         {
           name: 'Max',
           free: false,
+          plan: 'MAX',
           priceMonthly: '799',
           priceAnnual: '666',
           annualTotal: '7,990',

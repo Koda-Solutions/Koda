@@ -28,13 +28,16 @@ export default function ProblemSolution() {
           <p className="mt-4 text-ink-muted">{t.problem.subtitle}</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-7">
+        {/* The two halves are one torn sheet, not two cards beside a rule. See
+            .torn-lead / .torn-trail in globals.css for why the tear is a clip-path
+            and why it changes side in Arabic. */}
+        <div className="grid md:grid-cols-2 gap-7 md:gap-4">
           <motion.div
             initial={{ opacity: 0, x: language === 'ar' ? 20 : -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5 }}
-            className="sketch-light bg-paper-raised p-8 opacity-90 tilt-l-2"
+            className="sketch-light bg-paper-raised p-8 opacity-90 tilt-l-2 torn-lead"
           >
             <h3 className="font-bold text-lg mb-1.5">
               {t.problem.beforeTitle}
@@ -59,7 +62,7 @@ export default function ProblemSolution() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.5 }}
-            className="sketch-2 sketch-shadow bg-accent-soft p-8 tilt-r"
+            className="sketch-2 bg-accent-soft p-8 tilt-r torn-trail"
           >
             <h3 className="font-bold text-lg mb-1.5">
               {t.problem.afterTitle}

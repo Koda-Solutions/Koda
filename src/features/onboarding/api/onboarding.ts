@@ -107,6 +107,8 @@ export async function checkSlug(slug: string): Promise<SlugAvailability> {
 export interface CreateStoreInput {
   name: string;
   category?: string;
+  /** FREE, PRO or MAX. PRO and MAX start a 14-day trial with no card. */
+  plan?: string;
   themeKey?: string;
   accentColor?: string;
   bio?: string;

@@ -427,3 +427,113 @@ h3 {
     animation: none !important;
   }
 }
+
+
+/* ============================================================================
+   One sheet, torn in two
+
+   The before-and-after section used to be two cards either side of a gap, which
+   is the layout every SaaS page uses and reads as a table. Tearing one sheet in
+   half says the same thing in a way a template cannot: the left half is what the
+   seller is throwing away.
+
+   Written as clip-path rather than a border image or an SVG mask because a
+   polygon is resolution-independent, costs nothing to composite, and clips the
+   drawn border along with the paper, which is exactly what a torn edge looks
+   like. The one filter on the page lives here: drop-shadow follows the clipped
+   silhouette, and at zero blur it is the same hard offset shadow as
+   .sketch-shadow rather than the soft blur the design system bans.
+
+   Percentages are on the border box, and the ragged zone never reaches 4%, so
+   the cards' p-8 keeps content well clear of the tear at every width.
+   ============================================================================ */
+:root {
+  /* One ragged profile, used four ways. The left edge is the exact complement of
+     the right (inset d becomes 100-d), so the two halves interlock across the gap
+     instead of being two unrelated wobbles that happen to face each other. */
+  --tear-right: polygon(
+    0 0,
+    99.4% 0.0%, 95.6% 8.3%, 99.6% 16.7%, 96.1% 25.0%,
+    98.8% 33.3%, 95.2% 41.7%, 99.5% 50.0%, 96.5% 58.3%,
+    98.6% 66.7%, 95.0% 75.0%, 99.6% 83.3%, 96.3% 91.7%,
+    99.1% 100.0%,
+    0 100%
+  );
+  --tear-left: polygon(
+    100% 0, 100% 100%,
+    0.9% 100.0%, 3.7% 91.7%, 0.4% 83.3%, 5.0% 75.0%,
+    1.4% 66.7%, 3.5% 58.3%, 0.5% 50.0%, 4.8% 41.7%,
+    1.2% 33.3%, 3.9% 25.0%, 0.4% 16.7%, 4.4% 8.3%,
+    0.6% 0.0%
+  );
+  --tear-bottom: polygon(
+    0 0, 100% 0,
+    100.0% 99.1%, 91.7% 96.3%, 83.3% 99.6%, 75.0% 95.0%,
+    66.7% 98.6%, 58.3% 96.5%, 50.0% 99.5%, 41.7% 95.2%,
+    33.3% 98.8%, 25.0% 96.1%, 16.7% 99.6%, 8.3% 95.6%,
+    0.0% 99.4%
+  );
+  --tear-top: polygon(
+    0.0% 0.6%, 8.3% 4.4%, 16.7% 0.4%, 25.0% 3.9%,
+    33.3% 1.2%, 41.7% 4.8%, 50.0% 0.5%, 58.3% 3.5%,
+    66.7% 1.4%, 75.0% 5.0%, 83.3% 0.4%, 91.7% 3.7%,
+    100.0% 0.9%,
+    100% 100%, 0 100%
+  );
+}
+
+/* The torn edge has to be DRAWN, not implied.
+
+   First attempt relied on the card's own silhouette showing against the page. That
+   works in dark mode, where paper-raised (#1e1e23) sits seven points off paper
+   (#16161a), and is invisible in light, where #ffffff sits two points off #fcfcfa:
+   the tear was there, and nobody could see it.
+
+   So a drop-shadow offset along the axis the tear runs on, at zero blur. It follows
+   the clipped silhouette, which no box-shadow can do (clip-path cuts the shadow too),
+   and lands as a 2.5px ink line down the ragged edge in both modes. It is also what a
+   torn flap actually does: cast a hard little shadow where it lifts off the page.
+
+   One pass per element, no blur, nothing animated. */
+.torn-lead {
+  clip-path: var(--tear-bottom);
+  filter: drop-shadow(0 2.5px 0 var(--ink));
+}
+.torn-trail {
+  clip-path: var(--tear-top);
+  /* Second shadow is the depth this card used to get from .sketch-shadow, which had
+     to go: a box-shadow squares off the very edge the tear exists to ragged. */
+  filter: drop-shadow(0 -2.5px 0 var(--ink)) drop-shadow(4px 4px 0 var(--ink));
+}
+
+@media (min-width: 768px) {
+  .torn-lead {
+    clip-path: var(--tear-right);
+    filter: drop-shadow(2.5px 0 0 var(--ink));
+  }
+  .torn-trail {
+    clip-path: var(--tear-left);
+    filter: drop-shadow(-2.5px 0 0 var(--ink)) drop-shadow(4px 4px 0 var(--ink));
+  }
+  /* The tear has to face the gap, and in Arabic the halves swap sides, so the
+     shadow that draws it has to swap direction with them. */
+  [dir='rtl'] .torn-lead {
+    clip-path: var(--tear-left);
+    filter: drop-shadow(-2.5px 0 0 var(--ink));
+  }
+  [dir='rtl'] .torn-trail {
+    clip-path: var(--tear-right);
+    filter: drop-shadow(2.5px 0 0 var(--ink)) drop-shadow(4px 4px 0 var(--ink));
+  }
+}
+
+/* Scroll rails hide their bar: on a phone it is an overlay that fades anyway, and on
+   a desktop the rail has already turned back into a grid. The cut-off card at the
+   screen edge is the affordance, not the bar. */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

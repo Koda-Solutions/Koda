@@ -2,6 +2,7 @@
 
 import React from 'react';
 import type { ThemePalette } from '@/data/themePreviews';
+import { useCountUp, splitNumeric, formatCounted } from '@/lib/useCountUp';
 
 export interface DashboardCopy {
   storeName: string;
@@ -11,6 +12,51 @@ export interface DashboardCopy {
   orders: { name: string; total: string; status: string; pending: boolean }[];
   confirm: string;
   currency: string;
+}
+
+/**
+ * One stat tile.
+ *
+ * Its own component only so the count-up hook is not called inside a `.map`, which is
+ * the rule-of-hooks trap that works right up until somebody makes the stat list
+ * variable length.
+ */
+function StatTile({
+  palette,
+  label,
+  display,
+  emphasis,
+  animate,
+}: {
+  palette: ThemePalette;
+  label: string;
+  display: string;
+  emphasis: boolean;
+  animate: boolean;
+}) {
+  const { target, decimals, grouped, suffix } = splitNumeric(display);
+  const countable = Number.isFinite(target);
+  const value = useCountUp(countable ? target : 0, animate && countable);
+
+  return (
+    <div
+      className="rounded-lg p-1.5 flex flex-col gap-1 border"
+      style={{ background: palette.surface, borderColor: palette.line }}
+    >
+      <span className="truncate text-[6.5px]" style={{ color: palette.muted }}>
+        {label}
+      </span>
+      <span
+        className="font-black text-[12px] tabular-nums"
+        style={{
+          color: emphasis ? palette.highlight : palette.ink,
+          fontVariantNumeric: 'tabular-nums',
+        }}
+      >
+        {countable ? formatCounted(value, decimals, grouped) + suffix : display}
+      </span>
+    </div>
+  );
 }
 
 /**
@@ -26,10 +72,13 @@ export default function DashboardPreview({
   copy,
   /** Matches StorefrontPreview so switching tabs does not resize the card. */
   heightClass = 'h-[290px]',
+  /** Set by the parent once the card is on screen, so the stats count up in view. */
+  animateStats = false,
 }: {
   palette: ThemePalette;
   copy: DashboardCopy;
   heightClass?: string;
+  animateStats?: boolean;
 }) {
   return (
     <div
@@ -69,21 +118,14 @@ export default function DashboardPreview({
         {/* stat tiles */}
         <div className="grid grid-cols-3 gap-1.5">
           {copy.stats.map((s, i) => (
-            <div
+            <StatTile
               key={s.label}
-              className="rounded-lg p-1.5 flex flex-col gap-1 border"
-              style={{ background: palette.surface, borderColor: palette.line }}
-            >
-              <span className="truncate text-[6.5px]" style={{ color: palette.muted }}>
-                {s.label}
-              </span>
-              <span
-                className="font-black text-[12px]"
-                style={{ color: i === 2 ? palette.highlight : palette.ink }}
-              >
-                {s.value}
-              </span>
-            </div>
+              palette={palette}
+              label={s.label}
+              display={s.value}
+              emphasis={i === 2}
+              animate={animateStats}
+            />
           ))}
         </div>
 

@@ -4,7 +4,9 @@ import React, { useState } from 'react';
 import { Check } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/Button';
-import { cn } from '@/lib/utils';
+import { cn, handFont } from '@/lib/utils';
+import { railClass, railItem, SwipeHint } from '@/components/ui/Rail';
+import PricingScale from './PricingScale';
 
 /**
  * The pricing table.
@@ -33,6 +35,7 @@ export default function Pricing() {
   const { t, language } = useLanguage();
   const isArabic = language === 'ar';
   const headingFont = isArabic ? 'font-thmanyah-display font-black' : 'font-hand';
+  const noteFont = handFont(language);
 
   // Yearly first. See the note above on why that is not a dark pattern here.
   const [yearly, setYearly] = useState(true);
@@ -41,14 +44,21 @@ export default function Pricing() {
   return (
     <section id="pricing" className="py-24 relative">
       <div className="container">
-        <div className="max-w-2xl mb-10">
-          <span className="text-xs font-bold tracking-[0.14em] uppercase text-ink-muted">
-            {t.pricing.eyebrow}
-          </span>
-          <h2 className={cn('mt-3 text-3xl md:text-5xl', headingFont)}>
-            {t.pricing.title}
-          </h2>
-          <p className="mt-4 text-ink-muted">{t.pricing.subtitle}</p>
+        {/* The drawing sits beside the heading rather than above the cards: it is
+            an argument about the free plan, and it has to be read before the
+            prices, not after them. */}
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_380px] gap-8 lg:gap-12 items-center mb-10">
+          <div className="max-w-2xl">
+            <span className="text-xs font-bold tracking-[0.14em] uppercase text-ink-muted">
+              {t.pricing.eyebrow}
+            </span>
+            <h2 className={cn('mt-3 text-3xl md:text-5xl', headingFont)}>
+              {t.pricing.title}
+            </h2>
+            <p className="mt-4 text-ink-muted">{t.pricing.subtitle}</p>
+          </div>
+
+          <PricingScale />
         </div>
 
         {/* The toggle: drawn as one pill with the active side filled in ink. */}
@@ -89,7 +99,8 @@ export default function Pricing() {
 
         <p className="text-center text-sm text-ink-muted mb-12">{t.pricing.note}</p>
 
-        <div className="grid md:grid-cols-3 gap-7 items-start">
+        <SwipeHint text={t.common.swipe} className={noteFont} />
+        <div className={railClass('md', 'gap-7 md:grid-cols-3', 'items-start')}>
           {t.pricing.plans.map((plan, i) => {
             const price = plan.free
               ? null
@@ -102,6 +113,7 @@ export default function Pricing() {
                 key={plan.name}
                 className={cn(
                   'p-7 flex flex-col gap-4 h-full bg-paper-raised relative',
+                  railItem('md'),
                   plan.featured
                     ? 'sketch-2 sketch-shadow-color tilt-r md:-mt-4 md:mb-4'
                     : 'sketch sketch-shadow-sm',
@@ -164,8 +176,11 @@ export default function Pricing() {
                   ))}
                 </ul>
 
+                {/* The plan rides into onboarding in the URL, where the wizard reads
+                    it and asks the server for a trial. See features/onboarding/plan.ts
+                    for why it is a query parameter and not storage. */}
                 <Button
-                  href="/onboarding"
+                  href={plan.free ? '/onboarding' : `/onboarding?plan=${plan.plan.toLowerCase()}`}
                   variant={plan.featured ? 'primary' : 'outline'}
                   className="w-full mt-auto"
                 >

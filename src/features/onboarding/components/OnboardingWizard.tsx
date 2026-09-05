@@ -1,7 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { Hatch, Sparkle } from '@/components/ui/Doodles';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
@@ -12,6 +13,7 @@ import {
   verifyOtp,
   type Session,
 } from '@/features/onboarding/api/onboarding';
+import { planFromLocation, type Plan } from '@/features/onboarding/plan';
 import Stepper, { TOTAL_STEPS } from './Stepper';
 import PhoneStep from './PhoneStep';
 import OtpStep from './OtpStep';
@@ -33,6 +35,15 @@ export default function OnboardingWizard() {
   const [themeKey, setThemeKey] = useState<string>('nour');
   const [, setSession] = useState<Session | null>(null);
   const [storeSlug, setStoreSlug] = useState('');
+
+  // Which plan the merchant pressed on the pricing table. Read after mount rather
+  // than during render, so the prerendered HTML is identical for everyone and the
+  // page stays static. See features/onboarding/plan.ts.
+  const [plan, setPlan] = useState<Plan>('FREE');
+  useEffect(() => setPlan(planFromLocation()), []);
+
+  const onTrial = plan !== 'FREE';
+  const planLabel = o.trial.planNames[plan];
 
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -104,6 +115,8 @@ export default function OnboardingWizard() {
       const store = await createStore({
         name: storeName,
         category,
+        // A request for a trial, not a grant of one. koda-store-backend decides.
+        plan,
         themeKey,
         accentColor,
         bio,
@@ -118,9 +131,18 @@ export default function OnboardingWizard() {
   }
 
   return (
+    // Two 600px blurred blobs used to sit behind this. They are the single most
+    // generated-looking thing in a UI, they cost a full-viewport filter on every
+    // paint, and they belonged to the design this project replaced.
     <div className="min-h-screen bg-paper flex items-center justify-center px-5 py-12 relative overflow-hidden">
-      <div className="absolute w-[620px] h-[620px] rounded-full bg-accent-soft blur-3xl opacity-60 -top-56 -start-40 pointer-events-none" />
-      <div className="absolute w-[520px] h-[520px] rounded-full bg-accent-soft blur-3xl opacity-60 -bottom-56 -end-40 pointer-events-none" />
+      <Hatch
+        className="hidden sm:block absolute top-16 start-10 w-24 h-24 text-line pointer-events-none"
+        aria-hidden
+      />
+      <Sparkle
+        className="hidden sm:block absolute bottom-20 end-14 w-7 h-7 text-[var(--marker-sun)] pointer-events-none"
+        aria-hidden
+      />
 
       <div className="relative w-full max-w-[480px]">
         <div className="flex items-center justify-center gap-2.5 mb-7">
@@ -130,13 +152,29 @@ export default function OnboardingWizard() {
 
         <Stepper current={step} label={stepLabel} />
 
-        <div className="bg-paper-raised border border-line rounded-[20px] p-8 shadow-xl overflow-hidden">
+        <div className="bg-paper-raised sketch-frame sketch-shadow p-7 sm:p-8 overflow-hidden">
           {error && (
             <div
               role="alert"
-              className="mb-5 rounded-xl border border-red-300 bg-red-50 text-red-700 px-4 py-3 text-sm"
+              className="mb-5 sketch-frame-2 bg-paper-sunk px-4 py-3 text-sm"
+              style={{ borderColor: 'var(--marker-coral)', color: 'var(--marker-coral)' }}
             >
               {error}
+            </div>
+          )}
+
+          {/* The trial, said once and plainly, on every step before the store exists.
+              Someone who clicked "Try 14 days free" must never have to wonder whether
+              it actually started, and must never be surprised by a charge. */}
+          {onTrial && step < 6 && (
+            <div className="mb-6 flex flex-col gap-1.5">
+              <span
+                className="self-start sketch-3 px-3 py-1 text-xs font-bold"
+                style={{ borderColor: 'var(--marker-coral)', color: 'var(--marker-coral)' }}
+              >
+                {o.trial.badge.replace('{plan}', planLabel)}
+              </span>
+              <p className="text-xs text-ink-muted leading-relaxed">{o.trial.note}</p>
             </div>
           )}
 
@@ -196,6 +234,7 @@ export default function OnboardingWizard() {
                   themes={t.themes.items}
                   headingFont={headingFont}
                   preview={t.themes.preview}
+                  onTrial={onTrial}
                   onSubmit={(key) => {
                     setThemeKey(key);
                     setStep(5);
