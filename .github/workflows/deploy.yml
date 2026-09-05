@@ -1,0 +1,149 @@
+name: Build and deploy
+
+# Push to main and it goes live. There is no separate release step, so the branch
+# protection on main is the only gate between a commit and production.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  AWS_REGION: eu-central-1
+  ECR_REPOSITORY: koda-frontend
+  SERVICE: frontend
+  APP_HOSTNAME: kodasolutions.net
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+
+      # npm ci, not install: it installs exactly the lockfile and fails if the
+      # two have drifted.
+      - run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type check and build
+        run: npm run build
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assume the deploy role
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.AWS_DEPLOY_ROLE }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Log in to ECR
+        id: ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push
+        env:
+          REGISTRY: ${{ steps.ecr.outputs.registry }}
+          TAG: ${{ github.sha }}
+        run: |
+          # NEXT_PUBLIC_* is inlined into the client bundle at build time, so
+          # these are build arguments and not runtime environment. Both services
+          # sit behind one hostname; Caddy routes /auth to identity and /stores
+          # to store.
+          #
+          # API_FALLBACK is false here. True makes the wizard simulate a signup
+          # with the code 123456 when the API is unreachable, which is a useful
+          # local convenience and a lie on a public site: a visitor would reach a
+          # success screen for a store that does not exist.
+          docker build \
+            --build-arg NEXT_PUBLIC_IDENTITY_URL="https://api-dev.${APP_HOSTNAME}" \
+            --build-arg NEXT_PUBLIC_STORE_URL="https://api-dev.${APP_HOSTNAME}" \
+            --build-arg NEXT_PUBLIC_API_FALLBACK="false" \
+            -t "$REGISTRY/$ECR_REPOSITORY:$TAG" .
+          docker push "$REGISTRY/$ECR_REPOSITORY:$TAG"
+
+      - name: Deploy
+        env:
+          TAG: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          INSTANCE_ID=$(aws ec2 describe-instances \
+            --region "$AWS_REGION" \
+            --filters "Name=tag:Name,Values=koda-dev-app" \
+                      "Name=instance-state-name,Values=running" \
+            --query 'Reservations[0].Instances[0].InstanceId' --output text)
+
+          if [ "$INSTANCE_ID" = "None" ] || [ -z "$INSTANCE_ID" ]; then
+            echo "No running koda-dev-app instance found." >&2
+            exit 1
+          fi
+
+          COMMAND_ID=$(aws ssm send-command \
+            --region "$AWS_REGION" \
+            --instance-ids "$INSTANCE_ID" \
+            --document-name AWS-RunShellScript \
+            --comment "deploy $SERVICE $TAG" \
+            --parameters "commands=[\"/opt/koda/deploy.sh $SERVICE $TAG\"]" \
+            --query 'Command.CommandId' --output text)
+
+          aws ssm wait command-executed \
+            --region "$AWS_REGION" --command-id "$COMMAND_ID" --instance-id "$INSTANCE_ID" || true
+
+          STATUS=$(aws ssm get-command-invocation --region "$AWS_REGION" \
+            --command-id "$COMMAND_ID" --instance-id "$INSTANCE_ID" --query Status --output text)
+
+          echo "--- deploy output ---"
+          aws ssm get-command-invocation --region "$AWS_REGION" \
+            --command-id "$COMMAND_ID" --instance-id "$INSTANCE_ID" \
+            --query StandardOutputContent --output text
+
+          if [ "$STATUS" != "Success" ]; then
+            echo "--- deploy errors ---" >&2
+            aws ssm get-command-invocation --region "$AWS_REGION" \
+              --command-id "$COMMAND_ID" --instance-id "$INSTANCE_ID" \
+              --query StandardErrorContent --output text >&2
+            exit 1
+          fi
+
+      - name: Smoke test
+        # Gated on DNS. Until the apex A record points at the instance the site
+        # still resolves to Vercel, which is a missing record rather than a
+        # broken deploy.
+        run: |
+          set -uo pipefail
+          EXPECTED=$(aws ec2 describe-addresses --region "$AWS_REGION" \
+            --filters "Name=tag:Name,Values=koda-dev-eip" \
+            --query 'Addresses[0].PublicIp' --output text 2>/dev/null || echo "")
+          RESOLVED=$(getent hosts "$APP_HOSTNAME" | awk '{print $1}' | head -1)
+
+          if [ -z "$RESOLVED" ] || { [ -n "$EXPECTED" ] && [ "$RESOLVED" != "$EXPECTED" ]; }; then
+            echo "::warning::$APP_HOSTNAME resolves to '${RESOLVED:-nothing}', not the instance ($EXPECTED)."
+            echo "::warning::Point the apex A record at the instance. Deploy itself succeeded."
+            exit 0
+          fi
+
+          for i in $(seq 1 10); do
+            if curl -fsS -o /dev/null -w '%{http_code}' "https://$APP_HOSTNAME/" | grep -q 200; then
+              echo "frontend is live"
+              exit 0
+            fi
+            sleep 6
+          done
+          echo "DNS points here but the frontend did not answer" >&2
+          exit 1

@@ -316,7 +316,7 @@ export const content = {
         },
         {
           name: 'برو',
-          price: '249',
+          price: '299',
           period: 'جنيه / الشهر',
           desc: 'لفريق مبيعات صغير جاهز يكبّر',
           features: [
@@ -331,7 +331,7 @@ export const content = {
         },
         {
           name: 'ماكس',
-          price: '599',
+          price: '799',
           period: 'جنيه / الشهر',
           desc: 'لبراند جاهز يبان محترف 100%',
           features: [
@@ -675,7 +675,7 @@ export const content = {
         },
         {
           name: 'Pro',
-          price: '249',
+          price: '299',
           period: 'EGP / month',
           desc: 'For a small sales team ready to grow',
           features: [
@@ -690,7 +690,7 @@ export const content = {
         },
         {
           name: 'Max',
-          price: '599',
+          price: '799',
           period: 'EGP / month',
           desc: 'For a brand ready to look 100% professional',
           features: [

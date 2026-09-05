@@ -79,6 +79,11 @@ export default function BrandingStep({
         variant="primary"
         className="w-full"
         onClick={() => onSubmit(color, bio)}
+        // This is the request that actually creates the store. Without the
+        // guard, an impatient second tap sends it twice and the second one
+        // comes back STORE_ALREADY_EXISTS, which reads as a failure on the
+        // step that just succeeded.
+        disabled={busy}
       >
         {t.finishBtn}
       </Button>

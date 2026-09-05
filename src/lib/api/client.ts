@@ -44,8 +44,18 @@ export const STORE_URL =
  * moment a real API answers, and it is a stopgap with an end date: delete the fallbacks
  * once the services are on AWS.
  */
-export const FALLBACK_ENABLED =
-  (process.env.NEXT_PUBLIC_API_FALLBACK ?? 'true') === 'true';
+/**
+ * Off unless something turns it on, and deliberately so.
+ *
+ * With this true and the API unreachable, the wizard simulates a signup with the
+ * code 123456 and shows a success screen for a store that was never created. That
+ * is a useful convenience on a laptop with no backend running, and a lie on a
+ * public site: a real visitor would be told their store is ready when it is not.
+ *
+ * Defaulting to false means the worst case is an honest error message. Turn it on
+ * locally with NEXT_PUBLIC_API_FALLBACK=true in .env.local.
+ */
+export const FALLBACK_ENABLED = process.env.NEXT_PUBLIC_API_FALLBACK === 'true';
 
 const TOKEN_KEY = 'koda.accessToken';
 

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
@@ -10,17 +10,22 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
   const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
   const [isOpen, setIsOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
-
-  if (!mounted) return null;
+  /**
+   * No mounted flag, and no state at all for the theme icon.
+   *
+   * This was a `mounted` boolean set in an effect, which returned null until the
+   * first client render: the whole navigation was missing from the server HTML,
+   * so a crawler saw no links and a visitor saw a gap on first paint.
+   *
+   * next-themes writes a `dark` class on <html>, so Tailwind's dark: variant can
+   * do the swap in CSS. Both icons are always in the markup and exactly one is
+   * ever visible. Nothing to hydrate, nothing to mismatch.
+   */
 
   const links = [
     { href: '#how', label: t.nav.how },
@@ -69,11 +74,12 @@ export default function Navbar() {
             {language === 'ar' ? 'EN' : 'AR'}
           </button>
           <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             className="p-2 rounded-full text-ink-muted hover:text-ink transition-colors"
             aria-label="Toggle theme"
           >
-            {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+            <Moon size={18} className="dark:hidden" />
+            <Sun size={18} className="hidden dark:block" />
           </button>
           <Button variant="primary" className="px-5 py-2 text-sm" href="/onboarding">
             {t.nav.cta}
@@ -88,10 +94,11 @@ export default function Navbar() {
             {language === 'ar' ? 'EN' : 'AR'}
           </button>
           <button
-            onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+            onClick={() => setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')}
             className="w-9 h-9 rounded-full glass-button flex items-center justify-center"
           >
-            {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+            <Moon size={16} className="dark:hidden" />
+            <Sun size={16} className="hidden dark:block" />
           </button>
           <button
             onClick={() => setIsOpen(!isOpen)}
