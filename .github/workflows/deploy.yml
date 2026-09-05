@@ -71,12 +71,21 @@ jobs:
           # with the code 123456 when the API is unreachable, which is a useful
           # local convenience and a lie on a public site: a visitor would reach a
           # success screen for a store that does not exist.
-          docker build \
-            --build-arg NEXT_PUBLIC_IDENTITY_URL="https://api-dev.${APP_HOSTNAME}" \
-            --build-arg NEXT_PUBLIC_STORE_URL="https://api-dev.${APP_HOSTNAME}" \
-            --build-arg NEXT_PUBLIC_API_FALLBACK="false" \
-            -t "$REGISTRY/$ECR_REPOSITORY:$TAG" .
-          docker push "$REGISTRY/$ECR_REPOSITORY:$TAG"
+          # An existing tag is a skip, not an error: tags are immutable, so a
+          # deploy re-run for the same commit would otherwise fail on the push
+          # instead of redeploying the image that is already known to work.
+          if aws ecr describe-images --region "$AWS_REGION" \
+               --repository-name "$ECR_REPOSITORY" \
+               --image-ids imageTag="$TAG" >/dev/null 2>&1; then
+            echo "$ECR_REPOSITORY:$TAG is already in ECR. Skipping build, deploying it."
+          else
+            docker build \
+              --build-arg NEXT_PUBLIC_IDENTITY_URL="https://api-dev.${APP_HOSTNAME}" \
+              --build-arg NEXT_PUBLIC_STORE_URL="https://api-dev.${APP_HOSTNAME}" \
+              --build-arg NEXT_PUBLIC_API_FALLBACK="false" \
+              -t "$REGISTRY/$ECR_REPOSITORY:$TAG" .
+            docker push "$REGISTRY/$ECR_REPOSITORY:$TAG"
+          fi
 
       - name: Deploy
         env:

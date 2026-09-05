@@ -31,7 +31,12 @@ RUN npm run build
 
 FROM node:22-alpine AS runtime
 WORKDIR /app
-ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000
+# HOSTNAME=0.0.0.0 is load bearing. Next's standalone server binds to $HOSTNAME,
+# which inside a container defaults to the container id, so it listens on the
+# bridge address only. Caddy still reaches it over the Docker network, but the
+# container's own healthcheck hits localhost and gets connection refused, so the
+# container reports unhealthy forever and every deploy fails its health gate.
+ENV NODE_ENV=production NEXT_TELEMETRY_DISABLED=1 PORT=3000 HOSTNAME=0.0.0.0
 
 RUN apk add --no-cache curl \
  && addgroup --system --gid 1001 koda \
