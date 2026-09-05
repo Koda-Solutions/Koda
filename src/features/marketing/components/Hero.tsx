@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useLanguage } from '../context/LanguageContext';
-import { Button } from './ui/Button';
+import { Check } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 export default function Hero() {
@@ -42,6 +43,20 @@ export default function Hero() {
             </Button>
           </div>
           <p className="mt-4 text-sm text-ink-muted">{t.hero.fine}</p>
+
+          {/* The cost and speed objections arrive before anyone scrolls, so they get
+              answered here in three words each rather than waiting for a section. */}
+          <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2.5">
+            {t.hero.trust.map((item) => (
+              <li
+                key={item}
+                className="flex items-center gap-2 text-[13px] font-semibold text-ink-muted"
+              >
+                <Check size={15} className="text-accent-ink shrink-0" strokeWidth={2.6} />
+                {item}
+              </li>
+            ))}
+          </ul>
         </motion.div>
 
         <motion.div

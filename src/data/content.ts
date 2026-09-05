@@ -7,9 +7,11 @@ export const content = {
 
     nav: {
       logo: 'كودا',
+      how: 'إزاي تبدأ',
       features: 'المميزات',
       themes: 'التصاميم',
       pricing: 'الأسعار',
+      faq: 'أسئلة شائعة',
       login: 'دخول',
       cta: 'ابدأ مجانًا',
     },
@@ -23,6 +25,7 @@ export const content = {
       ctaPrimary: 'ابدأ متجرك مجانًا',
       ctaSecondary: 'شوف التصاميم',
       fine: 'من غير فيزا. من غير برمجة. هيبقى شغال النهاردة.',
+      trust: ['ابدأ مجانًا', 'من غير نسبة على مبيعاتك', 'متجرك جاهز في دقايق', 'رابط مشفّر وآمن'],
       phone: {
         storeName: 'متجر سارة',
         banner: 'تخفيضات الموسم، خصم 30%',
@@ -97,30 +100,137 @@ export const content = {
 
     themes: {
       eyebrow: 'التصاميم',
-      title: 'تصاميم شكلها مش Template',
+      title: 'ستة تصاميم شكلها مش Template',
       subtitle:
-        'كل تصميم اتعمل بعناية. اختار الشكل اللي يعجبك، وبعدين خصصه بلوجو وألوان وصور بتاعتك.',
+        'ثلاثة فاتحة وثلاثة غامقة، كل واحد اتعمل بعناية لنوع منتجات مختلف. اختار الشكل، وبعدين خصصه بلوجو وألوان وصور بتاعتك.',
+      tabs: {
+        storefront: 'شكل المتجر',
+        dashboard: 'لوحة التحكم',
+        ariaLabel: 'اختر المعاينة',
+      },
+      groups: { light: 'تصاميم فاتحة', dark: 'تصاميم غامقة' },
+      preview: {
+        storeName: 'نور',
+        heroTitle: 'تشكيلة الصيف',
+        heroSub: 'وصل حديثًا · شحن لكل المحافظات',
+        categories: ['الكل', 'فساتين', 'عبايات'] as [string, string, string],
+        products: [
+          { name: 'فستان صيفي مطرز', price: '850', was: '1,100' },
+          { name: 'عباية كتان', price: '1,150' },
+        ],
+        saleBadge: 'خصم',
+        cta: 'تسوقي دلوقتي',
+        currency: 'ج.م',
+        nav: ['الرئيسية', 'الطلبات', 'المنتجات', 'الفريق'] as [string, string, string, string],
+        stats: [
+          { label: 'طلبات النهاردة', value: '7' },
+          { label: 'مبيعات الشهر', value: '18.4k' },
+          { label: 'بانتظار التأكيد', value: '4' },
+        ],
+        ordersTitle: 'أحدث الطلبات',
+        orders: [
+          { name: 'سارة محمود', total: '1,240', status: 'تم التأكيد', pending: true },
+          { name: 'منى خالد', total: '690', status: 'تم الشحن', pending: false },
+          { name: 'أحمد سمير', total: '2,180', status: 'تم التوصيل', pending: false },
+          { name: 'هدى فتحي', total: '450', status: 'تم التوصيل', pending: false },
+        ],
+        confirm: 'تأكيد واتساب',
+      },
+      items: [
+        { name: 'نور', desc: 'دافئ وهادي، للهدوم وشغل الإيد ومستلزمات البيت' },
+        { name: 'موج', desc: 'نضيف وصريح، للإلكترونيات والرياضة والمنتجات اليومية' },
+        { name: 'ورد', desc: 'ناعم وفخم، للميك أب والعناية والإكسسوارات' },
+        { name: 'ليل', desc: 'غامق وفخم، للماركات بعدد منتجات قليل' },
+        { name: 'فحم', desc: 'جريء وكونتراست عالي، للستريت وير والبراندات الشبابية' },
+        { name: 'نيل', desc: 'عميق وهادي، للمنتجات الغالية اللي محتاجة ثقة' },
+      ],
+    },
+
+    howItWorks: {
+      eyebrow: 'إزاي تبدأ',
+      title: 'تلات خطوات، ومتجرك بيستقبل أوردرات.',
+      subtitle:
+        'من غير برمجة، من غير مصمم، ومن غير استضافة. أغلب التجار بيخلصوا الحكاية من الموبايل في أقل من عشر دقايق.',
+      steps: [
+        {
+          title: 'سجّل برقم موبايلك',
+          desc: 'كود بيوصلك على واتساب وتدخل. من غير إيميل ولا كلمة سر تنساها بعدين.',
+        },
+        {
+          title: 'اختار تصميم وضيف منتجاتك',
+          desc: 'صوّر المنتج، اكتب السعر والمقاسات، وخلاص. التصميم جاهز ومظبوط على الموبايل.',
+        },
+        {
+          title: 'حط اللينك في البايو',
+          desc: 'أول أوردر بيجيلك على لوحة التحكم، وتأكده على واتساب بدوسة واحدة.',
+        },
+      ],
+    },
+
+    assurances: {
+      eyebrow: 'قبل ما تبدأ',
+      title: 'أربع حاجات كل تاجر بيسأل عليها.',
+      subtitle: 'وإجاباتها بصراحة، من غير كلام تسويق.',
       items: [
         {
-          name: 'نور',
-          desc: 'دافئ ومباشر، هدوم واكسسوارات ومستلزمات البيت',
+          q: 'المتجر هيفتح بسرعة على بيانات الموبايل؟',
+          a: 'التصاميم خفيفة والصور بتتظبط لوحدها قبل ما توصل للزبون. الزبون اللي جايلك من ستوري انستجرام بيقرر في تانية واحدة، ولو الصفحة اتأخرت بتخسر الأوردر قبل ما يشوف المنتج.',
         },
-        { name: 'سوق', desc: 'جريء وكثيف، لو عندك عدد منتجات كبير' },
         {
-          name: 'ليل',
-          desc: 'غامق وبسيط، للماركات الفاخرة بعدد منتجات قليل',
+          q: 'بياناتي وبيانات زبايني في أمان؟',
+          a: 'كل متجر شغال على HTTPS مشفّر، وبيانات كل تاجر معزولة تمامًا عن غيره. الدفع بيتم عند بوابة الدفع نفسها، إحنا مش بنشوف ولا بنخزن أرقام كروت.',
+        },
+        {
+          q: 'هيكلفني كام في الأول؟',
+          a: 'تبدأ مجانًا وتفضل كده لحد ما تكبر فعلاً. ومحدش بياخد نسبة من مبيعاتك، اللي تبيعه يفضل لك بالكامل.',
+        },
+        {
+          q: 'أنا مش فاهم في البرمجة خالص.',
+          a: 'مفيش سطر كود، ولا سيرفرات، ولا استضافة تجددها كل سنة. لو بتعرف تنزل بوست على انستجرام، تقدر تشغّل متجرك.',
+        },
+      ],
+    },
+
+    faq: {
+      eyebrow: 'أسئلة شائعة',
+      title: 'لسه عندك سؤال؟',
+      items: [
+        {
+          q: 'أقدر أربط الدومين بتاعي؟',
+          a: 'أيوه، في باقة ماكس. وفي كل الباقات متجرك بيبقى شغال على لينك خاص بيك من كودا من أول دقيقة، من غير ما تستنى حاجة.',
+        },
+        {
+          q: 'لو حبيت أمشي، منتجاتي هتروح؟',
+          a: 'منتجاتك وأوردراتك بتاعتك إنت. تقدر تصدّرها وتمشي في أي وقت، ومحدش هيعطّلك.',
+        },
+        {
+          q: 'بتشتغلوا مع شركات الشحن؟',
+          a: 'أيوه، ربط الشحن وتتبع الشحنة موجود في باقة ماكس، وبتتابع حالة الأوردر من نفس المكان.',
+        },
+        {
+          q: 'فريقي يقدر يشتغل معايا؟',
+          a: 'أيوه، كل واحد بحساب خاص بيه. باقة برو لحد ٥ حسابات، وماكس من غير حد أقصى.',
+        },
+        {
+          q: 'لو احتجت مساعدة؟',
+          a: 'كلمنا على واتساب في أي وقت. باقة ماكس ليها أولوية في الرد.',
         },
       ],
     },
 
     onboarding: {
       stepLabel: 'الخطوة {current} من {total}',
+      common: { errorGeneric: 'حصلت مشكلة. حاول تاني.' },
       step1: {
         title: 'هات رقم موبايلك',
         subtitle: 'هنبعتلك كود تفعيل على واتساب أو رسالة نصية.',
         phoneLabel: 'رقم الموبايل',
-        phonePlaceholder: '1XX XXX XXXX',
+        phonePlaceholder: '010 1234 5678',
+        phoneError: 'رقم الموبايل لازم يكون ١١ رقم ويبدأ بـ 010 أو 011 أو 012 أو 015.',
+        backToHome: 'رجوع للصفحة الرئيسية',
         sendCodeBtn: 'ابعت الكود',
+        sending: 'بنبعت…',
+        errorRateLimited: 'طلبت أكواد كتير. استنى شوية وحاول تاني.',
         terms: 'بالتسجيل، إنت موافق على الشروط وسياسة الخصوصية بتاعة كودا.',
       },
       step2: {
@@ -130,6 +240,11 @@ export const content = {
         resendBtn: 'إعادة الإرسال',
         resendSentLabel: 'اتبعت تاني',
         verifyBtn: 'تأكيد',
+        verifying: 'بنتأكد…',
+        errorInvalid: 'الكود مش صح. راجعه وحاول تاني.',
+        errorExpired: 'الكود انتهت صلاحيته. اطلب واحد جديد.',
+        errorLocked: 'حاولت كتير. اطلب كود جديد.',
+        devCodeLabel: 'كود التجربة:',
         backBtn: 'رجوع لتغيير الرقم',
       },
       step3: {
@@ -151,6 +266,8 @@ export const content = {
         backBtn: 'رجوع',
       },
       step4: {
+        proBadge: 'برو',
+        freeNote: 'تصميم "نور" متاح في الباقة المجانية. باقي التصاميم بتتفتح مع برو.',
         title: 'اختار تصميم متجرك',
         subtitle: 'تقدر تغيّره في أي وقت من لوحة التحكم.',
         nextBtn: 'التالي',
@@ -249,9 +366,11 @@ export const content = {
 
     nav: {
       logo: 'Koda',
+      how: 'How it works',
       features: 'Features',
       themes: 'Themes',
       pricing: 'Pricing',
+      faq: 'FAQ',
       login: 'Log in',
       cta: 'Start free',
     },
@@ -265,6 +384,7 @@ export const content = {
       ctaPrimary: 'Start your store, free',
       ctaSecondary: 'See live themes',
       fine: 'No credit card. No code. Live the same day.',
+      trust: ['Start free', 'No cut of your sales', 'Live in minutes', 'Encrypted and secure'],
       phone: {
         storeName: "Sara's Shop",
         banner: 'Season Sale, 30% off',
@@ -339,24 +459,137 @@ export const content = {
 
     themes: {
       eyebrow: 'Storefronts',
-      title: "Themes that don't look like a template.",
+      title: "Six themes that don't look like a template.",
       subtitle:
-        'Each theme is a full, considered design. Choose a look, then make it yours with your logo, colors, and photos.',
+        'Three light, three dark, each designed for a different kind of product. Choose a look, then make it yours with your logo, colors, and photos.',
+      tabs: {
+        storefront: 'Storefront',
+        dashboard: 'Dashboard',
+        ariaLabel: 'Choose a preview',
+      },
+      groups: { light: 'Light themes', dark: 'Dark themes' },
+      preview: {
+        storeName: 'Nour',
+        heroTitle: 'Summer collection',
+        heroSub: 'Just landed · Delivery nationwide',
+        categories: ['All', 'Dresses', 'Abayas'] as [string, string, string],
+        products: [
+          { name: 'Embroidered dress', price: '850', was: '1,100' },
+          { name: 'Linen abaya', price: '1,150' },
+        ],
+        saleBadge: 'SALE',
+        cta: 'Shop now',
+        currency: 'EGP',
+        nav: ['Home', 'Orders', 'Products', 'Team'] as [string, string, string, string],
+        stats: [
+          { label: "Today's orders", value: '7' },
+          { label: 'Month sales', value: '18.4k' },
+          { label: 'Awaiting confirm', value: '4' },
+        ],
+        ordersTitle: 'Latest orders',
+        orders: [
+          { name: 'Sara Mahmoud', total: '1,240', status: 'Confirmed', pending: true },
+          { name: 'Mona Khaled', total: '690', status: 'Shipped', pending: false },
+          { name: 'Ahmed Samir', total: '2,180', status: 'Delivered', pending: false },
+          { name: 'Hoda Fathy', total: '450', status: 'Delivered', pending: false },
+        ],
+        confirm: 'WhatsApp',
+      },
       items: [
-        { name: 'Nour', desc: 'Warm and editorial, fashion and home goods' },
-        { name: 'Souq', desc: 'Bold and dense, for high SKU counts' },
-        { name: 'Layl', desc: 'Dark and minimal, premium, low SKU count' },
+        { name: 'Nour', desc: 'Warm and editorial, for fashion, handmade and home goods' },
+        { name: 'Moj', desc: 'Clean and direct, for electronics, sports and everyday goods' },
+        { name: 'Ward', desc: 'Soft and premium, for beauty, skincare and accessories' },
+        { name: 'Layl', desc: 'Dark and luxurious, for brands with a small, high-value range' },
+        { name: 'Faham', desc: 'Bold and high contrast, for streetwear and youth brands' },
+        { name: 'Nil', desc: 'Deep and calm, for considered, high-value products' },
+      ],
+    },
+
+    howItWorks: {
+      eyebrow: 'Getting started',
+      title: 'Three steps, and your store is taking orders.',
+      subtitle:
+        'No code, no designer, no hosting to renew. Most sellers finish the whole thing from their phone in under ten minutes.',
+      steps: [
+        {
+          title: 'Sign up with your phone number',
+          desc: 'A code arrives on WhatsApp and you are in. No email, no password to forget later.',
+        },
+        {
+          title: 'Pick a theme and add your products',
+          desc: 'Photo, price, sizes, done. The design is already built and already right on mobile.',
+        },
+        {
+          title: 'Put the link in your bio',
+          desc: 'The first order lands in your dashboard, and one tap confirms it on WhatsApp.',
+        },
+      ],
+    },
+
+    assurances: {
+      eyebrow: 'Before you start',
+      title: 'Four things every seller asks.',
+      subtitle: 'Answered plainly, without the marketing voice.',
+      items: [
+        {
+          q: 'Will my store load fast on mobile data?',
+          a: 'Themes are light and images are optimised before they ever reach a customer. Someone arriving from an Instagram story decides in about a second, and a slow page loses the order before they have seen the product.',
+        },
+        {
+          q: 'Is my data, and my customers\' data, safe?',
+          a: 'Every store runs on encrypted HTTPS, and each merchant\'s data is fully isolated from every other. Payment happens at the payment provider, so we never see or store card numbers.',
+        },
+        {
+          q: 'What does it cost to start?',
+          a: 'You start free and stay free until you have actually grown. And nobody takes a cut of your sales, so what you sell stays yours.',
+        },
+        {
+          q: 'I am not technical at all.',
+          a: 'No code, no servers, no hosting to renew every year. If you can post on Instagram, you can run your store.',
+        },
+      ],
+    },
+
+    faq: {
+      eyebrow: 'FAQ',
+      title: 'Still have a question?',
+      items: [
+        {
+          q: 'Can I use my own domain?',
+          a: 'Yes, on Max. And on every plan your store is live on its own Koda link from the first minute, with nothing to wait for.',
+        },
+        {
+          q: 'If I leave, do I lose my products?',
+          a: 'Your products and orders are yours. Export them and go whenever you like, and nothing gets held hostage.',
+        },
+        {
+          q: 'Do you work with shipping companies?',
+          a: 'Yes, shipping and tracking are on Max, and you follow the shipment from the same place you manage orders.',
+        },
+        {
+          q: 'Can my team work with me?',
+          a: 'Yes, each person gets their own account. Pro covers up to 5, Max has no limit.',
+        },
+        {
+          q: 'What if I need help?',
+          a: 'Message us on WhatsApp any time. Max gets priority support.',
+        },
       ],
     },
 
     onboarding: {
       stepLabel: 'Step {current} of {total}',
+      common: { errorGeneric: 'Something went wrong. Try again.' },
       step1: {
         title: 'What\'s your phone number?',
         subtitle: "We'll send you a verification code on WhatsApp or by text.",
         phoneLabel: 'Phone number',
-        phonePlaceholder: '1XX XXX XXXX',
+        phonePlaceholder: '010 1234 5678',
+        phoneError: 'Enter an 11 digit Egyptian mobile starting 010, 011, 012 or 015.',
+        backToHome: 'Back to home',
         sendCodeBtn: 'Send code',
+        sending: 'Sending…',
+        errorRateLimited: 'Too many codes requested. Wait a moment and try again.',
         terms: "By signing up, you agree to Koda's Terms and Privacy Policy.",
       },
       step2: {
@@ -366,6 +599,11 @@ export const content = {
         resendBtn: 'Resend',
         resendSentLabel: 'Sent again',
         verifyBtn: 'Verify',
+        verifying: 'Checking…',
+        errorInvalid: 'That code is not right. Check it and try again.',
+        errorExpired: 'That code expired. Ask for a new one.',
+        errorLocked: 'Too many attempts. Ask for a new code.',
+        devCodeLabel: 'Test code:',
         backBtn: 'Back to change number',
       },
       step3: {
@@ -387,6 +625,8 @@ export const content = {
         backBtn: 'Back',
       },
       step4: {
+        proBadge: 'Pro',
+        freeNote: 'Nour is included on the free plan. The rest unlock with Pro.',
         title: 'Pick your storefront theme',
         subtitle: 'You can change it anytime from your dashboard.',
         nextBtn: 'Next',

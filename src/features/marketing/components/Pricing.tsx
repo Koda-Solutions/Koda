@@ -3,8 +3,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
-import { Button } from './ui/Button';
+import { useLanguage } from '@/context/LanguageContext';
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 export default function Pricing() {

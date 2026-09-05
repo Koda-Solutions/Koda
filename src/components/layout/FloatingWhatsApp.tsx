@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle } from 'lucide-react';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function FloatingWhatsApp() {
   const { t, language } = useLanguage();

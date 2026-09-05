@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { Button } from '../ui/Button';
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import type { ContentType } from '@/data/content';
 
@@ -9,13 +9,17 @@ export default function OtpStep({
   t,
   headingFont,
   phone,
+  busy,
   onVerify,
+  onResend,
   onBack,
 }: {
   t: ContentType['onboarding']['step2'];
   headingFont: string;
   phone: string;
-  onVerify: () => void;
+  busy: boolean;
+  onVerify: (code: string) => void;
+  onResend: () => void;
   onBack: () => void;
 }) {
   const [digits, setDigits] = useState(['', '', '', '', '', '']);
@@ -41,6 +45,7 @@ export default function OtpStep({
 
   const handleResend = () => {
     setResent(true);
+    onResend();
     setTimeout(() => setResent(false), 2000);
   };
 
@@ -82,10 +87,10 @@ export default function OtpStep({
       <Button
         variant="primary"
         className="w-full"
-        disabled={!isComplete}
-        onClick={() => isComplete && onVerify()}
+        disabled={!isComplete || busy}
+        onClick={() => isComplete && !busy && onVerify(digits.join(''))}
       >
-        {t.verifyBtn}
+        {busy ? t.verifying : t.verifyBtn}
       </Button>
       <button
         type="button"

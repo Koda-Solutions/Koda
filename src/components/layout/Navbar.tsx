@@ -4,9 +4,9 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from 'next-themes';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { Sun, Moon, Globe, Menu, X } from 'lucide-react';
-import { Button } from './ui/Button';
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 
 export default function Navbar() {
@@ -23,9 +23,11 @@ export default function Navbar() {
   if (!mounted) return null;
 
   const links = [
+    { href: '#how', label: t.nav.how },
     { href: '#features', label: t.nav.features },
     { href: '#themes', label: t.nav.themes },
     { href: '#pricing', label: t.nav.pricing },
+    { href: '#faq', label: t.nav.faq },
   ];
 
   return (

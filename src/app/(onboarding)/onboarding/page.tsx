@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import OnboardingWizard from '@/components/onboarding/OnboardingWizard';
+import OnboardingWizard from '@/features/onboarding/components/OnboardingWizard';
 
 export const metadata: Metadata = {
   title: 'ابدأ متجرك',

@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Fraunces, Figtree } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
-import { Providers } from '@/components/Providers';
-import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import { Providers } from '@/components/providers/Providers';
+import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp';
 
 const fraunces = Fraunces({
   subsets: ['latin'],

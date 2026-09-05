@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Check } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import type { ContentType } from '@/data/content';
 

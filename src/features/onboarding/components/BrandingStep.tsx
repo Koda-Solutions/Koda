@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Plus, Check } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import type { ContentType } from '@/data/content';
 
@@ -17,11 +17,13 @@ const accentOptions = [
 export default function BrandingStep({
   t,
   headingFont,
+  busy,
   onSubmit,
   onBack,
 }: {
   t: ContentType['onboarding']['step5'];
   headingFont: string;
+  busy: boolean;
   onSubmit: (color: string, bio: string) => void;
   onBack: () => void;
 }) {

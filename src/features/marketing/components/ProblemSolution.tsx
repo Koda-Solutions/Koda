@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useLanguage } from '../context/LanguageContext';
+import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
 
 export default function ProblemSolution() {

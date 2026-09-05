@@ -73,10 +73,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/*
+  Section reveals slide in horizontally, and on a narrow screen that transform
+  briefly extends past the viewport, which is enough to create a sideways
+  scrollbar on mobile. Clipping both elements kills it.
+
+  `clip` rather than `hidden` on purpose: `overflow: hidden` turns the element
+  into a scroll container, which silently breaks `position: sticky` descendants.
+  `clip` cuts the overflow without that side effect.
+*/
+html {
+  overflow-x: clip;
+}
+
 body {
   background-color: var(--paper);
   color: var(--ink);
-  overflow-x: hidden;
+  overflow-x: clip;
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
