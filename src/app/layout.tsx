@@ -1,17 +1,34 @@
 import type { Metadata } from 'next';
-import { Fraunces, Figtree } from 'next/font/google';
+import { Bricolage_Grotesque, Instrument_Sans } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import { Providers } from '@/components/providers/Providers';
 import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp';
 
-const fraunces = Fraunces({
+/**
+ * Display: Bricolage Grotesque.
+ *
+ * The previous pairing was Fraunces, a serif display, on a cream ground. That
+ * combination is the single most recognisable signature of an AI-generated
+ * landing page right now, which is exactly what a reviewer said on seeing it.
+ *
+ * Bricolage is a grotesque with real quirks (the flared stems, the tight apexes)
+ * that survive at large sizes, so a headline looks drawn rather than selected.
+ * Variable, so weight is a continuum rather than four files.
+ */
+const display = Bricolage_Grotesque({
   subsets: ['latin'],
   variable: '--font-heading',
   display: 'swap',
+  weight: ['500', '600', '700', '800'],
 });
 
-const figtree = Figtree({
+/**
+ * Body: Instrument Sans. Deliberately not Inter, which is the safe default
+ * everything else already uses. Slightly narrower, a little more warmth in the
+ * round letters, and it holds up next to Thmanyah in mixed Arabic and Latin.
+ */
+const body = Instrument_Sans({
   subsets: ['latin'],
   variable: '--font-body',
   display: 'swap',
@@ -170,7 +187,7 @@ export default function RootLayout({
       lang="ar"
       dir="rtl"
       suppressHydrationWarning
-      className={`${fraunces.variable} ${figtree.variable} ${thmanyahSans.variable} ${thmanyahSerifDisplay.variable}`}
+      className={`${display.variable} ${body.variable} ${thmanyahSans.variable} ${thmanyahSerifDisplay.variable}`}
     >
       <head>
         <script

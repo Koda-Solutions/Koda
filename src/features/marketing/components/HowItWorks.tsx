@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
  */
 export default function HowItWorks() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
+  const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
 
   return (
     <section id="how" className="py-20 md:py-24">
@@ -54,7 +54,7 @@ export default function HowItWorks() {
               <span
                 className={cn(
                   'relative z-10 w-12 h-12 rounded-full bg-accent text-paper flex items-center justify-center text-lg',
-                  language === 'en' ? 'font-fraunces font-semibold' : 'font-thmanyah-display font-black'
+                  language === 'en' ? 'font-display font-semibold' : 'font-thmanyah-display font-black'
                 )}
               >
                 {i + 1}

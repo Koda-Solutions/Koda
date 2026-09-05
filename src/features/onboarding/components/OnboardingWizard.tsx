@@ -23,7 +23,7 @@ import SuccessStep from './SuccessStep';
 export default function OnboardingWizard() {
   const { t, language } = useLanguage();
   const headingFont =
-    language === 'en' ? 'font-fraunces font-semibold' : 'font-thmanyah-display font-black';
+    language === 'en' ? 'font-display font-semibold' : 'font-thmanyah-display font-black';
   const o = t.onboarding;
 
   const [step, setStep] = useState(1);

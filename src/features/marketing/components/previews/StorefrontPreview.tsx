@@ -2,6 +2,7 @@
 
 import React from 'react';
 import type { ThemePalette } from '@/data/themePreviews';
+import ProductImage, { SHAPE_CYCLE } from './ProductImage';
 
 export interface StorefrontCopy {
   storeName: string;
@@ -20,18 +21,26 @@ export interface StorefrontCopy {
  * Drawn from the palette rather than screenshotted, so it restyles itself and can never
  * go stale against the real product. Detailed on purpose: a merchant choosing a theme is
  * really asking "will my shop look expensive", and coloured bars do not answer that.
- * Product images are colour tiles; on a real store those are the merchant's own photos.
+ * The product images stand in for the merchant's own photographs; see ProductImage for
+ * why they are drawn as lit objects rather than left as flat tiles.
  */
 export default function StorefrontPreview({
   palette,
   copy,
+  /** The gallery wants a compact card; the hero wants a full phone screen. */
+  heightClass = 'h-[290px]',
+  textClass = 'text-[8px]',
+  productCount = 2,
 }: {
   palette: ThemePalette;
   copy: StorefrontCopy;
+  heightClass?: string;
+  textClass?: string;
+  productCount?: number;
 }) {
   return (
     <div
-      className="h-[290px] flex flex-col text-[8px] leading-tight select-none overflow-hidden"
+      className={`${heightClass} ${textClass} flex flex-col leading-tight select-none overflow-hidden`}
       style={{ background: palette.bg, color: palette.ink }}
       aria-hidden
     >
@@ -108,19 +117,22 @@ export default function StorefrontPreview({
 
         {/* product grid */}
         <div className="grid grid-cols-2 gap-2 flex-1 min-h-0">
-          {copy.products.slice(0, 2).map((p, i) => (
+          {copy.products.slice(0, productCount).map((p, i) => (
             <div
               key={p.name}
               className="rounded-lg overflow-hidden flex flex-col border"
               style={{ background: palette.surface, borderColor: palette.line }}
             >
-              <div
-                className="flex-1 relative min-h-0"
-                style={{ background: palette.tiles[i] }}
-              >
+              <div className="flex-1 relative min-h-0">
+                <ProductImage
+                  palette={palette}
+                  shape={SHAPE_CYCLE[i % SHAPE_CYCLE.length]}
+                  tint={palette.tiles[i % palette.tiles.length]}
+                  className="absolute inset-0"
+                />
                 {p.was && (
                   <span
-                    className="absolute top-1 start-1 rounded px-1 py-[2px] text-[6px] font-bold"
+                    className="absolute top-1 start-1 z-10 rounded px-1 py-[2px] text-[6px] font-bold"
                     style={{ background: palette.highlight, color: palette.onAccent }}
                   >
                     {copy.saleBadge}

@@ -13,7 +13,7 @@ type Surface = 'storefront' | 'dashboard';
 export default function Themes() {
   const { t, language } = useLanguage();
   const [surface, setSurface] = useState<Surface>('storefront');
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
+  const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
   const p = t.themes.preview;
 
   const tabs: { id: Surface; label: string }[] = [

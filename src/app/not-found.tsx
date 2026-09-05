@@ -8,7 +8,7 @@ export default function NotFound() {
   return (
     <div className="min-h-screen bg-paper flex flex-col items-center justify-center p-6 text-center relative overflow-hidden">
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <span className="text-[16rem] lg:text-[24rem] font-fraunces font-semibold text-ink/[0.04] select-none">
+        <span className="text-[16rem] lg:text-[24rem] font-display font-semibold text-ink/[0.04] select-none">
           404
         </span>
       </div>

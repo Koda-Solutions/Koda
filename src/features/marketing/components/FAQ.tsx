@@ -14,7 +14,7 @@ import { cn } from '@/lib/utils';
  */
 export default function FAQ() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
+  const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
 
   return (
     <section id="faq" className="py-20 md:py-24">

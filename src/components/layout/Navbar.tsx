@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 export default function Navbar() {
   const { resolvedTheme, setTheme } = useTheme();
   const { language, setLanguage, t } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
+  const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
   const [isOpen, setIsOpen] = useState(false);
 
   /**

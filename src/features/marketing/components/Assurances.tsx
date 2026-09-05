@@ -18,7 +18,7 @@ const icons = [Zap, ShieldCheck, Wallet, Sparkles];
  */
 export default function Assurances() {
   const { t, language } = useLanguage();
-  const headingFont = language === 'en' ? 'font-fraunces' : 'font-thmanyah-display font-black';
+  const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
 
   return (
     <section className="py-20 md:py-24 bg-paper-raised border-y border-line">
