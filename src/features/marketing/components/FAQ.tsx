@@ -28,7 +28,7 @@ export default function FAQ() {
           <span className="text-xs font-bold tracking-wide uppercase text-accent-ink">
             {t.faq.eyebrow}
           </span>
-          <h2 className={cn('mt-3 text-2xl md:text-4xl font-semibold', headingFont)}>
+          <h2 className={cn('mt-3 text-3xl md:text-5xl', headingFont)}>
             {t.faq.title}
           </h2>
         </motion.div>

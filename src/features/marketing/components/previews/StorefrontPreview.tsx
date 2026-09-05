@@ -10,6 +10,8 @@ export interface StorefrontCopy {
   heroSub: string;
   categories: [string, string, string];
   products: { name: string; price: string; was?: string }[];
+  /** Which silhouette each product is drawn as. Falls back to the cycle. */
+  shapes?: string[];
   saleBadge: string;
   cta: string;
   currency: string;
@@ -126,7 +128,10 @@ export default function StorefrontPreview({
               <div className="flex-1 relative min-h-0">
                 <ProductImage
                   palette={palette}
-                  shape={SHAPE_CYCLE[i % SHAPE_CYCLE.length]}
+                  shape={
+                    (copy.shapes?.[i] as (typeof SHAPE_CYCLE)[number] | undefined) ??
+                    SHAPE_CYCLE[i % SHAPE_CYCLE.length]
+                  }
                   tint={palette.tiles[i % palette.tiles.length]}
                   className="absolute inset-0"
                 />
@@ -139,8 +144,8 @@ export default function StorefrontPreview({
                   </span>
                 )}
               </div>
-              <div className="p-1.5 flex flex-col gap-[3px]">
-                <span className="truncate font-semibold">{p.name}</span>
+              <div className="px-2 py-1.5 flex flex-col gap-[3px]">
+                <span className="truncate font-semibold leading-snug">{p.name}</span>
                 <span className="flex items-baseline gap-1">
                   <b className="font-black text-[9px]">
                     {p.price} {copy.currency}

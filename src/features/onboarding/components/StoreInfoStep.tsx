@@ -25,7 +25,7 @@ export default function StoreInfoStep({
   return (
     <div className="flex flex-col gap-5">
       <div>
-        <h1 className={cn('text-2xl', headingFont)}>{t.title}</h1>
+        <h1 className={cn('text-3xl', headingFont)}>{t.title}</h1>
         <p className="text-sm text-ink-muted mt-2">{t.subtitle}</p>
       </div>
       <div>

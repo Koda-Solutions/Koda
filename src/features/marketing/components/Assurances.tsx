@@ -33,7 +33,7 @@ export default function Assurances() {
           <span className="text-xs font-bold tracking-wide uppercase text-accent-ink">
             {t.assurances.eyebrow}
           </span>
-          <h2 className={cn('mt-3 text-2xl md:text-4xl font-semibold', headingFont)}>
+          <h2 className={cn('mt-3 text-3xl md:text-5xl', headingFont)}>
             {t.assurances.title}
           </h2>
           <p className="mt-4 text-ink-muted">{t.assurances.subtitle}</p>
@@ -58,7 +58,7 @@ export default function Assurances() {
                   <Icon size={19} strokeWidth={2.2} />
                 </span>
                 <div>
-                  <h3 className={cn('text-[17px] font-semibold', headingFont)}>
+                  <h3 className="text-[17px] font-bold">
                     {item.q}
                   </h3>
                   <p className="mt-2 text-ink-muted text-[15px] leading-relaxed">

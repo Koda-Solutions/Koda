@@ -20,7 +20,7 @@ export default function Footer() {
             height={28}
             className="rounded-md"
           />
-          <span className={cn('font-semibold text-lg', headingFont)}>
+          <span className={cn('text-2xl', headingFont)}>
             {t.nav.logo}
           </span>
         </div>

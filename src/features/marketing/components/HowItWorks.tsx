@@ -29,7 +29,7 @@ export default function HowItWorks() {
           <span className="text-xs font-bold tracking-wide uppercase text-accent-ink">
             {t.howItWorks.eyebrow}
           </span>
-          <h2 className={cn('mt-3 text-2xl md:text-4xl font-semibold', headingFont)}>
+          <h2 className={cn('mt-3 text-3xl md:text-5xl', headingFont)}>
             {t.howItWorks.title}
           </h2>
           <p className="mt-4 text-ink-muted">{t.howItWorks.subtitle}</p>
@@ -59,7 +59,7 @@ export default function HowItWorks() {
               >
                 {i + 1}
               </span>
-              <h3 className={cn('mt-5 text-lg font-semibold', headingFont)}>
+              <h3 className="mt-5 text-lg font-bold">
                 {step.title}
               </h3>
               <p className="mt-2 text-ink-muted text-[15px] leading-relaxed">

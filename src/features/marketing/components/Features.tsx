@@ -24,7 +24,7 @@ export default function Features() {
           <span className="text-xs font-bold tracking-wide uppercase text-accent-ink">
             {t.features.eyebrow}
           </span>
-          <h2 className={cn('mt-3 text-2xl md:text-4xl font-semibold', headingFont)}>
+          <h2 className={cn('mt-3 text-3xl md:text-5xl', headingFont)}>
             {t.features.title}
           </h2>
           <p className="mt-4 text-ink-muted">{t.features.subtitle}</p>

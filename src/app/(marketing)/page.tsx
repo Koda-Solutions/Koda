@@ -4,6 +4,7 @@ import HowItWorks from '@/features/marketing/components/HowItWorks';
 import Features from '@/features/marketing/components/Features';
 import Themes from '@/features/marketing/components/Themes';
 import Assurances from '@/features/marketing/components/Assurances';
+import ClassicalJoke from '@/features/marketing/components/ClassicalJoke';
 import WhyKoda from '@/features/marketing/components/WhyKoda';
 import Pricing from '@/features/marketing/components/Pricing';
 import FAQ from '@/features/marketing/components/FAQ';
@@ -19,6 +20,7 @@ export default function Home() {
     <>
       <Hero />
       <ProblemSolution />
+      <ClassicalJoke />
       <HowItWorks />
       <Features />
       <Themes />

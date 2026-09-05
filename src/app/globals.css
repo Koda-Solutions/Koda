@@ -23,7 +23,9 @@
      utilities built on it. Naming them the same thing makes the token reference
      itself and the face silently falls back to cursive. */
   --font-hand: var(--font-handwritten), 'Bradley Hand', 'Segoe Script', cursive;
-  --font-display: var(--font-handwritten), 'Bradley Hand', cursive;
+  /* Headlines are a heavy grotesque. Handwriting is font-hand, and it is for
+     annotations only. */
+  --font-display: var(--font-display-sans), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-thmanyah: var(--font-arabic), 'Segoe UI', Tahoma, sans-serif;
   --font-thmanyah-display: var(--font-arabic-display), var(--font-arabic),
@@ -362,6 +364,22 @@ h3 {
    that is unsupported the @supports block never applies and the line is simply
    already drawn, which is the right thing to fall back to.
    ============================================================================ */
+/* Where the stroke sits relative to the word.
+   Latin descenders drop a little below the baseline; Arabic drops much further,
+   and the same offset that looks right under "brand" runs straight through the
+   middle of "براند". Two values, chosen per script, rather than one compromise
+   that is wrong in both. */
+.underline-anchor {
+  position: absolute;
+  inset-inline-start: 0;
+  width: 100%;
+  bottom: -0.16em;
+}
+
+[dir='rtl'] .underline-anchor {
+  bottom: -0.34em;
+}
+
 .sketch-underline path {
   stroke-dasharray: 260;
   stroke-dashoffset: 0;

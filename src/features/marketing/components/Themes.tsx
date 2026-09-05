@@ -40,7 +40,7 @@ export default function Themes() {
             <span className="text-xs font-bold tracking-wide uppercase text-accent-ink">
               {t.themes.eyebrow}
             </span>
-            <h2 className={cn('mt-3 text-2xl md:text-4xl font-semibold', headingFont)}>
+            <h2 className={cn('mt-3 text-3xl md:text-5xl', headingFont)}>
               {t.themes.title}
             </h2>
             <p className="mt-4 text-ink-muted">{t.themes.subtitle}</p>
@@ -108,20 +108,26 @@ export default function Themes() {
                       {surface === 'storefront' ? (
                         <StorefrontPreview
                           palette={palette}
+                          heightClass="h-[330px]"
                           copy={{
-                            storeName: p.storeName,
-                            heroTitle: p.heroTitle,
-                            heroSub: p.heroSub,
-                            categories: p.categories,
-                            products: p.products,
+                            // Each theme sells something different. Six cards
+                            // showing the same shop in six colours is what made
+                            // this section read as one screenshot recoloured.
+                            storeName: theme.shop.storeName,
+                            heroTitle: theme.shop.heroTitle,
+                            heroSub: theme.shop.heroSub,
+                            categories: theme.shop.categories as [string, string, string],
+                            products: theme.shop.products,
+                            shapes: theme.shop.shapes,
                             saleBadge: p.saleBadge,
-                            cta: p.cta,
+                            cta: theme.shop.cta,
                             currency: p.currency,
                           }}
                         />
                       ) : (
                         <DashboardPreview
                           palette={palette}
+                          heightClass="h-[330px]"
                           copy={{
                             storeName: p.storeName,
                             nav: p.nav,
@@ -142,7 +148,7 @@ export default function Themes() {
                         aria-hidden
                       />
                       <div>
-                        <div className={cn('font-semibold text-base', headingFont)}>
+                        <div className="font-bold text-base">
                           {theme.name}
                         </div>
                         <div className="text-sm text-ink-muted mt-0.5">{theme.desc}</div>

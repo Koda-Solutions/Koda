@@ -22,7 +22,7 @@ export default function ProblemSolution() {
           <span className="text-xs font-bold tracking-wide uppercase text-accent-ink">
             {t.problem.eyebrow}
           </span>
-          <h2 className={cn('mt-3 text-2xl md:text-4xl font-semibold', headingFont)}>
+          <h2 className={cn('mt-3 text-3xl md:text-5xl', headingFont)}>
             {t.problem.title}
           </h2>
           <p className="mt-4 text-ink-muted">{t.problem.subtitle}</p>
@@ -36,7 +36,7 @@ export default function ProblemSolution() {
             transition={{ duration: 0.5 }}
             className="sketch-light bg-paper-raised p-8 opacity-90 tilt-l-2"
           >
-            <h3 className={cn('font-semibold text-lg mb-1.5', headingFont)}>
+            <h3 className="font-bold text-lg mb-1.5">
               {t.problem.beforeTitle}
             </h3>
             <p className="text-sm text-ink-muted mb-5">
@@ -61,7 +61,7 @@ export default function ProblemSolution() {
             transition={{ duration: 0.5 }}
             className="sketch-2 sketch-shadow bg-accent-soft p-8 tilt-r"
           >
-            <h3 className={cn('font-semibold text-lg mb-1.5 text-accent-ink', headingFont)}>
+            <h3 className="font-bold text-lg mb-1.5">
               {t.problem.afterTitle}
             </h3>
             <p className="text-sm text-ink-muted mb-5">

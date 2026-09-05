@@ -46,10 +46,7 @@ export default function WhyKoda() {
             <h2 className={cn('text-5xl md:text-7xl leading-[0.95]', headingFont)}>
               <span className="relative inline-block">
                 {w.title}
-                <SketchUnderline
-                  color="var(--marker-sun)"
-                  className="absolute -bottom-2 start-0"
-                />
+                <SketchUnderline color="var(--marker-sun)" className="underline-anchor" />
               </span>
             </h2>
 
@@ -129,7 +126,7 @@ export default function WhyKoda() {
                 >
                   {i + 1}
                 </span>
-                <h3 className={cn('text-lg mb-1', headingFont)}>{r.title}</h3>
+                <h3 className="text-lg mb-1 font-bold">{r.title}</h3>
                 <p className="text-sm text-ink-muted">{r.body}</p>
               </div>
             ))}

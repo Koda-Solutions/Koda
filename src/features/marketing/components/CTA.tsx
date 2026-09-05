@@ -20,7 +20,7 @@ export default function CTA() {
           transition={{ duration: 0.5 }}
           className="rounded-3xl bg-accent text-paper py-16 px-8 text-center flex flex-col items-center gap-4"
         >
-          <h2 className={cn('text-2xl md:text-4xl font-semibold', headingFont)}>
+          <h2 className={cn('text-3xl md:text-5xl', headingFont)}>
             {t.cta.title}
           </h2>
           <p className="text-paper/85">{t.cta.subtitle}</p>

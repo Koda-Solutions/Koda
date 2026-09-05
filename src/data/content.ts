@@ -22,6 +22,7 @@ export const content = {
       titleAccent: 'لبراند.',
       subtitle:
         'كودا بيحوّل البيدج بتاعتك على انستجرام أو فيسبوك لمتجر حقيقي يبان محترف، عشان فريق البيع بتاعك يركّز في البيع بدل ما يضيع وقته في الرد على نفس الأسئلة في الدايركت.',
+      tag: 'متجرك خلال 10 دقايق',
       ctaPrimary: 'ابدأ متجرك مجانًا',
       ctaSecondary: 'شوف التصاميم',
       fine: 'من غير فيزا. من غير برمجة. هيبقى شغال النهاردة.',
@@ -137,12 +138,102 @@ export const content = {
         confirm: 'تأكيد واتساب',
       },
       items: [
-        { name: 'نور', desc: 'دافئ وهادي، للهدوم وشغل الإيد ومستلزمات البيت' },
-        { name: 'موج', desc: 'نضيف وصريح، للإلكترونيات والرياضة والمنتجات اليومية' },
-        { name: 'ورد', desc: 'ناعم وفخم، للميك أب والعناية والإكسسوارات' },
-        { name: 'ليل', desc: 'غامق وفخم، للماركات بعدد منتجات قليل' },
-        { name: 'فحم', desc: 'جريء وكونتراست عالي، للستريت وير والبراندات الشبابية' },
-        { name: 'نيل', desc: 'عميق وهادي، للمنتجات الغالية اللي محتاجة ثقة' },
+        {
+          name: 'نور',
+          desc: 'دافئ وهادي، للهدوم وشغل الإيد ومستلزمات البيت',
+          shop: {
+            storeName: 'بيت نور',
+            heroTitle: 'شغل إيد مصري',
+            heroSub: 'قطع محدودة · شحن لكل المحافظات',
+            categories: ['الكل', 'كتان', 'قطن'],
+            products: [
+              { name: 'فستان كتان مطرز', price: '850', was: '1,100' },
+              { name: 'عباية قطن', price: '1,150' },
+            ],
+            shapes: ['dress', 'shirt'],
+            cta: 'تسوقي دلوقتي',
+          },
+        },
+        {
+          name: 'موج',
+          desc: 'نضيف وصريح، للإلكترونيات والرياضة والمنتجات اليومية',
+          shop: {
+            storeName: 'موج ستور',
+            heroTitle: 'عروض الأسبوع',
+            heroSub: 'ضمان سنة · تركيب مجاني',
+            categories: ['الكل', 'سماعات', 'رياضة'],
+            products: [
+              { name: 'سماعة بلوتوث', price: '1,450', was: '1,900' },
+              { name: 'شنطة رياضة', price: '620' },
+            ],
+            shapes: ['box', 'bag'],
+            cta: 'اطلب دلوقتي',
+          },
+        },
+        {
+          name: 'ورد',
+          desc: 'ناعم وفخم، للميك أب والعناية والإكسسوارات',
+          shop: {
+            storeName: 'ورد بيوتي',
+            heroTitle: 'روتين العناية',
+            heroSub: 'أصلي 100% · هدية مع كل طلب',
+            categories: ['الكل', 'عناية', 'ميك أب'],
+            products: [
+              { name: 'سيروم فيتامين سي', price: '780', was: '950' },
+              { name: 'كريم مرطب', price: '540' },
+            ],
+            shapes: ['bottle', 'box'],
+            cta: 'اطلبي دلوقتي',
+          },
+        },
+        {
+          name: 'ليل',
+          desc: 'غامق وفخم، للماركات بعدد منتجات قليل',
+          shop: {
+            storeName: 'ليل',
+            heroTitle: 'مجموعة محدودة',
+            heroSub: '12 قطعة بس · مرقّمة',
+            categories: ['الكل', 'ساعات', 'جلد'],
+            products: [
+              { name: 'ساعة جلد كلاسيك', price: '4,200', was: '5,000' },
+              { name: 'محفظة جلد طبيعي', price: '1,850' },
+            ],
+            shapes: ['box', 'bag'],
+            cta: 'اكتشف المجموعة',
+          },
+        },
+        {
+          name: 'فحم',
+          desc: 'جريء وكونتراست عالي، للستريت وير والبراندات الشبابية',
+          shop: {
+            storeName: 'فحم',
+            heroTitle: 'دروب الشتا',
+            heroSub: 'نزل النهاردة · الكمية محدودة',
+            categories: ['الكل', 'هودي', 'كوتشي'],
+            products: [
+              { name: 'هودي أوفرسايز', price: '1,100', was: '1,400' },
+              { name: 'كوتشي شارع', price: '2,300' },
+            ],
+            shapes: ['shirt', 'shoe'],
+            cta: 'خد بتاعك',
+          },
+        },
+        {
+          name: 'نيل',
+          desc: 'عميق وهادي، للمنتجات الغالية اللي محتاجة ثقة',
+          shop: {
+            storeName: 'نيل',
+            heroTitle: 'مختار بعناية',
+            heroSub: 'استرجاع 14 يوم · دفع عند الاستلام',
+            categories: ['الكل', 'عطور', 'هدايا'],
+            products: [
+              { name: 'عطر شرقي 50مل', price: '3,400', was: '4,100' },
+              { name: 'علبة هدايا', price: '1,250' },
+            ],
+            shapes: ['bottle', 'box'],
+            cta: 'اطلب دلوقتي',
+          },
+        },
       ],
     },
 
@@ -317,6 +408,15 @@ export const content = {
       footnote: 'اتعمل في القاهرة · للتاجر المصري',
     },
 
+    classical: {
+      illustrationAlt: 'تمثال رخامي كلاسيكي ماسك موبايل عليه رسايل كتير مش مقروءة',
+      messages: ['الفستان ده بكام؟', 'بكام ده؟', 'لو سمحت السعر؟'],
+      title: 'ألفين سنة وإحنا بنرد على نفس السؤال.',
+      body: 'السعر، المقاسات، الشحن، هو موجود ولا خلص. كل يوم، لكل حد، من الأول. المتجر بيرد على ده كله لوحده، وانت تركّز في اللي مش أي حد يقدر يعمله.',
+      note: 'كفاية بقى، بجد.',
+      cta: 'خلّي متجرك يرد بدالك',
+    },
+
     pricing: {
       eyebrow: 'الأسعار',
       title: 'ابدأ مجانًا. كبّر لما تكون جاهز.',
@@ -426,6 +526,7 @@ export const content = {
       titleAccent: 'to brand.',
       subtitle:
         'Koda turns your Instagram or Facebook page into a real, trustworthy store, so your sales team spends less time repeating the same answers in DMs and more time actually selling.',
+      tag: 'live in 10 minutes',
       ctaPrimary: 'Start your store, free',
       ctaSecondary: 'See live themes',
       fine: 'No credit card. No code. Live the same day.',
@@ -541,12 +642,102 @@ export const content = {
         confirm: 'WhatsApp',
       },
       items: [
-        { name: 'Nour', desc: 'Warm and editorial, for fashion, handmade and home goods' },
-        { name: 'Moj', desc: 'Clean and direct, for electronics, sports and everyday goods' },
-        { name: 'Ward', desc: 'Soft and premium, for beauty, skincare and accessories' },
-        { name: 'Layl', desc: 'Dark and luxurious, for brands with a small, high-value range' },
-        { name: 'Faham', desc: 'Bold and high contrast, for streetwear and youth brands' },
-        { name: 'Nil', desc: 'Deep and calm, for considered, high-value products' },
+        {
+          name: 'Nour',
+          desc: 'Warm and calm, for clothes, handmade goods and homeware',
+          shop: {
+            storeName: 'Nour Home',
+            heroTitle: 'Made by hand',
+            heroSub: 'Limited pieces · delivery nationwide',
+            categories: ['All', 'Linen', 'Cotton'],
+            products: [
+              { name: 'Embroidered linen dress', price: '850', was: '1,100' },
+              { name: 'Cotton abaya', price: '1,150' },
+            ],
+            shapes: ['dress', 'shirt'],
+            cta: 'Shop now',
+          },
+        },
+        {
+          name: 'Moj',
+          desc: 'Clean and direct, for electronics, sport and everyday goods',
+          shop: {
+            storeName: 'Moj Store',
+            heroTitle: 'This week only',
+            heroSub: 'One year warranty · free setup',
+            categories: ['All', 'Audio', 'Sport'],
+            products: [
+              { name: 'Bluetooth headphones', price: '1,450', was: '1,900' },
+              { name: 'Gym duffel bag', price: '620' },
+            ],
+            shapes: ['box', 'bag'],
+            cta: 'Order now',
+          },
+        },
+        {
+          name: 'Ward',
+          desc: 'Soft and rich, for make-up, skincare and accessories',
+          shop: {
+            storeName: 'Ward Beauty',
+            heroTitle: 'Your routine',
+            heroSub: '100% authentic · gift with every order',
+            categories: ['All', 'Skincare', 'Make-up'],
+            products: [
+              { name: 'Vitamin C serum', price: '780', was: '950' },
+              { name: 'Daily moisturiser', price: '540' },
+            ],
+            shapes: ['bottle', 'box'],
+            cta: 'Order now',
+          },
+        },
+        {
+          name: 'Layl',
+          desc: 'Dark and rich, for brands with few, expensive pieces',
+          shop: {
+            storeName: 'Layl',
+            heroTitle: 'Limited run',
+            heroSub: 'Only 12 pieces · numbered',
+            categories: ['All', 'Watches', 'Leather'],
+            products: [
+              { name: 'Classic leather watch', price: '4,200', was: '5,000' },
+              { name: 'Full grain wallet', price: '1,850' },
+            ],
+            shapes: ['box', 'bag'],
+            cta: 'See the collection',
+          },
+        },
+        {
+          name: 'Faham',
+          desc: 'Bold and high contrast, for streetwear and young brands',
+          shop: {
+            storeName: 'Faham',
+            heroTitle: 'Winter drop',
+            heroSub: 'Live today · limited stock',
+            categories: ['All', 'Hoodies', 'Sneakers'],
+            products: [
+              { name: 'Oversized hoodie', price: '1,100', was: '1,400' },
+              { name: 'Street sneaker', price: '2,300' },
+            ],
+            shapes: ['shirt', 'shoe'],
+            cta: 'Cop it',
+          },
+        },
+        {
+          name: 'Nil',
+          desc: 'Deep and calm, for expensive things that need trust',
+          shop: {
+            storeName: 'Nil',
+            heroTitle: 'Chosen carefully',
+            heroSub: '14 day returns · cash on delivery',
+            categories: ['All', 'Perfume', 'Gifts'],
+            products: [
+              { name: 'Oriental perfume 50ml', price: '3,400', was: '4,100' },
+              { name: 'Gift box', price: '1,250' },
+            ],
+            shapes: ['bottle', 'box'],
+            cta: 'Order now',
+          },
+        },
       ],
     },
 
@@ -719,6 +910,15 @@ export const content = {
       ],
       cta: 'Start your store, free',
       footnote: 'Made in Cairo · for Egyptian sellers',
+    },
+
+    classical: {
+      illustrationAlt: 'A classical marble bust holding a phone full of unread messages',
+      messages: ['how much is this?', 'price?', 'sorry, how much?'],
+      title: 'Two thousand years of answering the same question.',
+      body: 'The price, the sizes, the shipping, whether it is still in stock. Every day, for every person, from the beginning. A store answers all of it by itself, and you spend the day on the part nobody else can do.',
+      note: 'genuinely, enough.',
+      cta: 'Let your store answer',
     },
 
     pricing: {

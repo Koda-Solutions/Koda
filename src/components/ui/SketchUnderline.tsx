@@ -24,7 +24,7 @@ export function SketchUnderline({
 }) {
   return (
     <svg
-      className={`sketch-underline block w-full h-[0.4em] ${className}`}
+      className={`sketch-underline block h-[0.34em] ${className}`}
       viewBox="0 0 200 12"
       preserveAspectRatio="none"
       fill="none"

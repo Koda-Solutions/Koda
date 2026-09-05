@@ -124,7 +124,7 @@ export default function OnboardingWizard() {
 
       <div className="relative w-full max-w-[480px]">
         <div className="flex items-center justify-center gap-2.5 mb-7">
-          <span className={cn('text-lg', headingFont)}>{t.nav.logo}</span>
+          <span className={cn('text-2xl', headingFont)}>{t.nav.logo}</span>
           <Image src="/logo-mark.png" alt="" width={28} height={28} className="rounded-lg" />
         </div>
 

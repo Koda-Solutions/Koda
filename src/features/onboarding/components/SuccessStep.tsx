@@ -21,7 +21,7 @@ export default function SuccessStep({
         <Check size={30} strokeWidth={3} />
       </div>
       <div>
-        <h1 className={cn('text-2xl', headingFont)}>{t.title}</h1>
+        <h1 className={cn('text-3xl', headingFont)}>{t.title}</h1>
         <p className="text-sm text-ink-muted mt-2">{t.subtitle}</p>
       </div>
       <div

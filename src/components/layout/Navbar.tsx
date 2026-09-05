@@ -51,7 +51,7 @@ export default function Navbar() {
             height={36}
             className="rounded-lg"
           />
-          <span className={cn('font-semibold text-xl', headingFont)}>
+          <span className={cn('text-2xl', headingFont)}>
             {t.nav.logo}
           </span>
         </div>

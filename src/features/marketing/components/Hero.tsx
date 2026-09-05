@@ -8,6 +8,15 @@ import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import StorefrontPreview from './previews/StorefrontPreview';
 import { SketchUnderline } from '@/components/ui/SketchUnderline';
+import {
+  ArrowCurve,
+  DoodleTag,
+  Hatch,
+  Scribble,
+  Sparkle,
+  Star,
+  Zip,
+} from '@/components/ui/Doodles';
 import { themePalettes, FREE_THEME } from '@/data/themePreviews';
 
 const nour = themePalettes.find((p) => p.key === FREE_THEME)!;
@@ -17,7 +26,25 @@ export default function Hero() {
   const headingFont = language === 'en' ? 'font-display' : 'font-thmanyah-display font-black';
 
   return (
-    <header className="pt-32 pb-20 md:pt-40 md:pb-28">
+    <header className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
+      {/* The marginalia. Decorative, so hidden from assistive tech and from
+          narrow screens, where there is no margin to draw in and they would
+          only collide with the content. */}
+      <div
+        className="pointer-events-none absolute inset-0 hidden lg:block text-ink"
+        aria-hidden
+      >
+        <Star className="absolute top-[14%] start-[46%] w-7 h-7 text-[var(--marker-coral)] tilt-r-2" />
+        <Sparkle className="absolute top-[62%] start-[40%] w-6 h-6 text-[var(--marker-sun)]" />
+        <Scribble className="absolute top-[8%] start-[34%] w-24 h-10 opacity-70 tilt-l" />
+        <Zip className="absolute top-[46%] end-[3%] w-12 h-8 text-[var(--marker-sky)] opacity-80" />
+        <Hatch className="absolute bottom-[8%] end-[8%] w-16 h-16 opacity-30" />
+        <Hatch className="absolute top-[10%] start-[2%] w-14 h-14 opacity-20" />
+        {/* The arrow points from the copy at the phone, which is the one
+            relationship on this screen worth drawing. */}
+        <ArrowCurve className="absolute top-[30%] start-[38%] w-28 h-16 text-[var(--marker-coral)] rtl:-scale-x-100" />
+      </div>
+
       <div className="container grid md:grid-cols-2 gap-14 items-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -29,7 +56,7 @@ export default function Hero() {
           </span>
           <h1
             className={cn(
-              'mt-4 text-4xl md:text-5xl lg:text-[3.4rem] font-semibold leading-[1.12]',
+              'mt-4 text-5xl md:text-6xl lg:text-[4.2rem] font-extrabold leading-[0.98] tracking-[-0.035em]',
               headingFont
             )}
           >
@@ -40,7 +67,7 @@ export default function Hero() {
                 at that word. */}
             <span className="relative inline-block">
               {t.hero.titleAccent}
-              <SketchUnderline className="absolute -bottom-1 start-0" />
+              <SketchUnderline className="underline-anchor" />
             </span>
           </h1>
           <p className="mt-5 text-lg text-ink-muted max-w-[46ch]">
@@ -103,6 +130,10 @@ export default function Hero() {
               theme gallery uses, in the Nour palette every free store starts on,
               so what is promised here is literally what gets built.
             */}
+            <DoodleTag className="absolute -top-5 -end-6 z-20 rotate-[6deg] bg-paper">
+              {t.hero.tag}
+            </DoodleTag>
+
             <div className="rounded-[24px] overflow-hidden border border-line">
               <StorefrontPreview
                 palette={nour}

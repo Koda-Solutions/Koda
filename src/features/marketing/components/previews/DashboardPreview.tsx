@@ -24,13 +24,16 @@ export interface DashboardCopy {
 export default function DashboardPreview({
   palette,
   copy,
+  /** Matches StorefrontPreview so switching tabs does not resize the card. */
+  heightClass = 'h-[290px]',
 }: {
   palette: ThemePalette;
   copy: DashboardCopy;
+  heightClass?: string;
 }) {
   return (
     <div
-      className="h-[290px] flex text-[8px] leading-tight select-none overflow-hidden"
+      className={`${heightClass} flex text-[8px] leading-tight select-none overflow-hidden`}
       style={{ background: palette.bg, color: palette.ink }}
       aria-hidden
     >

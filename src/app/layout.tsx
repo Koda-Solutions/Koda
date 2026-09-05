@@ -1,19 +1,35 @@
 import type { Metadata } from 'next';
-import { Caveat, Karla } from 'next/font/google';
+import { Archivo, Caveat, Karla } from 'next/font/google';
 import localFont from 'next/font/local';
 import './globals.css';
 import { Providers } from '@/components/providers/Providers';
 import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp';
 
 /**
- * Handwriting: Caveat.
+ * Display: Archivo, at its heaviest.
  *
- * Used for headlines, labels and margin notes, never for a paragraph. It is a
- * real handwriting face rather than a rounded sans pretending, which is the
- * difference between a page that looks drawn and a page that looks friendly.
+ * The headline is a bold grotesque, not handwriting. That is the single thing
+ * that makes a sketchbook page look designed rather than scrappy: one very heavy
+ * voice holding the composition, with everything drawn arranged around it.
  *
- * Latin only, and that is a genuine limitation rather than an oversight. See the
- * Arabic note below.
+ * The previous version set headings in Caveat, which has a small x-height and
+ * turns to mush below about 32px. Handwriting is now reserved for margin notes,
+ * where it belongs and where it reads.
+ */
+const display = Archivo({
+  subsets: ['latin'],
+  variable: '--font-display-sans',
+  display: 'swap',
+  weight: ['700', '800', '900'],
+});
+
+/**
+ * Annotation: Caveat.
+ *
+ * Margin notes, arrows, doodle captions and stickers. Never a headline and never
+ * a paragraph. A real handwriting face rather than a rounded sans pretending,
+ * which is the difference between a page that looks drawn and one that looks
+ * merely friendly.
  */
 const hand = Caveat({
   subsets: ['latin'],
@@ -190,7 +206,7 @@ export default function RootLayout({
       lang="ar"
       dir="rtl"
       suppressHydrationWarning
-      className={`${hand.variable} ${body.variable} ${thmanyahSans.variable} ${thmanyahSerifDisplay.variable}`}
+      className={`${display.variable} ${hand.variable} ${body.variable} ${thmanyahSans.variable} ${thmanyahSerifDisplay.variable}`}
     >
       <head>
         <script
