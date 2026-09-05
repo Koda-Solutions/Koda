@@ -24,6 +24,58 @@ import type { ThemePalette } from '@/data/themePreviews';
 
 type Shape = 'shirt' | 'dress' | 'bag' | 'bottle' | 'shoe' | 'box';
 
+/** #rrggbb -> [r, g, b]. */
+function parse(hex: string): [number, number, number] {
+  const h = hex.replace('#', '');
+  return [
+    parseInt(h.slice(0, 2), 16),
+    parseInt(h.slice(2, 4), 16),
+    parseInt(h.slice(4, 6), 16),
+  ];
+}
+
+function toHex([r, g, b]: [number, number, number]): string {
+  return '#' + [r, g, b].map((v) => Math.round(Math.max(0, Math.min(255, v))).toString(16).padStart(2, '0')).join('');
+}
+
+/** Perceived brightness, 0 to 255. The green weighting is not arbitrary: the eye
+ *  is far more sensitive to it than to red or blue. */
+function luminance(hex: string): number {
+  const [r, g, b] = parse(hex);
+  return 0.299 * r + 0.587 * g + 0.114 * b;
+}
+
+function mix(a: string, b: string, t: number): string {
+  const [ar, ag, ab] = parse(a);
+  const [br, bg, bb] = parse(b);
+  return toHex([ar + (br - ar) * t, ag + (bg - ag) * t, ab + (bb - ab) * t]);
+}
+
+/**
+ * Guarantees the product is visible against the surface behind it.
+ *
+ * The Faham theme showed this up: its shirt tint is #2A2A28 sitting on a #1E1E1E
+ * surface, twelve points of brightness apart, so the garment simply vanished
+ * while every other theme looked fine. Hand-picking that one palette would have
+ * left the same trap for the next dark theme anyone adds.
+ *
+ * So the subject is pushed away from its backdrop until there is a real gap:
+ * lighter on a dark theme, darker on a light one. A tint that already contrasts
+ * is returned untouched.
+ */
+const MIN_SEPARATION = 34;
+
+function separate(tint: string, behind: string, dark: boolean): string {
+  const gap = Math.abs(luminance(tint) - luminance(behind));
+  if (gap >= MIN_SEPARATION) {
+    return tint;
+  }
+  const target = dark ? '#FFFFFF' : '#000000';
+  // Enough to clear the threshold, not so much that the theme's colour is lost.
+  const amount = Math.min(0.5, (MIN_SEPARATION - gap) / 255 + 0.18);
+  return mix(tint, target, amount);
+}
+
 /** Silhouettes, as fractions of a 100x100 box so they scale to any tile size. */
 const SILHOUETTES: Record<Shape, string> = {
   // Short sleeves, a collar notch, a slight taper at the waist.
@@ -57,6 +109,9 @@ export default function ProductImage({
   const dark = palette.mode === 'dark';
   const id = React.useId();
 
+  // The garment has to read against the card it sits on, whatever the theme.
+  const subject = separate(tint, dark ? palette.line : palette.surface, dark);
+
   return (
     <div className={`relative overflow-hidden ${className}`} aria-hidden>
       <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice" className="w-full h-full block">
@@ -68,16 +123,16 @@ export default function ProductImage({
               stopColor={dark ? palette.line : palette.surface}
               stopOpacity="1"
             />
-            <stop offset="100%" stopColor={tint} stopOpacity={dark ? 0.55 : 0.42} />
+            <stop offset="100%" stopColor={tint} stopOpacity={dark ? 0.45 : 0.42} />
           </radialGradient>
 
           {/* The subject: lit from upper left, falling into shadow at lower right. */}
           <linearGradient id={`sub-${id}`} x1="22%" y1="8%" x2="78%" y2="96%">
-            <stop offset="0%" stopColor={tint} stopOpacity={dark ? 0.95 : 1} />
+            <stop offset="0%" stopColor={subject} stopOpacity={1} />
             <stop
               offset="58%"
-              stopColor={tint}
-              stopOpacity={dark ? 0.78 : 0.86}
+              stopColor={subject}
+              stopOpacity={dark ? 0.88 : 0.9}
             />
             <stop offset="100%" stopColor={palette.ink} stopOpacity={dark ? 0.5 : 0.28} />
           </linearGradient>

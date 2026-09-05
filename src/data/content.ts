@@ -294,6 +294,29 @@ export const content = {
       },
     },
 
+    whyKoda: {
+      kicker: 'القاهرة · تأسست 2026',
+      title: 'ليه كودا؟',
+      subtitle: 'أقدم شكل للإعلان في الدنيا، بيبيع أحدث حاجة. عشان الفكرة ماتغيرتش: محل شكله كويس بيبيع أكتر.',
+      illustrationAlt: 'رسمة لمحل بواجهة وتندة ولافتة مكتوب عليها كودا',
+      reasons: [
+        {
+          title: 'شكلك محترف من أول يوم',
+          body: 'ستة تصاميم اتعملت بإيد مصممين، مش تمبلت جاهز. متجرك يبان كأنك صرفت عليه فلوس.',
+        },
+        {
+          title: 'من غير مبرمج ولا شركة',
+          body: 'تختار، تكتب، تنزّل صورك. المتجر شغال في نفس اليوم من غير ما تدفع لحد.',
+        },
+        {
+          title: 'الزباين بتثق وتشتري',
+          body: 'رابط مشفّر، صفحة سياسة واضحة، وتأكيد على واتساب. ده اللي بيخلي حد يدفع كاش لواحد ما يعرفهوش.',
+        },
+      ],
+      cta: 'ابدأ متجرك مجانًا',
+      footnote: 'اتعمل في القاهرة · للتاجر المصري',
+    },
+
     pricing: {
       eyebrow: 'الأسعار',
       title: 'ابدأ مجانًا. كبّر لما تكون جاهز.',
@@ -673,6 +696,29 @@ export const content = {
         viewStoreBtn: 'View your store',
         shareHint: 'Share this link with your customers now on Instagram or WhatsApp.',
       },
+    },
+
+    whyKoda: {
+      kicker: 'Cairo · Established 2026',
+      title: 'Why Koda',
+      subtitle: 'The oldest form of advertising there is, selling the newest thing. Because the idea never changed: a shop that looks good sells more.',
+      illustrationAlt: 'A drawing of a shopfront with an awning and a Koda sign',
+      reasons: [
+        {
+          title: 'You look established on day one',
+          body: 'Six themes drawn by designers, not a template with your logo dropped in. Your shop looks like you spent money on it.',
+        },
+        {
+          title: 'No developer, no agency',
+          body: 'Pick, type, upload your photos. The shop is trading the same day, and you paid nobody to do it.',
+        },
+        {
+          title: 'Buyers trust it enough to pay',
+          body: 'An encrypted link, a real policy page, confirmation on WhatsApp. That is what makes someone hand cash to a stranger.',
+        },
+      ],
+      cta: 'Start your store, free',
+      footnote: 'Made in Cairo · for Egyptian sellers',
     },
 
     pricing: {

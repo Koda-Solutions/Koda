@@ -7,6 +7,7 @@ import { useLanguage } from '@/context/LanguageContext';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import StorefrontPreview from './previews/StorefrontPreview';
+import { SketchUnderline } from '@/components/ui/SketchUnderline';
 import { themePalettes, FREE_THEME } from '@/data/themePreviews';
 
 const nour = themePalettes.find((p) => p.key === FREE_THEME)!;
@@ -33,7 +34,14 @@ export default function Hero() {
             )}
           >
             {t.hero.titleLine1}{' '}
-            <span className="text-accent-ink">{t.hero.titleAccent}</span>
+            {/* The accent word is underlined by hand rather than coloured. A
+                second colour on a heading is what every template does; a stroke
+                drawn under it is what a person does when they want you to look
+                at that word. */}
+            <span className="relative inline-block">
+              {t.hero.titleAccent}
+              <SketchUnderline className="absolute -bottom-1 start-0" />
+            </span>
           </h1>
           <p className="mt-5 text-lg text-ink-muted max-w-[46ch]">
             {t.hero.subtitle}
@@ -76,7 +84,7 @@ export default function Hero() {
             transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
             className="relative w-[300px] rounded-[38px] bg-paper-raised border border-line shadow-2xl p-3"
           >
-            <div className="absolute -start-12 top-24 sketch sketch-shadow-sm bg-[var(--marker-sun)] text-ink px-3 py-2 text-xs font-bold flex items-center gap-2 max-w-[150px] tilt-r-2">
+            <div className="absolute -start-12 top-24 z-20 sketch sketch-shadow-sm bg-[var(--marker-sun)] text-ink px-3 py-2 text-xs font-bold flex items-center gap-2 max-w-[150px] tilt-r-2">
 
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-pulse-ring absolute inline-flex h-full w-full rounded-full bg-emerald-400" />

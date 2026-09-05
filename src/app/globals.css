@@ -247,6 +247,19 @@ h3 {
 }
 
 /* Softer weight, for surfaces that should recede. */
+/* For a box that holds a screenshot or a screen rather than text.
+   The big .sketch radii (255px) are lovely around a paragraph and hopeless
+   around content: the corners sweep so far in that they crop whatever is inside.
+   Same hand-drawn asymmetry, an order of magnitude smaller. */
+.sketch-frame {
+  border: 2px solid var(--ink);
+  border-radius: 18px 7px 16px 9px / 9px 15px 7px 18px;
+}
+.sketch-frame-2 {
+  border: 2px solid var(--ink);
+  border-radius: 8px 17px 9px 15px / 16px 8px 18px 7px;
+}
+
 .sketch-light {
   border: 1.5px solid var(--line);
   border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
@@ -333,5 +346,66 @@ h3 {
   .sketch-press:hover,
   .sketch-press:active {
     transform: none;
+  }
+}
+
+
+/* ============================================================================
+   Drawing, rather than fading in
+
+   A stroke that draws itself is the one animation this page really wants: it is
+   what a person does with a pen, and it says "made by hand" better than any
+   amount of easing on an opacity.
+
+   Driven by animation-timeline: view(), so the browser ties progress to scroll
+   position on the compositor instead of asking JavaScript on every frame. Where
+   that is unsupported the @supports block never applies and the line is simply
+   already drawn, which is the right thing to fall back to.
+   ============================================================================ */
+.sketch-underline path {
+  stroke-dasharray: 260;
+  stroke-dashoffset: 0;
+}
+
+@supports (animation-timeline: view()) {
+  .sketch-underline path {
+    stroke-dashoffset: 260;
+    animation: draw-stroke linear both;
+    animation-timeline: view();
+    /* Finish well before the element leaves, so it is drawn while being read
+       rather than completing as it exits. */
+    animation-range: entry 10% cover 34%;
+  }
+}
+
+@keyframes draw-stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Aged paper, for the poster. Two very soft blooms rather than a noise texture:
+   a repeating PNG would be another request and another decode on a phone, and
+   at this opacity nobody can tell the difference. */
+.aged-paper {
+  background-color: var(--paper-raised);
+  background-image:
+    radial-gradient(ellipse at 18% 12%, color-mix(in srgb, var(--marker-sun) 22%, transparent), transparent 55%),
+    radial-gradient(ellipse at 82% 88%, color-mix(in srgb, var(--marker-coral) 14%, transparent), transparent 52%);
+}
+
+/* The double rule around a Belle Epoque poster: one heavy line, one hairline
+   inside it. Drawn with a single box-shadow rather than two nested elements. */
+.poster-rule {
+  box-shadow:
+    0 0 0 2px var(--ink),
+    0 0 0 5px var(--paper-raised),
+    0 0 0 6.5px var(--ink);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sketch-underline path {
+    stroke-dashoffset: 0 !important;
+    animation: none !important;
   }
 }

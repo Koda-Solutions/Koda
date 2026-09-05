@@ -96,7 +96,7 @@ export default function Themes() {
                     transition={{ duration: 0.4, delay: i * 0.07 }}
                     className={cn(
                       'bg-paper-raised overflow-hidden flex flex-col sketch-shadow-sm',
-                      i % 3 === 0 ? 'sketch tilt-l' : i % 3 === 1 ? 'sketch-2' : 'sketch-3 tilt-r'
+                      i % 3 === 0 ? 'sketch-frame tilt-l' : i % 3 === 1 ? 'sketch-frame-2' : 'sketch-frame tilt-r'
                     )}
                   >
                     <motion.div

@@ -99,7 +99,7 @@ export const themePalettes: ThemePalette[] = [
     accent: '#C6F24E',
     onAccent: '#141414',
     highlight: '#FF6B4A',
-    tiles: ['#3A3A38', '#2A2A28', '#454542', '#333331'],
+    tiles: ['#4A4A47', '#5C5C58', '#403F3C', '#535350'],
   },
   {
     key: 'nil',

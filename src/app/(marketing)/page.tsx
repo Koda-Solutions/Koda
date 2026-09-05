@@ -4,6 +4,7 @@ import HowItWorks from '@/features/marketing/components/HowItWorks';
 import Features from '@/features/marketing/components/Features';
 import Themes from '@/features/marketing/components/Themes';
 import Assurances from '@/features/marketing/components/Assurances';
+import WhyKoda from '@/features/marketing/components/WhyKoda';
 import Pricing from '@/features/marketing/components/Pricing';
 import FAQ from '@/features/marketing/components/FAQ';
 import CTA from '@/features/marketing/components/CTA';
@@ -22,6 +23,7 @@ export default function Home() {
       <Features />
       <Themes />
       <Assurances />
+      <WhyKoda />
       <Pricing />
       <FAQ />
       <CTA />
