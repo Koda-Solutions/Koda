@@ -1,3 +1,7 @@
+'use client';
+
+import { useSyncExternalStore } from 'react';
+
 /**
  * The plan a merchant clicked on the pricing table, carried into the wizard.
  *
@@ -20,9 +24,9 @@ export function isPlan(value: string): value is Plan {
 /**
  * Reads the plan out of the current URL.
  *
- * Deliberately `window.location` in an effect rather than `useSearchParams`: this
- * page is statically prerendered, and the hook would force the whole wizard into a
- * Suspense boundary to keep that. The plan is not needed until the last step.
+ * Deliberately `window.location` rather than `useSearchParams`: this page is
+ * statically prerendered, and that hook would force the whole wizard into a Suspense
+ * boundary to keep it that way, for a value not needed until the last step.
  * Anything unrecognised falls back to FREE, which starts no trial and charges nothing.
  */
 export function planFromLocation(): Plan {
@@ -32,4 +36,21 @@ export function planFromLocation(): Plan {
   const raw = new URLSearchParams(window.location.search).get('plan');
   const upper = (raw ?? '').trim().toUpperCase();
   return isPlan(upper) ? upper : 'FREE';
+}
+
+/**
+ * The plan, as a hook.
+ *
+ * `useSyncExternalStore` rather than state plus an effect. The URL genuinely is an
+ * external system that the server cannot see, which is the exact case this hook
+ * exists for: it hands React a server snapshot and a client snapshot and lets React
+ * reconcile them, with no cascading render and no hydration mismatch to paper over.
+ *
+ * Nothing subscribes, because the wizard never navigates within itself. If it ever
+ * does, this is where a popstate listener goes.
+ */
+const noChanges = () => () => {};
+
+export function usePlan(): Plan {
+  return useSyncExternalStore(noChanges, planFromLocation, () => 'FREE' as Plan);
 }

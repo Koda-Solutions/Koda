@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import { Hatch, Sparkle } from '@/components/ui/Doodles';
 import { motion } from 'framer-motion';
@@ -13,7 +13,7 @@ import {
   verifyOtp,
   type Session,
 } from '@/features/onboarding/api/onboarding';
-import { planFromLocation, type Plan } from '@/features/onboarding/plan';
+import { usePlan } from '@/features/onboarding/plan';
 import Stepper, { TOTAL_STEPS } from './Stepper';
 import PhoneStep from './PhoneStep';
 import OtpStep from './OtpStep';
@@ -36,11 +36,10 @@ export default function OnboardingWizard() {
   const [, setSession] = useState<Session | null>(null);
   const [storeSlug, setStoreSlug] = useState('');
 
-  // Which plan the merchant pressed on the pricing table. Read after mount rather
-  // than during render, so the prerendered HTML is identical for everyone and the
-  // page stays static. See features/onboarding/plan.ts.
-  const [plan, setPlan] = useState<Plan>('FREE');
-  useEffect(() => setPlan(planFromLocation()), []);
+  // Which plan the merchant pressed on the pricing table. The server cannot see the
+  // URL's query string for a prerendered page, so this reads FREE on the server and
+  // the real value on the client, and React reconciles the two. See plan.ts.
+  const plan = usePlan();
 
   const onTrial = plan !== 'FREE';
   const planLabel = o.trial.planNames[plan];

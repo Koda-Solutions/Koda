@@ -69,11 +69,15 @@ export function useCountUp(target: number, active: boolean): number {
       typeof window !== 'undefined' &&
       window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduced) {
-      setValue(target);
+      // Nothing to do: the initial state is already the final value, which is also
+      // what the server rendered.
       return;
     }
 
-    setValue(0);
+    // No synchronous reset to zero here. The first frame of the animation sets it,
+    // one tick later, which keeps every state change inside the ticker's callback
+    // instead of the effect body. The cost is a single frame at the final value, on
+    // a card that is fading in at that exact moment anyway.
     return schedule((progress) => setValue(target * progress));
   }, [target, active]);
 
